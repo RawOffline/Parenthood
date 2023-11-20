@@ -82,6 +82,11 @@ public class SceneHandler : MonoBehaviour
         Debug.Log("Respawned at checkpoint: " + checkpointPosition);
     }
 
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
+
     /* TO DO
      * U - Show/Hide UI (turn on/off renderer components)
      * Alpha 1 - Invincible Player (turn on/off)
