@@ -8,21 +8,33 @@ public class Follow : MonoBehaviour
     public float followSpeed = 5f;
     public float stoppingDistance = 1f;
 
+    public bool arrive = true;
+
     void Update()
     {
-        if (target != null)
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            // Calculate the direction from the follower to the target
-            Vector3 direction = target.position - transform.position;
+            arrive = false;
+        }
 
-            // Move the follower towards the target
-            transform.Translate(direction.normalized * followSpeed * Time.deltaTime);
+        if (arrive == false)
+        {
+            FollowParent();
+        }
+    }
 
-            // Check if the follower is close enough to the target to stop
-            if (direction.magnitude <= stoppingDistance)
-            {
-                // Additional behavior when the follower reaches the target
-            }
+    public void FollowParent()
+    {
+        // Calculate the direction from the follower to the target
+        Vector3 direction = target.position - transform.position;
+
+        // Move the follower towards the target
+        transform.Translate(direction.normalized * followSpeed * Time.deltaTime);
+
+        // Check if the follower is close enough to the target to stop
+        if (direction.magnitude <= stoppingDistance)
+        {
+            arrive = true;
         }
     }
 }
