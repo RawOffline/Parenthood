@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class Follow : MonoBehaviour
 {
@@ -13,14 +14,11 @@ public class Follow : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E))
-        {
             arrive = false;
-        }
 
         if (arrive == false)
-        {
             FollowParent();
-        }
+
     }
 
     public void FollowParent()
