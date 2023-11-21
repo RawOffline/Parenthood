@@ -42,17 +42,18 @@ public class MotherMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        horizontalDir = Input.GetAxisRaw("Horizontal"); 
+        horizontalDir = Input.GetAxisRaw("Horizontal");
+
+        if (Input.GetButtonDown("Jump") && IsGrounded())
+        {
+            Jump();
+        }
     }
 
     private void FixedUpdate()
     {
         Movement();
 
-        if (Input.GetButtonDown("Jump"))
-        {
-            Jump();
-        }
     }
     private void Movement()
     {
@@ -66,9 +67,27 @@ public class MotherMovement : MonoBehaviour
         }
     }
 
+    private bool IsGrounded()
+    {
+        if (Physics2D.BoxCast(transform.position, groundCheckBoxSize, 0, -transform.up, groundCheckDistance, groundLayer))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     private void Jump()
     {
         rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(transform.position - transform.up * groundCheckDistance, groundCheckBoxSize);
     }
 
 }
