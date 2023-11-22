@@ -11,11 +11,11 @@ TagManager:
   - 
   - Water
   - UI
-  - Platform
-  - Ground
-  - 
-  - 
-  - 
+  - SOLID BACKGROUND
+  - 'BACKGROUND '
+  - MACHINE
+  - 'MIDDLE '
+  - FOREGROUND
   - 
   - 
   - 
@@ -40,4 +40,19 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: 1
+    uniqueID: 3053395791
+    locked: 0
+  - name: 2
+    uniqueID: 946276893
+    locked: 0
+  - name: 3
+    uniqueID: 1550979733
+    locked: 0
+  - name: 4
+    uniqueID: 457340721
+    locked: 0
+  - name: 5
+    uniqueID: 3109427031
     locked: 0
