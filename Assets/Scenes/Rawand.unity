@@ -2412,9 +2412,9 @@ MonoBehaviour:
   deceleration: 4
   stoppingDistance: 1
   minJumpInterval: 0.5
-  maxJumpInterval: 2
-  minJumpForce: 4
-  maxJumpForce: 8
+  maxJumpInterval: 1.5
+  minJumpForce: 2
+  maxJumpForce: 4
   isGrounded: 0
 --- !u!114 &1099916215
 MonoBehaviour:
