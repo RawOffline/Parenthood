@@ -25,9 +25,9 @@ public class MotherMovementTemp : MonoBehaviour
     public Vector2 groundCheckBoxSize;
 
     [Header("Movement")]
-    [SerializeField] float movementAcceleration;
-    [SerializeField] float maxMoveSpeed;
-    [SerializeField] float movementDeaccleration;
+    [SerializeField] float movementAcceleration = 20;
+    [SerializeField] float maxMoveSpeed = 7;
+    [SerializeField] float movementDeaccleration = 3;
     private float horizontalDir;
 
     [SerializeField] private Rigidbody2D rb;
