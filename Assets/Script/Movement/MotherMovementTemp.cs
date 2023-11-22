@@ -90,7 +90,7 @@ public class MotherMovementTemp : MonoBehaviour
 
 
 
-    private bool IsGrounded()
+    public bool IsGrounded()
     {
         if (Physics2D.BoxCast(transform.position, groundCheckBoxSize, 0, -transform.up, groundCheckDistance, groundLayer))
         {
