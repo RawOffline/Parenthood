@@ -9,7 +9,8 @@ public class CrushingBlock : MonoBehaviour
     public GameObject pointA;
     public GameObject pointB;
     private bool isGoingUp = false;
-
+    private bool canHurtChild = false;
+    private bool hitPlayer = false;
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -19,12 +20,16 @@ public class CrushingBlock : MonoBehaviour
     {
         if (isGoingUp)
         {
+            canHurtChild = false;
             MoveUpToPointA();
         }
-        else
+        else if (!isGoingUp && !hitPlayer)
         {
+            canHurtChild = true;
             MoveUpToPointB();
+            
         }
+        
     }
 
     private void MoveUpToPointA()
@@ -41,31 +46,37 @@ public class CrushingBlock : MonoBehaviour
 
     private void MoveUpToPointB()
     {
+        
         Vector2 direction = (pointB.transform.position - transform.position).normalized;
         rb.velocity = new Vector2(rb.velocity.x, direction.y * 100);
-
+        
         if (transform.position.y <= pointB.transform.position.y)
         {
+
             StartCoroutine(WaitAndMoveUp());
         }
     }
 
     private IEnumerator WaitAndMoveUp()
     {
+        canHurtChild = false;
         rb.velocity = Vector2.zero;
         yield return new WaitForSeconds(2);
+        hitPlayer = false;
         isGoingUp = true;
     }
 
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("child"))
+        
+        if (collision.gameObject.CompareTag("child") && canHurtChild)
         {
             Destroy(collision.gameObject);
         }
         if (collision.gameObject.CompareTag("Player"))
         {
+            hitPlayer = true;
             StartCoroutine(WaitAndMoveUp());
         }
     }
