@@ -17,14 +17,26 @@ public class GrabChild : MonoBehaviour
     void Update()
     {
 
-        if (grabArea.ChildGrab == true && !motherMovement.IsGrounded())
+        //if (grabArea.ChildGrab == true && !motherMovement.IsGrounded())
+        //{
+        //    Debug.Log("grab");
+        //    child.transform.position = new Vector2(transform.position.x + 1, transform.position.y);
+        //}
+
+        if (grabArea.ChildGrab == true)
         {
             Debug.Log("grab");
             child.transform.position = new Vector2(transform.position.x + 1, transform.position.y);
         }
 
-        else if (grabArea.ChildGrab == true && motherMovement.IsGrounded())
+        //else if (grabArea.ChildGrab == true && motherMovement.IsGrounded())
+        //{
+        //    grabArea.ChildGrab = false;
+        //}
+
+        else if (Input.GetButtonDown("F"))
         {
+            Debug.Log("hello");
             grabArea.ChildGrab = false;
         }
     }
