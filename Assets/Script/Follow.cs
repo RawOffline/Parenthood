@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.U2D;
 
 public class Follow : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class Follow : MonoBehaviour
     public float minJumpForce = 2f;  // Minimum jump force
     public float maxJumpForce = 4f;  // Maximum jump force
 
+    private SpriteRenderer sprite;
     private Rigidbody2D rb;
     private bool isFollowing = false;
     private float timeSinceLastJump = 0f;
@@ -30,6 +32,7 @@ public class Follow : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        sprite = GetComponent<SpriteRenderer>();
         SetRandomJumpInterval();
         SetRandomJumpForce();
     }
@@ -52,7 +55,7 @@ public class Follow : MonoBehaviour
         if (isGrounded)
         {
             // Check if it's time for an automatic jump
-            if (timeSinceLastJump >= jumpInterval)
+            if (isFollowing && timeSinceLastJump >= jumpInterval)
             {
                 // Perform the jump
                 Jump();
@@ -80,6 +83,14 @@ public class Follow : MonoBehaviour
                 // Accelerate up to the maximum speed
                 float speedToApply = Mathf.Min(maxSpeed, rb.velocity.magnitude + acceleration * Time.deltaTime);
                 rb.velocity = direction.normalized * speedToApply;
+
+                // Flip the character sprite based on movement direction
+                if (direction.x > 0)
+                    sprite.flipX = false;
+                else if (direction.x < 0)
+                    sprite.flipX = true;
+
+                new Vector2(transform.localScale.x * -1, transform.localScale.y);
             }
         }
     }
