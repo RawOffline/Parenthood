@@ -32,7 +32,7 @@ public class Follow : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        sprite = GetComponent<SpriteRenderer>();
+        sprite = GetComponentInChildren<SpriteRenderer>();
         SetRandomJumpInterval();
         SetRandomJumpForce();
     }
@@ -82,15 +82,14 @@ public class Follow : MonoBehaviour
             {
                 // Accelerate up to the maximum speed
                 float speedToApply = Mathf.Min(maxSpeed, rb.velocity.magnitude + acceleration * Time.deltaTime);
-                rb.velocity = direction.normalized * speedToApply;
+                var velocity = new Vector2(direction.normalized.x * speedToApply, rb.velocity.y); 
+                rb.velocity = velocity;
 
                 // Flip the character sprite based on movement direction
                 if (direction.x > 0)
                     sprite.flipX = false;
                 else if (direction.x < 0)
                     sprite.flipX = true;
-
-                new Vector2(transform.localScale.x * -1, transform.localScale.y);
             }
         }
     }
