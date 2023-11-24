@@ -84,7 +84,5 @@ public class GrabChild : MonoBehaviour
 
         child.transform.localPosition = Vector2.Lerp(startPosition, new Vector2(0.7f, 0f), Time.deltaTime*7);
         
-
-        Debug.Log(startPosition);
     }
 }
