@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class GrabChild : MonoBehaviour
 {
-    public GrabArea grabArea; // Assuming GrabArea is a script attached to the same GameObject
-    public MotherMovementTemp motherMovement; // Assuming MotherMovementTemp is a script attached to the same GameObject
+    public GrabArea grabArea;
+    public MotherMovementTemp motherMovement;
     public GameObject child;
 
     void Start()
@@ -16,29 +16,20 @@ public class GrabChild : MonoBehaviour
 
     void Update()
     {
+        Debug.Log(grabArea.ChildGrab);
 
-        //if (grabArea.ChildGrab == true && !motherMovement.IsGrounded())
-        //{
-        //    Debug.Log("grab");
-        //    child.transform.position = new Vector2(transform.position.x + 1, transform.position.y);
-        //}
-
-        if (grabArea.ChildGrab == true)
+        if (grabArea.ChildGrab == true && !motherMovement.IsGrounded())
         {
-            Debug.Log("grab");
-            child.transform.position = new Vector2(transform.position.x + 1, transform.position.y);
-        }
-
-        //else if (grabArea.ChildGrab == true && motherMovement.IsGrounded())
-        //{
-        //    grabArea.ChildGrab = false;
-        //}
-
-        else if (Input.GetButtonDown("F"))
-        {
-            Debug.Log("hello");
-            grabArea.ChildGrab = false;
+            AttachChildToMother();
         }
     }
-}
 
+    void AttachChildToMother()
+    {
+
+        child.transform.SetParent(transform);
+
+
+        child.transform.localPosition = new Vector2(0.8f, 0.8f);
+    }
+}

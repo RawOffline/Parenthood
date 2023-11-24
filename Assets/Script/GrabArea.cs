@@ -17,4 +17,12 @@ public class GrabArea : MonoBehaviour
             ChildGrab = true;
         }
     }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("child"))
+        {
+            ChildGrab = false;
+        }
+    }
 }

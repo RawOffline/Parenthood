@@ -7,10 +7,11 @@ public class ChildMoveTriggerArea : MonoBehaviour
     public GameObject child;
     public float moveSpeed = 5f;
     private bool triggered = false;
-    Rigidbody2D rb;
+    public Rigidbody2D rb;
 
     private void Start()
     {
+        triggered = false;
         rb = child.GetComponent<Rigidbody2D>();
     }
 
@@ -20,14 +21,28 @@ public class ChildMoveTriggerArea : MonoBehaviour
         {
             triggered = true;
         }
+        else if (collision.gameObject.CompareTag("child"))
+        {
+            triggered = false;
+
+        }
     }
+
 
     private void Update()
     {
-        if (triggered && child != null)
+        Debug.Log(triggered);
+        if (triggered)
         {
-  
-            rb.AddForce(Vector2.right * moveSpeed);
+
+            rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
+
+        }
+        else if (!triggered)
+        {
+
+            rb.velocity = new Vector2(0, rb.velocity.y);
+
         }
     }
 }
