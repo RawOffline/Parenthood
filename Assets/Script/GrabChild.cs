@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 public class GrabChild : MonoBehaviour
@@ -12,12 +9,14 @@ public class GrabChild : MonoBehaviour
     private Rigidbody2D motherRb;
     private float forceDecrease = 4.5f;
     private int repeatCount = 0; // Variable to track the number of repetitions
+    public LayerMask childLayer;
+    public LayerMask parentLayer;
 
     void Start()
     {
         grabArea = GetComponentInChildren<GrabArea>();
         motherMovement = GetComponent<MotherMovementTemp>();
-        childRb = child.GetComponent<Rigidbody2D>();
+        childRb = child?.GetComponent<Rigidbody2D>();
         motherRb = GetComponent<Rigidbody2D>();
     }
 
@@ -25,17 +24,30 @@ public class GrabChild : MonoBehaviour
     {
         if (grabArea.ChildGrab && !motherMovement.IsGrounded() && child != null)
         {
+            IgnoreCollisionBetweenLayers(childLayer, parentLayer, true);
             AttachChildToMother();
             childRb.isKinematic = true;
         }
         else if (motherMovement.IsGrounded() && child != null)
         {
+            IgnoreCollisionBetweenLayers(childLayer, parentLayer, false);
             DetachChildFromMother();
             childRb.isKinematic = false;
         }
+    }
 
+    void IgnoreCollisionBetweenLayers(LayerMask layer1, LayerMask layer2, bool ignore)
+    {
+        Collider2D[] colliders1 = Physics2D.OverlapCircleAll(transform.position, 100f, layer1);
+        Collider2D[] colliders2 = Physics2D.OverlapCircleAll(transform.position, 100f, layer2);
 
-        
+        foreach (Collider2D collider1 in colliders1)
+        {
+            foreach (Collider2D collider2 in colliders2)
+            {
+                Physics2D.IgnoreCollision(collider1, collider2, ignore);
+            }
+        }
     }
 
     void AttachChildToMother()
@@ -51,27 +63,20 @@ public class GrabChild : MonoBehaviour
     {
         if (child != null && child.transform.parent == transform)
         {
-
             child.transform.SetParent(null);
-
             CancelInvoke("AddForceToChild");
-
             InvokeRepeating("AddForceToChild", 0, 0.2f);
         }
     }
 
     void AddForceToChild()
     {
-        
-        childRb.AddForce(new Vector2(transform.localScale.x * forceDecrease, forceDecrease / 2f), ForceMode2D.Impulse);
-
+        childRb?.AddForce(new Vector2(transform.localScale.x * forceDecrease, forceDecrease / 2f), ForceMode2D.Impulse);
         forceDecrease -= 1.5f;
-
-
         repeatCount++;
+
         if (repeatCount >= 3)
         {
-
             CancelInvoke("AddForceToChild");
             forceDecrease = 3;
             repeatCount = 0;
@@ -80,9 +85,10 @@ public class GrabChild : MonoBehaviour
 
     void MoveChildInAir()
     {
-        Vector2 startPosition = child.transform.localPosition;
-
-        child.transform.localPosition = Vector2.Lerp(startPosition, new Vector2(0.7f, 0f), Time.deltaTime*7);
-        
+        if (child != null)
+        {
+            Vector2 startPosition = child.transform.localPosition;
+            child.transform.localPosition = Vector2.Lerp(startPosition, new Vector2(0.7f, 0f), Time.deltaTime * 7);
+        }
     }
 }
