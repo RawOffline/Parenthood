@@ -3,8 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - child
+  tags: []
   layers:
   - Default
   - TransparentFX
@@ -17,8 +16,8 @@ TagManager:
   - MACHINE
   - 'MIDDLE '
   - FOREGROUND
-  - Player
-  - Child
+  - 
+  - 
   - 
   - 
   - 
@@ -56,4 +55,19 @@ TagManager:
     locked: 0
   - name: 5
     uniqueID: 3109427031
+    locked: 0
+  - name: 6
+    uniqueID: 1424640853
+    locked: 0
+  - name: 7
+    uniqueID: 3220618445
+    locked: 0
+  - name: 8
+    uniqueID: 3707560479
+    locked: 0
+  - name: 9
+    uniqueID: 1021140907
+    locked: 0
+  - name: 10
+    uniqueID: 2913455343
     locked: 0
