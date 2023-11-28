@@ -453,10 +453,10 @@ MonoBehaviour:
   child: {fileID: 0}
   childLayer:
     serializedVersion: 2
-    m_Bits: 4096
+    m_Bits: 0
   parentLayer:
     serializedVersion: 2
-    m_Bits: 2048
+    m_Bits: 0
 --- !u!1 &8640540837092434309
 GameObject:
   m_ObjectHideFlags: 0
