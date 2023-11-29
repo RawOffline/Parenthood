@@ -6,7 +6,6 @@ public class GrabChild : MonoBehaviour
     private MotherMovementTemp motherMovement;
     public GameObject child;
     private Rigidbody2D childRb;
-    private Rigidbody2D motherRb;
     private float forceDecrease = 4.5f;
     private int repeatCount = 0; // Variable to track the number of repetitions
     public LayerMask childLayer;
@@ -17,12 +16,11 @@ public class GrabChild : MonoBehaviour
         grabArea = GetComponentInChildren<GrabArea>();
         motherMovement = GetComponent<MotherMovementTemp>();
         childRb = child?.GetComponent<Rigidbody2D>();
-        motherRb = GetComponent<Rigidbody2D>();
     }
 
     void Update()
     {
-        if (grabArea.ChildGrab && !motherMovement.IsGrounded() && child != null)
+        if (grabArea.ChildGrab && child != null && motherMovement.isDashing)
         {
             IgnoreCollisionBetweenLayers(childLayer, parentLayer, true);
             AttachChildToMother();
@@ -61,6 +59,7 @@ public class GrabChild : MonoBehaviour
 
     void DetachChildFromMother()
     {
+
         if (child != null && child.transform.parent == transform)
         {
             child.transform.SetParent(null);

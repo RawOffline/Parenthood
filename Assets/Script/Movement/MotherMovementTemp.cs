@@ -13,7 +13,7 @@ public class MotherMovementTemp : MonoBehaviour
 
     [Header("Dash")]
     private bool canDash = true;
-    private bool isDashing;
+    public bool isDashing;
     private float dashingPower = 27f;
     private float dashingTime = 0.2f;
     private float dashingCooldown = 0.5f;
