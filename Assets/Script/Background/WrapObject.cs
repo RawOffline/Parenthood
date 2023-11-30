@@ -6,8 +6,8 @@ public class WrapObject : MonoBehaviour
 {
     private Rigidbody2D rb;
     public float speed = 6f;
-    public float horizontalWrapPosition = 87.6f;
-    public float horizontalInitialPosition = -88f;
+    public float horizontalWrapPosition = 107.6f;
+    public float horizontalInitialPosition = -203.6f;
     public float verticalWrapPosition = 17.6f;
     public float verticalInitialPosition = -14f;
 
