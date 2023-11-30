@@ -9,16 +9,11 @@ public class MotherMovementTemp : MonoBehaviour
     [SerializeField] float fallMultiplier = 8f;
     [SerializeField] float lowJumpFallMultiplier = 5f;
     private float jumpingPower = 16f;
-
     private float coyoteTime = 0.25f;
     private float coyoteTimeCounter;
-
-    private float jumpBufferTime = 0.2f;
+    private float jumpBufferTime = 0.3f;
     private float jumBufferCounter;
-
-    private bool isFacingRight = true;
-    
-
+ 
     [Header("Dash")]
     private bool canDash = true;
     public bool isDashing;
@@ -37,6 +32,7 @@ public class MotherMovementTemp : MonoBehaviour
     [SerializeField] float maxMoveSpeed = 7;
     [SerializeField] float movementDeaccleration = 3;
     private float horizontalDir;
+    private bool isFacingRight = true;
 
     [SerializeField] private Rigidbody2D rb;
     //[SerializeField] private TrailRenderer tr;
@@ -149,11 +145,11 @@ public class MotherMovementTemp : MonoBehaviour
 
     private void FallMultiplier()
     {
-        if (rb.velocity.y < 0)
+        if (rb.velocity.y < 4f)
         {
             rb.gravityScale = fallMultiplier;
         }
-        else if (rb.velocity.y > 0 && !Input.GetButton("Jump"))
+        else if (rb.velocity.y > 2f && !Input.GetButton("Jump"))
         {
             rb.gravityScale = lowJumpFallMultiplier;
 
@@ -186,7 +182,7 @@ public class MotherMovementTemp : MonoBehaviour
         canDash = false;
         isDashing = true;
         float originalGravity = rb.gravityScale;
-        rb.gravityScale = 0f;
+        rb.gravityScale = 0.5f;
         rb.velocity = new Vector2(transform.localScale.x * dashingPower, 0f);
         yield return new WaitForSeconds(dashingTime);
         rb.gravityScale = originalGravity;
