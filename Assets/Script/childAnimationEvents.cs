@@ -4,12 +4,12 @@ using static ChildAnimationEvents;
 public class ChildAnimationEvents : MonoBehaviour
 {
     public float moveSpeed = 5f;
-    public float jumpForce = 10f;
+    public float jumpForce = 2f;
 
     private Rigidbody2D rb;
     private bool isGrounded;
     private Follow follow;
-
+    
     // Enum to represent different states
     public enum childState
     {
@@ -33,10 +33,19 @@ public class ChildAnimationEvents : MonoBehaviour
     void Update()
     {
         isGrounded = follow.isGrounded;
-
+        
+        //if (currentState != childState.Idle)
+        //{
+        //    follow.enabled = false;
+        //}
+        //else
+        //{
+        //    follow.enabled = true;
+        //}
         switch (currentState)
         {
             case childState.Idle:
+                Idle();
                 break;
 
             case childState.MovingRight:
@@ -86,6 +95,7 @@ public class ChildAnimationEvents : MonoBehaviour
     }
     void JumpRight()
     {
+
         if (isGrounded)
         {
             rb.velocity = new Vector2(moveSpeed, jumpForce);
@@ -97,7 +107,16 @@ public class ChildAnimationEvents : MonoBehaviour
     {
         if (isGrounded)
         {
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            rb.velocity = new Vector2(0, jumpForce);
         }
     }
+
+    void Idle()
+    {
+        if (isGrounded)
+        {
+            rb.velocity = new Vector2(0, 0);
+        }
+    }
+
 }
