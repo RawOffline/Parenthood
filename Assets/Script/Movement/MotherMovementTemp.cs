@@ -9,13 +9,21 @@ public class MotherMovementTemp : MonoBehaviour
     [SerializeField] float fallMultiplier = 8f;
     [SerializeField] float lowJumpFallMultiplier = 5f;
     private float jumpingPower = 16f;
+
+    private float coyoteTime = 0.25f;
+    private float coyoteTimeCounter;
+
+    private float jumpBufferTime = 0.2f;
+    private float jumBufferCounter;
+
     private bool isFacingRight = true;
+    
 
     [Header("Dash")]
     private bool canDash = true;
     public bool isDashing;
-    private float dashingPower = 27f;
-    private float dashingTime = 0.2f;
+    private float dashingPower = 40f;
+    private float dashingTime = 0.1f;
     private float dashingCooldown = 0.5f;
 
     [Header("Grounchecking")]
@@ -33,6 +41,11 @@ public class MotherMovementTemp : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     //[SerializeField] private TrailRenderer tr;
 
+    private void Start()
+    {
+       // Time.fixedDeltaTime = Time.deltaTime * 2f;
+    }
+
     private void Update()
     {
         if (isDashing)
@@ -42,15 +55,33 @@ public class MotherMovementTemp : MonoBehaviour
 
         horizontalDir = Input.GetAxisRaw("Horizontal");
 
-        if (Input.GetButtonDown("Jump") && IsGrounded())
+        if (jumBufferCounter >0f && coyoteTimeCounter > 0f)
         {
             Jump();
+        }
+
+        if(Input.GetButtonDown("Jump"))
+        {
+            jumBufferCounter = jumpBufferTime;
+        }
+        else
+        {
+            jumBufferCounter -= Time.deltaTime;
         }
 
 
         if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
         {
             StartCoroutine(Dash());
+        }
+
+        if(IsGrounded())
+        {
+            coyoteTimeCounter = coyoteTime;
+        }
+        else
+        {
+            coyoteTimeCounter-= Time.deltaTime; 
         }
 
         Flip();
@@ -80,6 +111,7 @@ public class MotherMovementTemp : MonoBehaviour
     private void Jump()
     {
         rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
+        jumBufferCounter = 0f;
 
         if (!isDashing)
         {
@@ -87,8 +119,6 @@ public class MotherMovementTemp : MonoBehaviour
             ApplyAirLinearDrag();
         }
     }
-
-
 
     public bool IsGrounded()
     {
@@ -126,6 +156,8 @@ public class MotherMovementTemp : MonoBehaviour
         else if (rb.velocity.y > 0 && !Input.GetButton("Jump"))
         {
             rb.gravityScale = lowJumpFallMultiplier;
+
+            coyoteTimeCounter = 0f;
         }
         else
         {
