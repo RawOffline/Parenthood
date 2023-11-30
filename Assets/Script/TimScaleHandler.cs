@@ -8,34 +8,23 @@ public class TimeScaleHandler : MonoBehaviour
 
     private void Start()
     {
-        // Get all MonoBehaviours attached to the parent GameObject
         scripts = parent.GetComponents<MonoBehaviour>();
-
-        // Disable all scripts on the parent GameObject
         DisableScriptsOnParent();
-
-        // Set initial time scale
         Time.timeScale = 0.5f;
-
-        // Adjust fixed delta time based on the time scale
-        Time.fixedDeltaTime = 0.02f * Time.timeScale; // Adjust this value based on your needs
+        Time.fixedDeltaTime = 0.002f * Time.timeScale;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            // Restore normal time scale
             Time.timeScale = 1f;
-
-            // Enable scripts on the parent GameObject
             EnableScriptsOnParent();
         }
     }
 
     private void DisableScriptsOnParent()
     {
-        // Disable each script
         foreach (var script in scripts)
         {
             script.enabled = false;
@@ -44,12 +33,10 @@ public class TimeScaleHandler : MonoBehaviour
 
     private void EnableScriptsOnParent()
     {
-        // Enable each script
+        Time.fixedDeltaTime = Time.deltaTime;
         foreach (var script in scripts)
         {
             script.enabled = true;
         }
     }
-
-
 }
