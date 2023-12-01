@@ -6,7 +6,8 @@ public class ChildAnimationEvents : MonoBehaviour
     private float moveSpeed = 5f;
     private float jumpForce = 8f;
     private float acceleration = 0.5f;
-
+    public LayerMask childLayer;
+    public LayerMask parentLayer;
     private Rigidbody2D rb;
     private bool isGrounded;
     private Follow follow;
@@ -39,15 +40,18 @@ public class ChildAnimationEvents : MonoBehaviour
         switch (currentState)
         {
             case childState.Idle:
+                IgnoreCollisionBetweenLayers(childLayer, parentLayer, true);
                 Idle();
                 break;
 
             case childState.MovingRight:
+                IgnoreCollisionBetweenLayers(childLayer, parentLayer, true);
                 targetVelocityX = moveSpeed;
                 Move();
                 break;
 
             case childState.MovingLeft:
+                IgnoreCollisionBetweenLayers(childLayer, parentLayer, true);
                 targetVelocityX = -moveSpeed;
                 Move();
                 break;
@@ -57,17 +61,32 @@ public class ChildAnimationEvents : MonoBehaviour
                 break;
 
             case childState.JumpRight:
+
                 targetVelocityX = moveSpeed;
                 Jump();
                 break;
 
             case childState.JumpLeft:
+
                 targetVelocityX = -moveSpeed;
                 Jump();
                 break;
         }
     }
 
+    void IgnoreCollisionBetweenLayers(LayerMask layer1, LayerMask layer2, bool ignore)
+    {
+        Collider2D[] colliders1 = Physics2D.OverlapCircleAll(transform.position, 100f, layer1);
+        Collider2D[] colliders2 = Physics2D.OverlapCircleAll(transform.position, 100f, layer2);
+
+        foreach (Collider2D collider1 in colliders1)
+        {
+            foreach (Collider2D collider2 in colliders2)
+            {
+                Physics2D.IgnoreCollision(collider1, collider2, ignore);
+            }
+        }
+    }
     public void ChangeState(childState newState)
     {
         currentState = newState;
