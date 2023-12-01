@@ -96,7 +96,6 @@ public class ChildAnimationEvents : MonoBehaviour
                 Physics2D.IgnoreCollision(collider1, collider2, ignore);
             }
         }
-        Debug.Log(ignore);
     }
     public void ChangeState(childState newState)
     {

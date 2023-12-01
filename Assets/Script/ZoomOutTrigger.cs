@@ -1,6 +1,4 @@
 using Cinemachine;
-using System.Collections;
-using UnityEditor.Tilemaps;
 using UnityEngine;
 
 public class ZoomOutTrigger : MonoBehaviour
