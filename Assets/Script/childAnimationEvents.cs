@@ -31,7 +31,6 @@ public class ChildAnimationEvents : MonoBehaviour
     {
         follow = GetComponent<Follow>();
         rb = GetComponent<Rigidbody2D>();
-        currentState = childState.Idle;
     }
 
     void Update()
@@ -50,6 +49,7 @@ public class ChildAnimationEvents : MonoBehaviour
                 break;
 
             case childState.MovingRight:
+                
                 IgnoreCollisionBetweenLayers(childLayer, parentLayer, true);
                 targetVelocityX = moveSpeed;
                 Move();
@@ -79,6 +79,11 @@ public class ChildAnimationEvents : MonoBehaviour
         }
     }
 
+    public void ResetCollisionState()
+    {
+        IgnoreCollisionBetweenLayers(childLayer, parentLayer, false);
+    }
+
     void IgnoreCollisionBetweenLayers(LayerMask layer1, LayerMask layer2, bool ignore)
     {
         Collider2D[] colliders1 = Physics2D.OverlapCircleAll(transform.position, 100f, layer1);
@@ -91,6 +96,7 @@ public class ChildAnimationEvents : MonoBehaviour
                 Physics2D.IgnoreCollision(collider1, collider2, ignore);
             }
         }
+        Debug.Log(ignore);
     }
     public void ChangeState(childState newState)
     {
