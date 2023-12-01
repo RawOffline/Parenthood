@@ -3,7 +3,7 @@ using UnityEngine;
 public class GrabChild : MonoBehaviour
 {
     public GrabArea grabArea;
-    private MotherMovementTemp motherMovement;
+    private MotherMovement motherMovement;
     public GameObject child;
     private Rigidbody2D childRb;
     private float forceDecrease = 2f;
@@ -14,7 +14,7 @@ public class GrabChild : MonoBehaviour
     void Start()
     {
         grabArea = GetComponentInChildren<GrabArea>();
-        motherMovement = GetComponent<MotherMovementTemp>();
+        motherMovement = GetComponent<MotherMovement>();
         childRb = child?.GetComponent<Rigidbody2D>();
     }
 
