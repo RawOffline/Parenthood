@@ -14,6 +14,7 @@ public class ChildAnimationEvents : MonoBehaviour
     private float currentVelocity = 0.0f;
     public enum childState
     {
+        Stop,
         Idle,
         MovingRight,
         MovingLeft,
@@ -39,9 +40,14 @@ public class ChildAnimationEvents : MonoBehaviour
 
         switch (currentState)
         {
-            case childState.Idle:
+            case childState.Stop:
                 IgnoreCollisionBetweenLayers(childLayer, parentLayer, true);
-                Idle();
+                Stop();
+                break;
+
+            case childState.Idle:
+                IgnoreCollisionBetweenLayers(childLayer, parentLayer, false);
+                Stop();
                 break;
 
             case childState.MovingRight:
@@ -106,7 +112,7 @@ public class ChildAnimationEvents : MonoBehaviour
         }
     }
 
-    void Idle()
+    void Stop()
     {
         if (isGrounded)
         {

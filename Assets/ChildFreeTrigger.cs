@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static ChildAnimationEvents;
 
-public class ChangeStateIdle : MonoBehaviour
+public class ChildFreeTrigger : MonoBehaviour
 {
     private ChildAnimationEvents childAnimationEvents;
 
@@ -18,7 +18,7 @@ public class ChangeStateIdle : MonoBehaviour
     {
         if (childAnimationEvents != null && other.CompareTag("child"))
         {
-            childAnimationEvents.ChangeState(childState.Stop);
+            childAnimationEvents.ChangeState(childState.Idle);
         }
     }
 }
