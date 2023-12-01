@@ -26,8 +26,8 @@ Transform:
   m_GameObject: {fileID: 1454267506108910589}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.501, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.009, y: 0.487, z: 0}
+  m_LocalScale: {x: 0.49406675, y: 0.49406675, z: 0.49406675}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6155975672718280076}
@@ -70,11 +70,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1381511953
+  m_SortingLayer: 10
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.1457814, g: 0.79783523, b: 0.8490566, a: 1}
+  m_Sprite: {fileID: 21300000, guid: d5301fded49f6d842a8c142fc899677c, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Intensity: 0
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 00000000
+  m_ApplyToSortingLayers: 000000004f1fffb51d0a67389512725c3177421b571756b9554bea54cdbcf6bf1fe2fcdcab5fdd3cefcca7ad
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -212,9 +212,10 @@ GameObject:
   - component: {fileID: 2535749370354006214}
   - component: {fileID: 669519669100351005}
   - component: {fileID: 6565227231972955151}
-  m_Layer: 0
+  - component: {fileID: 5807575866276165820}
+  m_Layer: 12
   m_Name: Child
-  m_TagString: Untagged
+  m_TagString: child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -297,7 +298,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &7191187891878294480
 MonoBehaviour:
@@ -377,6 +378,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5807575866276165820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7304243637002127815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f059466870b27104291be33c0703a2ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
+  jumpForce: 8
 --- !u!1 &8830321179633966841
 GameObject:
   m_ObjectHideFlags: 0
