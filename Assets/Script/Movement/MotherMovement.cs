@@ -1,14 +1,13 @@
 using System.Collections;
 using UnityEngine;
 
-public class MotherMovementTemp : MonoBehaviour
+public class MotherMovement : MonoBehaviour
 {
     [Header("Jump")]
-    [SerializeField] float jumpForce = 5f;
     [SerializeField] float airLinearDrag = 2.5f;
     [SerializeField] float fallMultiplier = 8f;
     [SerializeField] float lowJumpFallMultiplier = 5f;
-    private float jumpingPower = 16f;
+    [SerializeField] float jumpingPower = 16f;
     private float coyoteTime = 0.25f;
     private float coyoteTimeCounter;
     private float jumpBufferTime = 0.3f;
