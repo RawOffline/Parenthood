@@ -3,14 +3,14 @@ using static ChildAnimationEvents;
 
 public class ChildAnimationEvents : MonoBehaviour
 {
-    public float moveSpeed = 5f;
-    public float jumpForce = 2f;
+    private float moveSpeed = 5f;
+    private float jumpForce = 8f;
+    private float acceleration = 0.5f;
 
     private Rigidbody2D rb;
     private bool isGrounded;
     private Follow follow;
-    
-    // Enum to represent different states
+    private float currentVelocity = 0.0f;
     public enum childState
     {
         Idle,
@@ -23,6 +23,8 @@ public class ChildAnimationEvents : MonoBehaviour
 
     private childState currentState;
 
+    private float targetVelocityX;
+
     void Start()
     {
         follow = GetComponent<Follow>();
@@ -33,15 +35,7 @@ public class ChildAnimationEvents : MonoBehaviour
     void Update()
     {
         isGrounded = follow.isGrounded;
-        
-        //if (currentState != childState.Idle)
-        //{
-        //    follow.enabled = false;
-        //}
-        //else
-        //{
-        //    follow.enabled = true;
-        //}
+
         switch (currentState)
         {
             case childState.Idle:
@@ -49,11 +43,13 @@ public class ChildAnimationEvents : MonoBehaviour
                 break;
 
             case childState.MovingRight:
-                MoveRight();
+                targetVelocityX = moveSpeed;
+                Move();
                 break;
 
             case childState.MovingLeft:
-                MoveLeft();
+                targetVelocityX = -moveSpeed;
+                Move();
                 break;
 
             case childState.Jumping:
@@ -61,53 +57,33 @@ public class ChildAnimationEvents : MonoBehaviour
                 break;
 
             case childState.JumpRight:
-                JumpRight();
+                targetVelocityX = moveSpeed;
+                Jump();
                 break;
 
             case childState.JumpLeft:
-                JumpLeft();
+                targetVelocityX = -moveSpeed;
+                Jump();
                 break;
         }
     }
-
 
     public void ChangeState(childState newState)
     {
         currentState = newState;
     }
 
-    void MoveRight()
+    void Move()
     {
-        rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
-    }
+        rb.velocity = new Vector2(Mathf.SmoothDamp(rb.velocity.x, targetVelocityX, ref currentVelocity, acceleration), rb.velocity.y);
 
-    void MoveLeft()
-    {
-        rb.velocity = new Vector2(-moveSpeed, rb.velocity.y);
     }
-
-    void JumpLeft()
-    {
-        if (isGrounded)
-        {
-            rb.velocity = new Vector2(-moveSpeed, jumpForce);
-        }
-    }
-    void JumpRight()
-    {
-
-        if (isGrounded)
-        {
-            rb.velocity = new Vector2(moveSpeed, jumpForce);
-        }
-    }
-
 
     void Jump()
     {
         if (isGrounded)
         {
-            rb.velocity = new Vector2(0, jumpForce);
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
     }
 
@@ -118,5 +94,4 @@ public class ChildAnimationEvents : MonoBehaviour
             rb.velocity = new Vector2(0, 0);
         }
     }
-
 }
