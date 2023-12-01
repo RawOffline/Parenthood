@@ -47,7 +47,6 @@ public class ChildAnimationEvents : MonoBehaviour
 
             case childState.Idle:
                 IgnoreCollisionBetweenLayers(childLayer, parentLayer, false);
-                Stop();
                 break;
 
             case childState.MovingRight:
@@ -67,13 +66,13 @@ public class ChildAnimationEvents : MonoBehaviour
                 break;
 
             case childState.JumpRight:
-
+                IgnoreCollisionBetweenLayers(childLayer, parentLayer, true);
                 targetVelocityX = moveSpeed;
                 Jump();
                 break;
 
             case childState.JumpLeft:
-
+                IgnoreCollisionBetweenLayers(childLayer, parentLayer, true);
                 targetVelocityX = -moveSpeed;
                 Jump();
                 break;
