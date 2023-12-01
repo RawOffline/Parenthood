@@ -7,10 +7,12 @@ public class SceneHandler : MonoBehaviour
 {
     private Vector2 checkpointPosition;
 
+    Checkpoint checkpoint;
     void Start()
     {
         // Initial checkpoint
         checkpointPosition = transform.position;
+        //checkpoint = GetComponent<Checkpoint>();
     }
 
     void Update()
@@ -33,11 +35,13 @@ public class SceneHandler : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.C))
         {
             SetCheckpoint();
+            //checkpoint.SetCheckpoint();
         }
 
         if (Input.GetKeyDown(KeyCode.T))
         {
             Respawn();
+            //checkpoint.RespawnPlayer();
         }
     }
 
