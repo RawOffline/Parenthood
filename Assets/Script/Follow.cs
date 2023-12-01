@@ -39,6 +39,7 @@ public class Follow : MonoBehaviour
 
     void Update()
     {
+
         if (Input.GetKeyDown(KeyCode.E) && !isFollowing)
             isFollowing = true;
 

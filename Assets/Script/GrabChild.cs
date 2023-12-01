@@ -6,7 +6,7 @@ public class GrabChild : MonoBehaviour
     private MotherMovementTemp motherMovement;
     public GameObject child;
     private Rigidbody2D childRb;
-    private float forceDecrease = 4.5f;
+    private float forceDecrease = 2f;
     private int repeatCount = 0; // Variable to track the number of repetitions
     public LayerMask childLayer;
     public LayerMask parentLayer;
@@ -71,7 +71,7 @@ public class GrabChild : MonoBehaviour
     void AddForceToChild()
     {
         childRb?.AddForce(new Vector2(transform.localScale.x * forceDecrease, forceDecrease / 2f), ForceMode2D.Impulse);
-        forceDecrease -= 1.5f;
+        forceDecrease -= 1f;
         repeatCount++;
 
         if (repeatCount >= 3)
