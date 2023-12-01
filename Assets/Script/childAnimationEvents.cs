@@ -31,7 +31,6 @@ public class ChildAnimationEvents : MonoBehaviour
     {
         follow = GetComponent<Follow>();
         rb = GetComponent<Rigidbody2D>();
-        currentState = childState.Idle;
     }
 
     void Update()
@@ -50,6 +49,7 @@ public class ChildAnimationEvents : MonoBehaviour
                 break;
 
             case childState.MovingRight:
+                
                 IgnoreCollisionBetweenLayers(childLayer, parentLayer, true);
                 targetVelocityX = moveSpeed;
                 Move();
@@ -77,6 +77,11 @@ public class ChildAnimationEvents : MonoBehaviour
                 Jump();
                 break;
         }
+    }
+
+    public void ResetCollisionState()
+    {
+        IgnoreCollisionBetweenLayers(childLayer, parentLayer, false);
     }
 
     void IgnoreCollisionBetweenLayers(LayerMask layer1, LayerMask layer2, bool ignore)
