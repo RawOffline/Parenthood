@@ -65,10 +65,10 @@ public class MotherMovement : MonoBehaviour
         }
 
 
-        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
-        {
-            StartCoroutine(Dash());
-        }
+        //if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
+        //{
+        //    StartCoroutine(Dash());
+        //}
 
         if(IsGrounded())
         {
@@ -176,17 +176,17 @@ public class MotherMovement : MonoBehaviour
         }
     }
 
-    private IEnumerator Dash()
-    {
-        canDash = false;
-        isDashing = true;
-        float originalGravity = rb.gravityScale;
-        rb.gravityScale = 0.5f;
-        rb.velocity = new Vector2(transform.localScale.x * dashingPower, 0f);
-        yield return new WaitForSeconds(dashingTime);
-        rb.gravityScale = originalGravity;
-        isDashing = false;
-        yield return new WaitForSeconds(dashingCooldown);
-        canDash = true;
-    }
+    //private IEnumerator Dash()
+    //{
+    //    canDash = false;
+    //    isDashing = true;
+    //    float originalGravity = rb.gravityScale;
+    //    rb.gravityScale = 0.5f;
+    //    rb.velocity = new Vector2(transform.localScale.x * dashingPower, 0f);
+    //    yield return new WaitForSeconds(dashingTime);
+    //    rb.gravityScale = originalGravity;
+    //    isDashing = false;
+    //    yield return new WaitForSeconds(dashingCooldown);
+    //    canDash = true;
+    //}
 }
