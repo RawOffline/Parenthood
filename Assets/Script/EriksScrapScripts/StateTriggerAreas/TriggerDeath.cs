@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class TriggerDeath : MonoBehaviour
 {
-    private SceneHandler sceneHandler;
+    private CheckpointManager checkpoint;
 
     void Start()
     {
-        sceneHandler = FindObjectOfType<SceneHandler>();
+        checkpoint = FindObjectOfType<CheckpointManager>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("child") || collision.CompareTag("Player"))
         {
-            sceneHandler.Restart();
+            checkpoint.LoadCheckpoint();
         }
     }
 }

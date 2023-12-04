@@ -5,14 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class SceneHandler : MonoBehaviour
 {
-    private Vector2 checkpointPosition;
+   
+    private Vector2 ParentCheckpointPosition;
+    private Vector2 ChildCheckpointPotation;
 
-    Checkpoint checkpoint;
+    CheckpointManager checkpoint;
     void Start()
     {
         // Initial checkpoint
-        checkpointPosition = transform.position;
-        //checkpoint = GetComponent<Checkpoint>();
+        //checkpointPosition = transform.position;
+        checkpoint = GetComponent<CheckpointManager>();
     }
 
     void Update()
@@ -40,9 +42,10 @@ public class SceneHandler : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.T))
         {
-            Respawn();
-            //checkpoint.RespawnPlayer();
+            //Respawn();
+            checkpoint.LoadCheckpoint();
         }
+
     }
 
     public void Restart()
@@ -76,19 +79,24 @@ public class SceneHandler : MonoBehaviour
 
     public void SetCheckpoint()
     {
-        checkpointPosition = transform.position;
-        Debug.Log("Checkpoint set at: " + checkpointPosition);
+        //checkpointPosition = transform.position;
+        //Debug.Log("Checkpoint set at: " + checkpointPosition);
     }
 
     public void Respawn()
     {
-        transform.position = checkpointPosition;
-        Debug.Log("Respawned at checkpoint: " + checkpointPosition);
+        //transform.position = checkpointPosition;
+        //Debug.Log("Respawned at checkpoint: " + checkpointPosition);
     }
 
     public void ExitGame()
     {
         Application.Quit();
+    }
+
+    public void UpdateCheckPoint(Vector2 pos)
+    {
+        //checkpointPosition = pos;
     }
 
     /* TO DO
