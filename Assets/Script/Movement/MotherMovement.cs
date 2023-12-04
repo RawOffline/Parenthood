@@ -195,7 +195,6 @@ public class MotherMovement : MonoBehaviour
         }
         else
         {
-            wallCheckTimer = 0f;
             wallCheck = false;
         }
     }

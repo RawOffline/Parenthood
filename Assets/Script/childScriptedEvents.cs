@@ -43,7 +43,7 @@ public class ChildScriptedEvents : MonoBehaviour
     {
         isGrounded = follow.isGrounded;
 
-        if (motherMovement.wallCheck == true && reachedDestination && motherMovement.IsGrounded())
+        if (motherMovement.wallCheck == true && reachedDestination && motherMovement.IsGrounded() && transform.position.y < follow.target.position.y)
         {
             
             ParentAgainstWall();
@@ -93,11 +93,11 @@ public class ChildScriptedEvents : MonoBehaviour
             rb.velocity = new Vector2(0, rb.velocity.y);
             if (sprite.flipX)
             {
-                rb.AddForce(new Vector2(-1.1f, 0.4f), ForceMode2D.Impulse);
+                rb.AddForce(new Vector2(-1.1f, 0.3f), ForceMode2D.Impulse);
             }
             else
             {
-                rb.AddForce(new Vector2(1.1f, 0.4f), ForceMode2D.Impulse);
+                rb.AddForce(new Vector2(1.1f, 0.3f), ForceMode2D.Impulse);
             }
             
         }
@@ -111,12 +111,12 @@ public class ChildScriptedEvents : MonoBehaviour
         if (sprite.flipX)
         {
             Debug.Log("Jump");
-            rb.AddForce(new Vector2(-2f, 6f), ForceMode2D.Impulse); ;
+            rb.AddForce(new Vector2(-2f, 7f), ForceMode2D.Impulse); ;
         }
         else
         {
             Debug.Log("Jump");
-            rb.AddForce(new Vector2(2f, 6f), ForceMode2D.Impulse); ;
+            rb.AddForce(new Vector2(2f, 7f), ForceMode2D.Impulse); ;
         }
 
         reachedDestination = false;
