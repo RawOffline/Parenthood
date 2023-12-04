@@ -11,9 +11,12 @@ public class CrushingBlock : MonoBehaviour
     private bool isGoingUp = false;
     private bool canHurtChild = false;
     private bool hitPlayer = false;
+
+    private CheckpointManager checkpointManager;    
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        checkpointManager = FindObjectOfType<CheckpointManager>();
     }
 
     private void Update()
@@ -72,7 +75,7 @@ public class CrushingBlock : MonoBehaviour
         
         if (collision.gameObject.CompareTag("child") && canHurtChild)
         {
-            Destroy(collision.gameObject);
+            checkpointManager.LoadCheckpoint();
         }
         if (collision.gameObject.CompareTag("Player"))
         {
