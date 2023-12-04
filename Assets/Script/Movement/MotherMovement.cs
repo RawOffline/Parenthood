@@ -32,7 +32,9 @@ public class MotherMovement : MonoBehaviour
     [SerializeField] float movementDeaccleration = 3;
     private float horizontalDir;
     private bool isFacingRight = true;
-
+    public bool wallCheck = false;
+    private float wallCheckTimer;
+    private float wallCheckThreshold = 1.0f; 
     [SerializeField] private Rigidbody2D rb;
     //[SerializeField] private TrailRenderer tr;
 
@@ -43,6 +45,7 @@ public class MotherMovement : MonoBehaviour
 
     private void Update()
     {
+        WallCheck();
         if (isDashing)
         {
             return;
@@ -173,6 +176,27 @@ public class MotherMovement : MonoBehaviour
             isFacingRight = !isFacingRight;
             localScale.x *= -1f;
             transform.localScale = localScale;
+        }
+    }
+
+    
+    private void WallCheck()
+    {
+        if (Physics2D.BoxCast(transform.position, new Vector2(0.15f, 0.15f), 0, transform.right, 0.5f, groundLayer) ||
+            Physics2D.BoxCast(transform.position, new Vector2(0.15f, 0.15f), 0, -transform.right, 0.5f, groundLayer))
+        {
+            wallCheckTimer += Time.deltaTime;
+
+
+            if (wallCheckTimer >= wallCheckThreshold)
+            {
+                wallCheck = true;
+            }
+        }
+        else
+        {
+            wallCheckTimer = 0f;
+            wallCheck = false;
         }
     }
 
