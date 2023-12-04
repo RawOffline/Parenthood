@@ -8,26 +8,26 @@ public class ChildScriptedEvents : MonoBehaviour
     private Rigidbody2D rb;
     private bool isGrounded;
     private bool reachedDestination = true;
-    public LayerMask childLayer;
-    public LayerMask parentLayer;
+    //public LayerMask childLayer;
+    //public LayerMask parentLayer;
 
     private MotherMovement motherMovement;
     private Follow follow;
     private SpriteRenderer sprite;
 
     
-    public enum childState
-    {
-        Stop,
-        Idle,
-        MovingRight,
-        MovingLeft,
-        Jumping,
-        JumpLeft,
-        JumpRight,
-    }
+    //public enum childState
+    //{
+    //    Stop,
+    //    Idle,
+    //    MovingRight,
+    //    MovingLeft,
+    //    Jumping,
+    //    JumpLeft,
+    //    JumpRight,
+    //}
 
-    private childState currentState;
+    //private childState currentState;
 
 
     void Start()
@@ -51,29 +51,29 @@ public class ChildScriptedEvents : MonoBehaviour
 
     }
 
-    public void ResetCollisionState()
-    {
-        IgnoreCollisionBetweenLayers(childLayer, parentLayer, false);
-    }
+    //public void ResetCollisionState()
+    //{
+    //    IgnoreCollisionBetweenLayers(childLayer, parentLayer, false);
+    //}
 
-    void IgnoreCollisionBetweenLayers(LayerMask layer1, LayerMask layer2, bool ignore)
-    {
-        Collider2D[] colliders1 = Physics2D.OverlapCircleAll(transform.position, 100f, layer1);
-        Collider2D[] colliders2 = Physics2D.OverlapCircleAll(transform.position, 100f, layer2);
+    //void IgnoreCollisionBetweenLayers(LayerMask layer1, LayerMask layer2, bool ignore)
+    //{
+    //    Collider2D[] colliders1 = Physics2D.OverlapCircleAll(transform.position, 100f, layer1);
+    //    Collider2D[] colliders2 = Physics2D.OverlapCircleAll(transform.position, 100f, layer2);
 
-        foreach (Collider2D collider1 in colliders1)
-        {
-            foreach (Collider2D collider2 in colliders2)
-            {
-                Physics2D.IgnoreCollision(collider1, collider2, ignore);
-            }
-        }
+    //    foreach (Collider2D collider1 in colliders1)
+    //    {
+    //        foreach (Collider2D collider2 in colliders2)
+    //        {
+    //            Physics2D.IgnoreCollision(collider1, collider2, ignore);
+    //        }
+    //    }
 
-    }
-    public void ChangeState(childState newState)
-    {
-        currentState = newState;
-    }
+    //}
+    //public void ChangeState(childState newState)
+    //{
+    //    currentState = newState;
+    //}
 
 
     public void ParentAgainstWall()
