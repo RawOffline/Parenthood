@@ -12,13 +12,13 @@ public class MotherMovement : MonoBehaviour
     private float coyoteTimeCounter;
     private float jumpBufferTime = 0.3f;
     private float jumBufferCounter;
- 
+
     [Header("Dash")]
-    private bool canDash = true;
+    //private bool canDash = true;
     public bool isDashing;
-    private float dashingPower = 40f;
-    private float dashingTime = 0.1f;
-    private float dashingCooldown = 0.5f;
+    //private float dashingPower = 40f;
+    //private float dashingTime = 0.1f;
+    //private float dashingCooldown = 0.5f;
 
     [Header("Grounchecking")]
     [SerializeField] private Transform groundCheck;
@@ -34,13 +34,15 @@ public class MotherMovement : MonoBehaviour
     private bool isFacingRight = true;
     public bool wallCheck = false;
     private float wallCheckTimer;
-    private float wallCheckThreshold = 1.0f; 
+    private float wallCheckThreshold = 1.0f;
     [SerializeField] private Rigidbody2D rb;
     //[SerializeField] private TrailRenderer tr;
 
+    private bool isGodMode = false;
+
     private void Start()
     {
-       // Time.fixedDeltaTime = Time.deltaTime * 2f;
+        // Time.fixedDeltaTime = Time.deltaTime * 2f;
     }
 
     private void Update()
@@ -53,12 +55,12 @@ public class MotherMovement : MonoBehaviour
 
         horizontalDir = Input.GetAxisRaw("Horizontal");
 
-        if (jumBufferCounter >0f && coyoteTimeCounter > 0f)
+        if (jumBufferCounter > 0f && coyoteTimeCounter > 0f)
         {
             Jump();
         }
 
-        if(Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump"))
         {
             jumBufferCounter = jumpBufferTime;
         }
@@ -73,13 +75,13 @@ public class MotherMovement : MonoBehaviour
         //    StartCoroutine(Dash());
         //}
 
-        if(IsGrounded())
+        if (IsGrounded())
         {
             coyoteTimeCounter = coyoteTime;
         }
         else
         {
-            coyoteTimeCounter-= Time.deltaTime; 
+            coyoteTimeCounter -= Time.deltaTime;
         }
 
         Flip();
@@ -147,7 +149,7 @@ public class MotherMovement : MonoBehaviour
 
     private void FallMultiplier()
     {
-        if (rb.velocity.y < 4f)
+        if (rb.velocity.y < 4f && !isGodMode)
         {
             rb.gravityScale = fallMultiplier;
         }
@@ -157,9 +159,15 @@ public class MotherMovement : MonoBehaviour
 
             coyoteTimeCounter = 0f;
         }
-        else
+
+        if(IsGrounded())
         {
             rb.gravityScale = 1f;
+        }
+
+        if(isGodMode)
+        {
+            rb.gravityScale = 0f;   
         }
     }
 
@@ -179,7 +187,7 @@ public class MotherMovement : MonoBehaviour
         }
     }
 
-    
+
     private void WallCheck()
     {
         if (Physics2D.BoxCast(transform.position, new Vector2(0.15f, 0.15f), 0, transform.right, 0.5f, groundLayer) ||
@@ -197,6 +205,36 @@ public class MotherMovement : MonoBehaviour
         {
             wallCheck = false;
         }
+    }
+
+    public void EnableGodMode()
+    {
+        GetComponent<Collider2D>().enabled = false;
+        rb.gravityScale = 0;
+        isGodMode = true;
+    }
+
+    public void DisableGodMode()
+    {
+        GetComponent<Collider2D>().enabled = true;
+        rb.gravityScale = 1f;
+        isGodMode = false;
+    }
+
+    public void HandleGodModeMovement()
+    {
+        if (isGodMode)
+        {
+        float moveSpeed = 10f;
+
+        float horizontalInput = Input.GetAxis("Horizontal");
+        float verticalInput = Input.GetAxis("Vertical");
+
+        Vector3 moveDirection = new Vector3(horizontalInput, verticalInput, 0f);
+        transform.Translate(moveDirection * moveSpeed * Time.deltaTime);
+
+        }
+
     }
 
     //private IEnumerator Dash()

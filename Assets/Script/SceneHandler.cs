@@ -5,16 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class SceneHandler : MonoBehaviour
 {
-   
-    private Vector2 ParentCheckpointPosition;
-    private Vector2 ChildCheckpointPotation;
-
+    public GameObject mother;
+    private MotherMovement motherMovement;
+    private bool isGodMode = false;
     CheckpointManager checkpoint;
     void Start()
     {
         // Initial checkpoint
         //checkpointPosition = transform.position;
         checkpoint = GetComponent<CheckpointManager>();
+        mother = GameObject.FindWithTag("Player");
+        motherMovement = mother.GetComponent<MotherMovement>(); 
     }
 
     void Update()
@@ -46,6 +47,15 @@ public class SceneHandler : MonoBehaviour
             checkpoint.LoadCheckpoint();
         }
 
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            ToggleGodMode();
+        }
+
+        if (isGodMode)
+        {
+            motherMovement.HandleGodModeMovement();
+        }
     }
 
     public void Restart()
@@ -77,6 +87,21 @@ public class SceneHandler : MonoBehaviour
         SceneManager.LoadScene(previousSceneIndex);
     }
 
+    public void ToggleGodMode()
+    {
+        isGodMode = !isGodMode;
+
+        if (isGodMode)
+        {
+            motherMovement.EnableGodMode();
+        }
+        else
+        {
+            motherMovement.DisableGodMode();
+        }
+    }
+
+
     public void SetCheckpoint()
     {
         //checkpointPosition = transform.position;
@@ -94,10 +119,6 @@ public class SceneHandler : MonoBehaviour
         Application.Quit();
     }
 
-    public void UpdateCheckPoint(Vector2 pos)
-    {
-        //checkpointPosition = pos;
-    }
 
     /* TO DO
      * U - Show/Hide UI (turn on/off renderer components)
