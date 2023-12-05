@@ -22,7 +22,7 @@ public class Follow : MonoBehaviour
 
     private SpriteRenderer sprite;
     private Rigidbody2D rb;
-    private bool isFollowing = false;
+    public bool isFollowing = false;
     private float timeSinceLastJump = 0f;
     private float jumpInterval = 0f;
     private float jumpForce;
@@ -134,4 +134,9 @@ public class Follow : MonoBehaviour
         else if (isGrounded)
             rb.gravityScale = 1;
     }
+
+
+
+
+
 }

@@ -5,14 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class SceneHandler : MonoBehaviour
 {
-    private Vector2 checkpointPosition;
-
-    Checkpoint checkpoint;
+    public GameObject mother;
+    private MotherMovement motherMovement;
+    private bool isGodMode = false;
+    CheckpointManager checkpoint;
     void Start()
     {
         // Initial checkpoint
-        checkpointPosition = transform.position;
-        //checkpoint = GetComponent<Checkpoint>();
+        //checkpointPosition = transform.position;
+        checkpoint = GetComponent<CheckpointManager>();
+        mother = GameObject.FindWithTag("Player");
+        motherMovement = mother.GetComponent<MotherMovement>(); 
     }
 
     void Update()
@@ -40,8 +43,18 @@ public class SceneHandler : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.T))
         {
-            Respawn();
-            //checkpoint.RespawnPlayer();
+            //Respawn();
+            checkpoint.LoadCheckpoint();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            ToggleGodMode();
+        }
+
+        if (isGodMode)
+        {
+            motherMovement.HandleGodModeMovement();
         }
     }
 
@@ -74,22 +87,38 @@ public class SceneHandler : MonoBehaviour
         SceneManager.LoadScene(previousSceneIndex);
     }
 
+    public void ToggleGodMode()
+    {
+        isGodMode = !isGodMode;
+
+        if (isGodMode)
+        {
+            motherMovement.EnableGodMode();
+        }
+        else
+        {
+            motherMovement.DisableGodMode();
+        }
+    }
+
+
     public void SetCheckpoint()
     {
-        checkpointPosition = transform.position;
-        Debug.Log("Checkpoint set at: " + checkpointPosition);
+        //checkpointPosition = transform.position;
+        //Debug.Log("Checkpoint set at: " + checkpointPosition);
     }
 
     public void Respawn()
     {
-        transform.position = checkpointPosition;
-        Debug.Log("Respawned at checkpoint: " + checkpointPosition);
+        //transform.position = checkpointPosition;
+        //Debug.Log("Respawned at checkpoint: " + checkpointPosition);
     }
 
     public void ExitGame()
     {
         Application.Quit();
     }
+
 
     /* TO DO
      * U - Show/Hide UI (turn on/off renderer components)
