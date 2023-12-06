@@ -7,7 +7,7 @@ public class MotherMovement : MonoBehaviour
     [SerializeField] float airLinearDrag = 2.5f;
     [SerializeField] float fallMultiplier = 8f;
     [SerializeField] float lowJumpFallMultiplier = 5f;
-    [SerializeField] float jumpingPower = 16f;
+    [SerializeField] float jumpingPower = 12f;
     private float coyoteTime = 0.1f;
     private float coyoteTimeCounter;
     private float jumpBufferTime = 0.3f;
