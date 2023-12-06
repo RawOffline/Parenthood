@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,32 +6,42 @@ using UnityEngine.Rendering;
 
 public class DistanceToPlatform : MonoBehaviour
 {
-    public Transform Child;
-    public Transform Platform;
-    public float squareDistance;
-    public float distance;
-    PlatMoveUpStop platformUp;
+    public Transform parent;
+    public Transform smallPlatform;
+    public Transform largePlatform;
+    PlatMoveUpStop smallPlatformUp;
+    PlatMoveUpStop largePlatformUp;
+    private float activationDistanceSmall = 6f;
+    private float activationDistanceLarge = 10.45f;
+    public bool shouldMoveUp = false;
     private void Start()
     {
-        platformUp = GetComponent<PlatMoveUpStop>();
+        smallPlatformUp = smallPlatform.GetComponent<PlatMoveUpStop>();
+        largePlatformUp = largePlatform.GetComponent<PlatMoveUpStop>(); 
+        if (smallPlatformUp == null && largePlatformUp == null ) 
+        {
+            print("Script cant be found!");
+        }
     }
 
 
     // Update is called once per frame
-    void Update()
+    public void Update()
     {
-         if (Child != null && Platform != null)
-         {
-            squareDistance = (Child.position - Platform.position).sqrMagnitude;
-            distance = Mathf.Sqrt(squareDistance);
-
-            Debug.Log(distance);
-         }
-        if (distance< 15)
+        float distanceSmallPlatform = Vector2.Distance(parent.position, smallPlatform.position);
+        float distanceLargePlatform = Vector2.Distance(parent.position, largePlatform.position);
+       
+        if(distanceSmallPlatform <= activationDistanceSmall)
         {
-            platformUp.MoveUP();
+            smallPlatformUp.ActiveMoveUP();
         }
-        
+
+        if(distanceLargePlatform <= activationDistanceLarge)
+        {
+            largePlatformUp.ActiveMoveUP();
+        }
+
+        Debug.Log(distanceLargePlatform);
     }
 
 
