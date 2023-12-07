@@ -76,7 +76,7 @@ Material:
     m_Floats:
     - _EnableExternalAlpha: 0
     - _RefractionStrength: 1
-    - _WaterSpeed: 0.05
+    - _WaterSpeed: 0.02
     m_Colors:
     - _Color: {r: 0.6571583, g: 0.622241, b: 0.745283, a: 0.78039217}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}

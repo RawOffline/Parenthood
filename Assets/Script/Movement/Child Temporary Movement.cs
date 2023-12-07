@@ -13,6 +13,7 @@ public class ChildTemporaryMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        /* MOVE TO RIGHT (FOLLOW TO CHECKPOINT)
+         */
     }
 }
