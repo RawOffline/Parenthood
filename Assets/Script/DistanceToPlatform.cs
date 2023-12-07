@@ -41,7 +41,6 @@ public class DistanceToPlatform : MonoBehaviour
             largePlatformUp.ActiveMoveUP();
         }
 
-        Debug.Log(distanceLargePlatform);
     }
 
 
