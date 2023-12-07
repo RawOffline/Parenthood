@@ -17,8 +17,8 @@ public class Follow : MonoBehaviour
     public float stoppingDistance = 1f; // Distance at which the follower stops moving
     public float minJumpInterval = 0.5f;  // Minimum time between automatic jumps
     public float maxJumpInterval = 1.5f; // Maximum time between automatic jumps
-    public float minJumpForce = 2f;  // Minimum jump force
-    public float maxJumpForce = 4f;  // Maximum jump force
+    public float minJumpForce = 3f;  // Minimum jump force
+    public float maxJumpForce = 4.5f;  // Maximum jump force
 
     private SpriteRenderer sprite;
     private Rigidbody2D rb;
@@ -39,7 +39,6 @@ public class Follow : MonoBehaviour
 
     void Update()
     {
-
         if (Input.GetKeyDown(KeyCode.E) && !isFollowing)
             isFollowing = true;
 
@@ -76,7 +75,23 @@ public class Follow : MonoBehaviour
         // Calculate the distance to the target
         float distance = direction.magnitude;
 
-        if (isGrounded)
+        // Adjust speed based on distance
+        if (distance > stoppingDistance)
+        {
+            // Accelerate up to the maximum speed
+            float speedToApply = Mathf.Min(maxSpeed, rb.velocity.magnitude + acceleration * Time.deltaTime);
+            var velocity = new Vector2(direction.normalized.x * speedToApply, rb.velocity.y);
+            rb.velocity = velocity;
+
+            // Flip the character sprite based on movement direction
+            if (direction.x > 0)
+                sprite.flipX = false;
+            else if (direction.x < 0)
+                sprite.flipX = true;
+        }
+
+        // isGrounded check is not used anymore because it causes issues when jumping up stairs
+        /*if (isGrounded)
         {
             // Adjust speed based on distance
             if (distance > stoppingDistance)
@@ -92,7 +107,7 @@ public class Follow : MonoBehaviour
                 else if (direction.x < 0)
                     sprite.flipX = true;
             }
-        }
+        }*/
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -134,9 +149,4 @@ public class Follow : MonoBehaviour
         else if (isGrounded)
             rb.gravityScale = 1;
     }
-
-
-
-
-
 }
