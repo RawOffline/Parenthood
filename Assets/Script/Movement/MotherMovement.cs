@@ -39,10 +39,13 @@ public class MotherMovement : MonoBehaviour
     //[SerializeField] private TrailRenderer tr;
 
     private bool isGodMode = false;
+   // private bool isJumping = false;
+    Animator motherAnimation;
 
     private void Start()
     {
         // Time.fixedDeltaTime = Time.deltaTime * 2f;
+        motherAnimation = GetComponent<Animator>();
     }
 
     private void Update()
@@ -63,6 +66,8 @@ public class MotherMovement : MonoBehaviour
         if (Input.GetButtonDown("Jump"))
         {
             jumBufferCounter = jumpBufferTime;
+            //isJumping = true;
+            motherAnimation.SetBool("isJumping", true);
         }
         else
         {
@@ -106,6 +111,14 @@ public class MotherMovement : MonoBehaviour
     {
         float playerVelocity = horizontalDir * maxMoveSpeed;
         rb.velocity = new Vector2(Mathf.MoveTowards(rb.velocity.x, playerVelocity, movementAcceleration * Time.fixedDeltaTime), rb.velocity.y);
+        //motherAnimation.SetBool("isWalking", true);
+
+        //if (rb.velocity.y < 0.1)
+        //{
+        //    motherAnimation.SetBool("isIdle", true);
+           
+        //}
+
     }
 
     private void Jump()
@@ -124,6 +137,7 @@ public class MotherMovement : MonoBehaviour
     {
         if (Physics2D.BoxCast(transform.position, groundCheckBoxSize, 0, -transform.up, groundCheckDistance, groundLayer))
         {
+
             return true;
         }
         else
