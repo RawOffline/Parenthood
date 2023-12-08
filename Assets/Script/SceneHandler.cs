@@ -43,8 +43,8 @@ public class SceneHandler : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.T))
         {
-            //Respawn();
-            checkpoint.LoadCheckpoint();
+            Respawn();
+            //checkpoint.LoadCheckpoint();
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha2))
