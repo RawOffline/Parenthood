@@ -36,16 +36,14 @@ public class MotherMovement : MonoBehaviour
     private float wallCheckTimer;
     private float wallCheckThreshold = 1.0f;
     [SerializeField] private Rigidbody2D rb;
-    //[SerializeField] private TrailRenderer tr;
-
     private bool isGodMode = false;
-   // private bool isJumping = false;
-    Animator motherAnimation;
+    // private bool isJumping = false;
+    //Animator motherAnimation;
 
     private void Start()
     {
         // Time.fixedDeltaTime = Time.deltaTime * 2f;
-        motherAnimation = GetComponent<Animator>();
+        //motherAnimation = GetComponent<Animator>();
     }
 
     private void Update()
@@ -67,7 +65,7 @@ public class MotherMovement : MonoBehaviour
         {
             jumBufferCounter = jumpBufferTime;
             //isJumping = true;
-            motherAnimation.SetBool("isJumping", true);
+            //motherAnimation.SetBool("isJumping", true);
         }
         else
         {
@@ -99,12 +97,14 @@ public class MotherMovement : MonoBehaviour
             return;
         }
 
-        Movement();
 
         if (!isDashing)
         {
             FallMultiplier();
         }
+
+        Movement();
+
     }
 
     private void Movement()
@@ -116,7 +116,7 @@ public class MotherMovement : MonoBehaviour
         //if (rb.velocity.y < 0.1)
         //{
         //    motherAnimation.SetBool("isIdle", true);
-           
+
         //}
 
     }
@@ -174,14 +174,14 @@ public class MotherMovement : MonoBehaviour
             coyoteTimeCounter = 0f;
         }
 
-        if(IsGrounded())
+        if (IsGrounded())
         {
             rb.gravityScale = 1f;
         }
 
-        if(isGodMode)
+        if (isGodMode)
         {
-            rb.gravityScale = 0f;   
+            rb.gravityScale = 0f;
         }
     }
 
@@ -239,16 +239,49 @@ public class MotherMovement : MonoBehaviour
     {
         if (isGodMode)
         {
-        float moveSpeed = 10f;
+            float moveSpeed = 10f;
 
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
+            float horizontalInput = Input.GetAxis("Horizontal");
+            float verticalInput = Input.GetAxis("Vertical");
 
-        Vector3 moveDirection = new Vector3(horizontalInput, verticalInput, 0f);
-        transform.Translate(moveDirection * moveSpeed * Time.deltaTime);
+            Vector3 moveDirection = new Vector3(horizontalInput, verticalInput, 0f);
+            transform.Translate(moveDirection * moveSpeed * Time.deltaTime);
 
         }
 
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("MovingPlatform"))
+        {
+            // Transform the player's position to the platform's position
+            //transform.position = other.transform.position;
+
+            // Set the player as a child of the platform
+            transform.SetParent(other.transform);
+
+            // Optionally, disable player's gravity and apply the platform's movement
+            // This assumes the moving platform has a rigidbody
+            Rigidbody2D platformRb = other.GetComponent<Rigidbody2D>();
+            if (platformRb != null)
+            {
+                rb.velocity = platformRb.velocity;
+                rb.gravityScale = 10f; // You might need to adjust this based on your game's requirements
+            }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("MovingPlatform"))
+        {
+            // Detach the player from the platform
+            transform.SetParent(null);
+
+            // Restore player's gravity
+            rb.gravityScale = 1; // You might need to adjust this based on your game's requirements
+        }
     }
 
     //private IEnumerator Dash()
