@@ -9,9 +9,11 @@ public class ChildJumpOverSmall : MonoBehaviour
     private SpriteRenderer sprite;
     [SerializeField] private LayerMask groundLayer;
     private float maxRaycastDistance = 7f;
-    private float wallDistanceThreshold = 7f;
     private float wallApproachThreshold = 4f;
-    private float jumpDistanceThreshold = 0.5f;
+    private float jumpDistanceThreshold = 0.1f;
+
+    public float xForce = 0.1f;
+    public float yForce = 0.2f;
 
     RaycastHit2D hitInfo;
     void Start()
@@ -29,15 +31,8 @@ public class ChildJumpOverSmall : MonoBehaviour
         {
             Debug.Log("hit");
             float distance = Mathf.Abs(hitInfo.point.x - transform.position.x);
+            follow.canJump = false;
 
-            if (distance < wallDistanceThreshold)
-            {
-                follow.canJump = false;
-            }
-            else
-            {
-                follow.canJump = true;
-            }
 
             if (distance < wallApproachThreshold)
             {
@@ -55,7 +50,8 @@ public class ChildJumpOverSmall : MonoBehaviour
 
         else
         {
-            follow.maxSpeed = 7;
+            follow.canJump = true;
+            follow.maxSpeed = 2.5f;
         }
     }
 
@@ -74,6 +70,14 @@ public class ChildJumpOverSmall : MonoBehaviour
 
     private void Jump()
     {
-        rb.AddForce(new Vector2(0.1f, 0.2f), ForceMode2D.Impulse);
+        if (sprite.flipX == true)
+        {
+            rb.AddForce(new Vector2(-xForce, yForce), ForceMode2D.Impulse);
+        }
+        else
+        {
+            rb.AddForce(new Vector2(xForce, yForce), ForceMode2D.Impulse);
+        }
+
     }
 }

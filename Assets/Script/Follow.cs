@@ -35,6 +35,8 @@ public class Follow : MonoBehaviour
         sprite = GetComponentInChildren<SpriteRenderer>();
         SetRandomJumpInterval();
         SetRandomJumpForce();
+
+        canJump = true;
     }
 
     void Update()
@@ -145,10 +147,10 @@ public class Follow : MonoBehaviour
 
     private void GravityAdjust()
     {
-        if (rb.velocity.y < 0)
-            rb.gravityScale = 2.5f;
+        //if (rb.velocity.y < 0)
+        //    rb.gravityScale = 2.5f;
 
-        else if (isGrounded)
-            rb.gravityScale = 1;
+        //else if (isGrounded)
+        //    rb.gravityScale = 1;
     }
 }
