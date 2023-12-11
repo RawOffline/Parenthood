@@ -38,7 +38,7 @@ public class MotherMovement : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     private bool isGodMode = false;
     // private bool isJumping = false;
-    //Animator motherAnimation;
+    Animator motherAnimation;
 
     private void Start()
     {
@@ -251,38 +251,38 @@ public class MotherMovement : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("MovingPlatform"))
-        {
-            // Transform the player's position to the platform's position
-            //transform.position = other.transform.position;
+    //private void OnTriggerEnter2D(Collider2D other)
+    //{
+    //    if (other.CompareTag("MovingPlatform"))
+    //    {
+    //        // Transform the player's position to the platform's position
+    //        //transform.position = other.transform.position;
 
-            // Set the player as a child of the platform
-            transform.SetParent(other.transform);
+    //        // Set the player as a child of the platform
+    //        transform.SetParent(other.transform);
 
-            // Optionally, disable player's gravity and apply the platform's movement
-            // This assumes the moving platform has a rigidbody
-            Rigidbody2D platformRb = other.GetComponent<Rigidbody2D>();
-            if (platformRb != null)
-            {
-                rb.velocity = platformRb.velocity;
-                rb.gravityScale = 10f; // You might need to adjust this based on your game's requirements
-            }
-        }
-    }
+    //        // Optionally, disable player's gravity and apply the platform's movement
+    //        // This assumes the moving platform has a rigidbody
+    //        Rigidbody2D platformRb = other.GetComponent<Rigidbody2D>();
+    //        if (platformRb != null)
+    //        {
+    //            rb.velocity = platformRb.velocity;
+    //            rb.gravityScale = 10f; // You might need to adjust this based on your game's requirements
+    //        }
+    //    }
+    //}
 
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.CompareTag("MovingPlatform"))
-        {
-            // Detach the player from the platform
-            transform.SetParent(null);
+    //private void OnTriggerExit2D(Collider2D other)
+    //{
+    //    if (other.CompareTag("MovingPlatform"))
+    //    {
+    //        // Detach the player from the platform
+    //        transform.SetParent(null);
 
-            // Restore player's gravity
-            rb.gravityScale = 1; // You might need to adjust this based on your game's requirements
-        }
-    }
+    //        // Restore player's gravity
+    //        rb.gravityScale = 1; // You might need to adjust this based on your game's requirements
+    //    }
+    //}
 
     //private IEnumerator Dash()
     //{
