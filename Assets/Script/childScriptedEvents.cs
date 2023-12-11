@@ -8,27 +8,12 @@ public class ChildScriptedEvents : MonoBehaviour
     private Rigidbody2D rb;
     private bool isGrounded;
     private bool reachedDestination = true;
-    //public LayerMask childLayer;
-    //public LayerMask parentLayer;
 
     private MotherMovement motherMovement;
     private Follow follow;
     private SpriteRenderer sprite;
 
     
-    //public enum childState
-    //{
-    //    Stop,
-    //    Idle,
-    //    MovingRight,
-    //    MovingLeft,
-    //    Jumping,
-    //    JumpLeft,
-    //    JumpRight,
-    //}
-
-    //private childState currentState;
-
 
     void Start()
     {
@@ -45,35 +30,11 @@ public class ChildScriptedEvents : MonoBehaviour
 
         if (motherMovement.wallCheck == true && reachedDestination && motherMovement.IsGrounded() && transform.position.y < follow.target.position.y)
         {
-            
             ParentAgainstWall();
         }
 
     }
 
-    //public void ResetCollisionState()
-    //{
-    //    IgnoreCollisionBetweenLayers(childLayer, parentLayer, false);
-    //}
-
-    //void IgnoreCollisionBetweenLayers(LayerMask layer1, LayerMask layer2, bool ignore)
-    //{
-    //    Collider2D[] colliders1 = Physics2D.OverlapCircleAll(transform.position, 100f, layer1);
-    //    Collider2D[] colliders2 = Physics2D.OverlapCircleAll(transform.position, 100f, layer2);
-
-    //    foreach (Collider2D collider1 in colliders1)
-    //    {
-    //        foreach (Collider2D collider2 in colliders2)
-    //        {
-    //            Physics2D.IgnoreCollision(collider1, collider2, ignore);
-    //        }
-    //    }
-
-    //}
-    //public void ChangeState(childState newState)
-    //{
-    //    currentState = newState;
-    //}
 
 
     public void ParentAgainstWall()
