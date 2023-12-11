@@ -580,7 +580,7 @@ Transform:
   m_GameObject: {fileID: 58617067}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -39.720272, y: -6.9300003, z: -27.989138}
+  m_LocalPosition: {x: -28.230274, y: -5.4700003, z: -27.989138}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7099,10 +7099,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ChildJumpStepLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 16384
   JumpLayers:
     serializedVersion: 2
-    m_Bits: 18432
+    m_Bits: 2048
   xForce: 0.1
   yForce: 0.2
 --- !u!1 &181812272
@@ -7264,7 +7264,7 @@ Transform:
   m_GameObject: {fileID: 204273111}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.4868703, y: 0, z: 0}
+  m_LocalPosition: {x: 8.360401, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7948,7 +7948,7 @@ Transform:
   m_GameObject: {fileID: 273719760}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.2921276, y: 0, z: 0}
+  m_LocalPosition: {x: 5.016246, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -21080,7 +21080,7 @@ Transform:
   m_GameObject: {fileID: 644962998}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.3895526, y: 0, z: 0}
+  m_LocalPosition: {x: 6.6883717, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -24338,7 +24338,7 @@ Transform:
   m_GameObject: {fileID: 928839627}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.1947763, y: 0, z: 0}
+  m_LocalPosition: {x: 3.3441858, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -24980,11 +24980,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1187211550862985346, guid: c054f93219c81b14ca2a8a5f04a4890b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -40.129997
+      value: -28.639997
       objectReference: {fileID: 0}
     - target: {fileID: 1187211550862985346, guid: c054f93219c81b14ca2a8a5f04a4890b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.8300002
+      value: -2.3700001
       objectReference: {fileID: 0}
     - target: {fileID: 1187211550862985346, guid: c054f93219c81b14ca2a8a5f04a4890b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -34473,7 +34473,7 @@ Transform:
   m_GameObject: {fileID: 1786041325}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.0973881, y: 0, z: 0}
+  m_LocalPosition: {x: 1.6720929, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -35190,7 +35190,7 @@ Transform:
   m_GameObject: {fileID: 1879819548}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -39.733887, y: -2.1481, z: -27.989138}
+  m_LocalPosition: {x: -28.239765, y: -2.1377199, z: -27.989138}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -36470,11 +36470,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6387049552097052888, guid: 0c502310e82f19249ba0136108539a7b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -41.18
+      value: -29.69
       objectReference: {fileID: 0}
     - target: {fileID: 6387049552097052888, guid: 0c502310e82f19249ba0136108539a7b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.93
+      value: -2.47
       objectReference: {fileID: 0}
     - target: {fileID: 6387049552097052888, guid: 0c502310e82f19249ba0136108539a7b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -36584,8 +36584,7 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.1648
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 122637938288467914, guid: 0c502310e82f19249ba0136108539a7b, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

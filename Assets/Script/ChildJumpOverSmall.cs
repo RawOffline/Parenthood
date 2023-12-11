@@ -11,11 +11,10 @@ public class ChildJumpOverSmall : MonoBehaviour
     private SpriteRenderer sprite;
     RaycastHit2D hitInfo;
 
-    RaycastHit2D hitInfoJumpLayers;
-    RaycastHit2D hitInfoChildStepLayer;
 
     [SerializeField] private LayerMask ChildJumpStepLayer;
     [SerializeField] private LayerMask JumpLayers;
+
     private float maxRaycastDistance = 9f;
     private float wallApproachThreshold = 4f;
     private float jumpDistanceThreshold = 0.3f;
@@ -36,11 +35,10 @@ public class ChildJumpOverSmall : MonoBehaviour
         isGrounded = follow.isGrounded;
 
 
-        RayCast(JumpLayers, out hitInfoJumpLayers);
+        RayCast();
 
-        RayCast(ChildJumpStepLayer, out hitInfoChildStepLayer);
 
-        if (hitInfoChildStepLayer.collider != null)
+        if (hitInfo.collider.gameObject.layer == 14)
         {
             follow.isFollowing = false;
             Whatever(false);
@@ -58,10 +56,11 @@ public class ChildJumpOverSmall : MonoBehaviour
 
     }
 
-    private void RayCast(LayerMask layerMask, out RaycastHit2D hitInfo)
+    private void RayCast()
     {
-        hitInfo = Physics2D.Raycast(transform.position, new Vector2((sprite.flipX ? -1f : 1f), 0), maxRaycastDistance, layerMask);
+        hitInfo = Physics2D.Raycast(transform.position, new Vector2((sprite.flipX ? -1f : 1f), 0), maxRaycastDistance, JumpLayers);
     }
+
 
     private void Whatever(bool JumpType)
     {
