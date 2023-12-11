@@ -93,11 +93,11 @@ public class ChildScriptedEvents : MonoBehaviour
             rb.velocity = new Vector2(0, rb.velocity.y);
             if (sprite.flipX)
             {
-                rb.AddForce(new Vector2(-1.1f, 0.3f), ForceMode2D.Impulse);
+                rb.AddForce(new Vector2(-1f, 0.2f), ForceMode2D.Impulse);
             }
             else
             {
-                rb.AddForce(new Vector2(1.1f, 0.3f), ForceMode2D.Impulse);
+                rb.AddForce(new Vector2(1f, 0.2f), ForceMode2D.Impulse);
             }
             
         }
