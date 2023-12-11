@@ -43,7 +43,7 @@ public class MotherMovement : MonoBehaviour
     private void Start()
     {
         // Time.fixedDeltaTime = Time.deltaTime * 2f;
-        //motherAnimation = GetComponent<Animator>();
+        motherAnimation = GetComponentInChildren<Animator>();
     }
 
     private void Update()
@@ -105,6 +105,8 @@ public class MotherMovement : MonoBehaviour
 
         Movement();
 
+    
+
     }
 
     private void Movement()
@@ -113,11 +115,15 @@ public class MotherMovement : MonoBehaviour
         rb.velocity = new Vector2(Mathf.MoveTowards(rb.velocity.x, playerVelocity, movementAcceleration * Time.fixedDeltaTime), rb.velocity.y);
         //motherAnimation.SetBool("isWalking", true);
 
-        //if (rb.velocity.y < 0.1)
-        //{
-        //    motherAnimation.SetBool("isIdle", true);
-
-        //}
+        if (Mathf.Abs(horizontalDir) > 0.1f)
+        {
+            motherAnimation.SetBool("isWalking", true);
+        }
+        
+        if(Mathf.Abs(horizontalDir) <0.1f)
+        {   
+            motherAnimation.SetBool("isWalking", false);
+        }
 
     }
 
@@ -125,7 +131,6 @@ public class MotherMovement : MonoBehaviour
     {
         rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
         jumBufferCounter = 0f;
-
         if (!isDashing)
         {
             FallMultiplier();
