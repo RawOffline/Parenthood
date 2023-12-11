@@ -19,9 +19,9 @@ TagManager:
   - FOREGROUND
   - Parent
   - Child
-  - RampForChild
-  - 
-  - 
+  - Wall
+  - ChildJumpStep
+  - ParentJumpStep
   - 
   - 
   - 

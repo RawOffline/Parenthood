@@ -292,7 +292,6 @@ GameObject:
   - component: {fileID: 6504405541776903237}
   - component: {fileID: 2004432659819792254}
   - component: {fileID: 2449891154886183856}
-  - component: {fileID: 122637938288467914}
   m_Layer: 11
   m_Name: Parent
   m_TagString: Player
@@ -402,6 +401,9 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 520
+  parentJumpStepLayer:
+    serializedVersion: 2
+    m_Bits: 0
   groundCheckDistance: 0.5
   groundCheckBoxSize: {x: 0.5, y: 0.1}
   movementAcceleration: 50
@@ -439,26 +441,6 @@ MonoBehaviour:
   Sprite: {fileID: 8987711305125264303}
   Stretch: 0.01
   squashParent: {fileID: 4692371157523948652}
---- !u!114 &122637938288467914
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8515676762046557490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aaeb821b51cd8d24693f73503dbfa1a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  grabArea: {fileID: 5765264440466615778}
-  child: {fileID: 0}
-  childLayer:
-    serializedVersion: 2
-    m_Bits: 4096
-  parentLayer:
-    serializedVersion: 2
-    m_Bits: 2048
 --- !u!1 &8640540837092434309
 GameObject:
   m_ObjectHideFlags: 0

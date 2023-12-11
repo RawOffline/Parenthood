@@ -23,6 +23,7 @@ public class MotherMovement : MonoBehaviour
     [Header("Grounchecking")]
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private LayerMask parentJumpStepLayer;
     public float groundCheckDistance;
     public Vector2 groundCheckBoxSize;
 
@@ -115,15 +116,15 @@ public class MotherMovement : MonoBehaviour
         rb.velocity = new Vector2(Mathf.MoveTowards(rb.velocity.x, playerVelocity, movementAcceleration * Time.fixedDeltaTime), rb.velocity.y);
         //motherAnimation.SetBool("isWalking", true);
 
-        if (Mathf.Abs(horizontalDir) > 0.1f)
-        {
-            motherAnimation.SetBool("isWalking", true);
-        }
+        //if (Mathf.Abs(horizontalDir) > 0.1f)
+        //{
+        //    motherAnimation.SetBool("isWalking", true);
+        //}
         
-        if(Mathf.Abs(horizontalDir) <0.1f)
-        {   
-            motherAnimation.SetBool("isWalking", false);
-        }
+        //if(Mathf.Abs(horizontalDir) <0.1f)
+        //{   
+        //    motherAnimation.SetBool("isWalking", false);
+        //}
 
     }
 
@@ -209,8 +210,8 @@ public class MotherMovement : MonoBehaviour
 
     private void WallCheck()
     {
-        if (Physics2D.BoxCast(transform.position, new Vector2(0.15f, 0.15f), 0, transform.right, 0.5f, groundLayer) ||
-            Physics2D.BoxCast(transform.position, new Vector2(0.15f, 0.15f), 0, -transform.right, 0.5f, groundLayer))
+        if (Physics2D.BoxCast(transform.position, new Vector2(0.15f, 0.15f), 0, transform.right, 0.5f, parentJumpStepLayer) ||
+            Physics2D.BoxCast(transform.position, new Vector2(0.15f, 0.15f), 0, -transform.right, 0.5f, parentJumpStepLayer))
         {
             wallCheckTimer += Time.deltaTime;
 
