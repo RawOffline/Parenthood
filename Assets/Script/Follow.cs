@@ -26,7 +26,7 @@ public class Follow : MonoBehaviour
     private float timeSinceLastJump = 0f;
     private float jumpInterval = 0f;
     private float jumpForce;
-
+    public bool canJump;
     public bool isGrounded;
 
     private void Start()
@@ -121,8 +121,11 @@ public class Follow : MonoBehaviour
 
     void Jump()
     {
-        // Perform the jump
-        rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+        if (canJump)
+        {
+            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+        }
+
 
         // Reset the timer
         timeSinceLastJump = 0f;
