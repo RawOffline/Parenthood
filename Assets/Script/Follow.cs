@@ -90,8 +90,7 @@ public class Follow : MonoBehaviour
                 sprite.flipX = true;
         }
 
-        // isGrounded check is not used anymore because it causes issues when jumping up stairs
-        /*if (isGrounded)
+        if (isGrounded)
         {
             // Adjust speed based on distance
             if (distance > stoppingDistance)
@@ -107,7 +106,7 @@ public class Follow : MonoBehaviour
                 else if (direction.x < 0)
                     sprite.flipX = true;
             }
-        }*/
+        }
     }
 
     void OnCollisionEnter2D(Collision2D collision)
