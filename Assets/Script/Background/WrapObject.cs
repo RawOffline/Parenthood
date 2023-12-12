@@ -5,11 +5,11 @@ using UnityEngine;
 public class WrapObject : MonoBehaviour
 {
     private Rigidbody2D rb;
-    public float speed = 6f;
-    public float horizontalWrapPosition = 107.6f;
-    public float horizontalInitialPosition = -203.6f;
-    public float verticalWrapPosition = 17.6f;
-    public float verticalInitialPosition = -14f;
+    public float speed = 3f;
+    public float horizontalWrapPosition = 29.6f;
+    public float horizontalInitialPosition = -77.6f;
+    public float verticalWrapPosition = 7.6f;
+    public float verticalInitialPosition = -6f;
 
     public bool vertical = false;
 
