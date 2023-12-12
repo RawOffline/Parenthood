@@ -91,18 +91,4 @@ public class ChildJumpOnParent : MonoBehaviour
         reachedDestination = true;
     }
 
-    // Helper method to find any object by type
-    private T FindAnyObjectByType<T>()
-    {
-        GameObject[] objects = GameObject.FindObjectsOfType<GameObject>();
-        foreach (GameObject obj in objects)
-        {
-            T component = obj.GetComponent<T>();
-            if (component != null)
-            {
-                return component;
-            }
-        }
-        return default(T);
-    }
 }
