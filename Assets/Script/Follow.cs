@@ -35,8 +35,6 @@ public class Follow : MonoBehaviour
         sprite = GetComponentInChildren<SpriteRenderer>();
         SetRandomJumpInterval();
         SetRandomJumpForce();
-
-        canJump = true;
     }
 
     void Update()

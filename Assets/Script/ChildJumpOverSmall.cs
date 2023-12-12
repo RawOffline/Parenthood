@@ -1,51 +1,51 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.U2D;
 
 public class ChildJumpOverSmall : MonoBehaviour
 {
-    Follow follow;
-    Rigidbody2D rb;
+    private Rigidbody2D rb;
+    private bool isGrounded;
+    private bool reachedDestination = true;
+    private MotherMovement motherMovement;
+    private Follow follow;
     private SpriteRenderer sprite;
-    [SerializeField] private LayerMask groundLayer;
-    private float maxRaycastDistance = 7f;
+    RaycastHit2D hitInfo;
+
+
+    [SerializeField] private LayerMask ChildJumpStepLayer;
+    [SerializeField] private LayerMask JumpLayers;
+
+    private float maxRaycastDistance = 9f;
     private float wallApproachThreshold = 4f;
-    private float jumpDistanceThreshold = 0.1f;
+    private float jumpDistanceThreshold = 0.3f;
 
     public float xForce = 0.1f;
     public float yForce = 0.2f;
 
-    RaycastHit2D hitInfo;
     void Start()
     {
         follow = GetComponent<Follow>();
+        motherMovement = FindAnyObjectByType<MotherMovement>();
         rb = GetComponent<Rigidbody2D>();
         sprite = GetComponentInChildren<SpriteRenderer>();
     }
 
     void Update()
-    {   
+    {
+        isGrounded = follow.isGrounded;
+
+
         RayCast();
 
-        if (hitInfo.collider != null)
+
+        if (hitInfo.collider.gameObject.layer == 14)
         {
-            Debug.Log("hit");
-            float distance = Mathf.Abs(hitInfo.point.x - transform.position.x);
-            follow.canJump = false;
-
-
-            if (distance < wallApproachThreshold)
-            {
-                follow.maxSpeed = distance + 0.5f;
-            }
-
-            if (distance < jumpDistanceThreshold && follow.isGrounded)
-            {
-                follow.maxSpeed = 0.5f;
-                Jump();
-
-            }
-
+            follow.isFollowing = false;
+            Whatever(false);
+        }
+        if ((motherMovement.wallCheck == true && motherMovement.IsGrounded() && transform.position.y < follow.target.position.y && reachedDestination))
+        {
+            Whatever(true);
         }
 
         else
@@ -53,30 +53,80 @@ public class ChildJumpOverSmall : MonoBehaviour
             follow.canJump = true;
             follow.maxSpeed = 2.5f;
         }
+
     }
 
     private void RayCast()
     {
-        if (sprite.flipX == true)
-        {
-            hitInfo = Physics2D.Raycast(transform.position, new Vector2(-1f, 0), maxRaycastDistance, groundLayer);
-        }
-        else
-        {
-            hitInfo = Physics2D.Raycast(transform.position, new Vector2(1f, 0), maxRaycastDistance, groundLayer);
-        }
-        
+        hitInfo = Physics2D.Raycast(transform.position, new Vector2((sprite.flipX ? -1f : 1f), 0), maxRaycastDistance, JumpLayers);
     }
 
-    private void Jump()
+
+    private void Whatever(bool JumpType)
     {
-        if (sprite.flipX == true)
+        follow.canJump = false;
+
+        float distance = Mathf.Abs(hitInfo.point.x - transform.position.x);
+
+        if (distance < wallApproachThreshold)
         {
-            rb.AddForce(new Vector2(-xForce, yForce), ForceMode2D.Impulse);
+
+            follow.maxSpeed = distance;
+
+            if (distance < jumpDistanceThreshold && follow.isGrounded)
+            {
+                follow.maxSpeed = 0.5f;
+                if (JumpType)
+                {
+                    follow.isFollowing = false;
+                    StartCoroutine(JumpOnParent());
+                }
+                if (!JumpType)
+                {
+                    
+                    JumpOnStep();
+                }
+            }
         }
-        else
+    }
+    private void JumpOnStep()
+    {
+        float jumpForceX = sprite.flipX ? -xForce : xForce;
+        rb.AddForce(new Vector2(jumpForceX, yForce), ForceMode2D.Impulse);
+    }
+
+
+
+    private IEnumerator JumpOnParent()
+    {
+
+        float jumpForceX = sprite.flipX ? -0.1f : 0.1f;
+        rb.AddForce(new Vector2(jumpForceX, 0.2f), ForceMode2D.Impulse);
+
+        yield return new WaitForSeconds(1f);
+
+    }
+    private IEnumerator JumpFromParent()
+    {
+        float jumpForceX = sprite.flipX ? -0.7f : 0.7f;
+
+        rb.AddForce(new Vector2(jumpForceX, 3f), ForceMode2D.Impulse);
+
+
+        reachedDestination = false;
+        yield return new WaitForSeconds(1);
+        reachedDestination = true;
+    }
+
+
+
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if ( collision.gameObject.layer == 11 && transform.position.y > follow.target.position.y && motherMovement.wallCheck)
         {
-            rb.AddForce(new Vector2(xForce, yForce), ForceMode2D.Impulse);
+            StartCoroutine(JumpFromParent());
+
         }
 
     }
