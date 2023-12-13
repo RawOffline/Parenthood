@@ -84,7 +84,7 @@ public class ChildJumpOnParent : MonoBehaviour
     {
         float jumpForceX = sprite.flipX ? -0.7f : 0.7f;
 
-        rb.AddForce(new Vector2(jumpForceX, 3f), ForceMode2D.Impulse);
+        rb.AddForce(new Vector2(jumpForceX, 2f), ForceMode2D.Impulse);
 
         reachedDestination = false;
         yield return new WaitForSeconds(1);

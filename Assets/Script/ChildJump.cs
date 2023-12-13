@@ -33,7 +33,6 @@ public class ChildJumpOverSmall : MonoBehaviour
 
         if (stepRay.collider != null)
         {
-            Debug.Log("hit");
             StartCoroutine(StartProcessCoroutine());
         }
         else
@@ -110,5 +109,17 @@ public class ChildJumpOverSmall : MonoBehaviour
     private void Kill()
     {
         transform.DOKill();
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == 11 && isJumpInProgress)
+        {
+            StopCoroutine(StartProcessCoroutine());
+            Kill();
+            childrenPositions.Clear();
+            isJumpInProgress = false;
+            jumpIndex = 0;
+        }
     }
 }
