@@ -455,6 +455,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6504405541776903237, guid: 0c502310e82f19249ba0136108539a7b, type: 3}
+      propertyPath: isDashing
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6504405541776903237, guid: 0c502310e82f19249ba0136108539a7b, type: 3}
       propertyPath: jumpForce
       value: 6
       objectReference: {fileID: 0}

@@ -204,7 +204,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8987711305125264303}
   - component: {fileID: 7234245145223030428}
-  - component: {fileID: 958107309566574156}
+  - component: {fileID: 7462109167831463102}
   m_Layer: 0
   m_Name: ParentSprite
   m_TagString: Untagged
@@ -279,7 +279,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &958107309566574156
+--- !u!95 &7462109167831463102
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
@@ -314,6 +314,7 @@ GameObject:
   - component: {fileID: 6504405541776903237}
   - component: {fileID: 2004432659819792254}
   - component: {fileID: 2449891154886183856}
+  - component: {fileID: 4135041049792789742}
   m_Layer: 11
   m_Name: Parent
   m_TagString: Player
@@ -391,7 +392,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 5e74e8eb5f0778b4fa5ca6b0012d9028, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -414,22 +415,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 723376e39aded3044bb263dc0cffb1c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  airLinearDrag: 2.5
-  fallMultiplier: 4
-  lowJumpFallMultiplier: 5
-  jumpingPower: 6
-  isDashing: 0
+  jumpingPower: 4.5
   groundCheck: {fileID: 6387049552097052888}
   groundLayer:
     serializedVersion: 2
     m_Bits: 520
-  groundCheckDistance: 0.2
-  groundCheckBoxSize: {x: 0.5, y: 0.1}
-  movementAcceleration: 10
-  maxMoveSpeed: 3
-  movementDeaccleration: 2
+  groundCheckDistance: 0.18
+  groundCheckBoxSize: {x: 0.22, y: 0.19}
   wallCheck: 0
+  movementAcceleration: 50
+  maxMoveSpeed: 3
+  movementDeaccleration: 6
   rb: {fileID: 1530772858088421754}
+  isGodMode: 0
+  directions: 0
+  lockedDirection: 0
 --- !u!114 &2004432659819792254
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -460,6 +460,20 @@ MonoBehaviour:
   Sprite: {fileID: 8987711305125264303}
   Stretch: 0.01
   squashParent: {fileID: 4692371157523948652}
+--- !u!114 &4135041049792789742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8515676762046557490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64fdb1310334fcb459e51d048acee435, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fallMultiplier: 2.5
+  lowJumpFallMultiplier: 2
 --- !u!1 &8640540837092434309
 GameObject:
   m_ObjectHideFlags: 0

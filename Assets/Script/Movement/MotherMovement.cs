@@ -4,81 +4,82 @@ using UnityEngine;
 public class MotherMovement : MonoBehaviour
 {
     [Header("Jump")]
-    [SerializeField] float airLinearDrag = 2.5f;
-    [SerializeField] float fallMultiplier = 8f;
-    [SerializeField] float lowJumpFallMultiplier = 5f;
     [SerializeField] float jumpingPower = 12f;
     private float coyoteTime = 0.1f;
     private float coyoteTimeCounter;
-    private float jumpBufferTime = 0.3f;
-    private float jumBufferCounter;
+    private float jumpBufferTime = 0.2f;
+    private float jumpBufferCounter;
+    private bool isJumping;
 
-    [Header("Dash")]
-    //private bool canDash = true;
-    public bool isDashing;
-    //private float dashingPower = 40f;
-    //private float dashingTime = 0.1f;
-    //private float dashingCooldown = 0.5f;
-
-    [Header("Grounchecking")]
+    [Header("Groundchecking")]
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private LayerMask parentJumpStepLayer;
     public float groundCheckDistance;
     public Vector2 groundCheckBoxSize;
 
+    [Header("WallChecking")]
+    public bool wallCheck = false;
+    private float wallCheckTimer;
+    private float wallCheckThreshold = 1.0f;
+
     [Header("Movement")]
     [SerializeField] float movementAcceleration = 20;
     [SerializeField] float maxMoveSpeed = 7;
     [SerializeField] float movementDeaccleration = 3;
-    private float horizontalDir;
-    private bool isFacingRight = true;
-    public bool wallCheck = false;
-    private float wallCheckTimer;
-    private float wallCheckThreshold = 1.0f;
     [SerializeField] private Rigidbody2D rb;
-    private bool isGodMode = false;
-    // private bool isJumping = false;
+    private float horizontalInput;
+    private bool isFacingRight = true;
+    public bool isGodMode = false;
+
+    public enum Directions { None, Left, Right };
+    public Directions directions;
+    public float lockedDirection;
     Animator motherAnimation;
 
     private void Start()
     {
-        // Time.fixedDeltaTime = Time.deltaTime * 2f;
         motherAnimation = GetComponentInChildren<Animator>();
     }
 
     private void Update()
     {
         WallCheck();
-        if (isDashing)
-        {
-            return;
-        }
+        horizontalInput = 0;
+        CheckInputs();
+        SetInput();
 
-        horizontalDir = Input.GetAxisRaw("Horizontal");
-
-        if (jumBufferCounter > 0f && coyoteTimeCounter > 0f)
+        if (jumpBufferCounter > 0f && coyoteTimeCounter > 0f)
         {
             Jump();
         }
+        if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
+            coyoteTimeCounter = 0f;
+        }
+        UpdateJumpBuffer();
 
+        UpdateCoyoteTime();
+
+        Flip();
+    }
+
+    private void UpdateJumpBuffer()
+    {
         if (Input.GetButtonDown("Jump"))
         {
-            jumBufferCounter = jumpBufferTime;
-            //isJumping = true;
-            //motherAnimation.SetBool("isJumping", true);
+            jumpBufferCounter = jumpBufferTime;
+
         }
         else
         {
-            jumBufferCounter -= Time.deltaTime;
+            jumpBufferCounter -= Time.deltaTime;
         }
+    }
 
-
-        //if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
-        //{
-        //    StartCoroutine(Dash());
-        //}
-
+    private void UpdateCoyoteTime()
+    {
         if (IsGrounded())
         {
             coyoteTimeCounter = coyoteTime;
@@ -87,58 +88,95 @@ public class MotherMovement : MonoBehaviour
         {
             coyoteTimeCounter -= Time.deltaTime;
         }
+    }
 
-        Flip();
+    private void SetInput()
+    {
+        if (horizontalInput == 0)
+        {
+            lockedDirection = 0;
+        }
+
+        directions = Directions.None;
+        if (horizontalInput < 0)
+        {
+            directions = Directions.Left;
+        }
+        else if (horizontalInput > 0)
+        {
+            directions = Directions.Right;
+        }
+    }
+    private void CheckInputs()
+    {
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+        {
+            if (directions == Directions.Right && lockedDirection == 0)
+            {
+                lockedDirection = -1;
+            }
+            horizontalInput = -1;
+        }
+
+        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+        {
+            if (directions == Directions.Left && lockedDirection == 0)
+            {
+                lockedDirection = 1;
+            }
+            horizontalInput = 1;
+        }
+
+        if (Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.RightArrow))
+        {
+            lockedDirection = 0;
+        }
+        if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.LeftArrow))
+        {
+            lockedDirection = 0;
+        }
     }
 
     private void FixedUpdate()
     {
-        if (isDashing)
-        {
-            return;
-        }
-
-
-        if (!isDashing)
-        {
-            FallMultiplier();
-        }
-
         Movement();
-
-    
-
     }
 
     private void Movement()
     {
-        float playerVelocity = horizontalDir * maxMoveSpeed;
-        rb.velocity = new Vector2(Mathf.MoveTowards(rb.velocity.x, playerVelocity, movementAcceleration * Time.fixedDeltaTime), rb.velocity.y);
-        //motherAnimation.SetBool("isWalking", true);
+        if(lockedDirection != 0)
+        {
+            horizontalInput = lockedDirection;
+        }
+        rb.velocity = new Vector2(horizontalInput * maxMoveSpeed, rb.velocity.y);
+        rb.velocity = new Vector2(Mathf.MoveTowards(rb.velocity.x, horizontalInput, movementAcceleration * Time.fixedDeltaTime), rb.velocity.y);
+       
+        if (Mathf.Abs(horizontalInput) > 0.1f)
+        {
+            motherAnimation.SetBool("isWalking", true);
+        }
 
-        //if (Mathf.Abs(horizontalDir) > 0.1f)
-        //{
-        //    motherAnimation.SetBool("isWalking", true);
-        //}
-        
-        //if(Mathf.Abs(horizontalDir) <0.1f)
-        //{   
-        //    motherAnimation.SetBool("isWalking", false);
-        //}
+        if (Mathf.Abs(horizontalInput) < 0.1f)
+        {
+            motherAnimation.SetBool("isWalking", false);
+        }
 
     }
+
 
     private void Jump()
     {
+        rb.gravityScale = 1;
         rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
-        jumBufferCounter = 0f;
-        if (!isDashing)
-        {
-            FallMultiplier();
-            ApplyAirLinearDrag();
-        }
+        jumpBufferCounter = 0f;
     }
 
+
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireCube(transform.position - transform.up * groundCheckDistance, groundCheckBoxSize);
+    }
     public bool IsGrounded()
     {
         if (Physics2D.BoxCast(transform.position, groundCheckBoxSize, 0, -transform.up, groundCheckDistance, groundLayer))
@@ -151,54 +189,9 @@ public class MotherMovement : MonoBehaviour
             return false;
         }
     }
-    private void ApplyGoundLinearDrag()
-    {
-        if (Mathf.Abs(horizontalDir) < 0.4f || isFacingRight)
-        {
-            rb.drag = movementDeaccleration;
-        }
-        else
-        {
-            rb.drag = 0f;
-        }
-    }
-    private void ApplyAirLinearDrag()
-    {
-        rb.drag = airLinearDrag;
-    }
-
-    private void FallMultiplier()
-    {
-        if (rb.velocity.y < 4f && !isGodMode)
-        {
-            rb.gravityScale = fallMultiplier;
-        }
-        else if (rb.velocity.y > 2f && !Input.GetButton("Jump"))
-        {
-            rb.gravityScale = lowJumpFallMultiplier;
-
-            coyoteTimeCounter = 0f;
-        }
-
-        if (IsGrounded())
-        {
-            rb.gravityScale = 1f;
-        }
-
-        if (isGodMode)
-        {
-            rb.gravityScale = 0f;
-        }
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawWireCube(transform.position - transform.up * groundCheckDistance, groundCheckBoxSize);
-    }
-
     private void Flip()
     {
-        if (isFacingRight && horizontalDir < 0f || !isFacingRight && horizontalDir > 0f)
+        if (isFacingRight && horizontalInput < 0f || !isFacingRight && horizontalInput > 0f)
         {
             Vector3 localScale = transform.localScale;
             isFacingRight = !isFacingRight;
@@ -206,8 +199,6 @@ public class MotherMovement : MonoBehaviour
             transform.localScale = localScale;
         }
     }
-
-
     private void WallCheck()
     {
         if (Physics2D.BoxCast(transform.position, new Vector2(0.15f, 0.15f), 0, transform.right, 0.5f, parentJumpStepLayer) ||
@@ -252,55 +243,10 @@ public class MotherMovement : MonoBehaviour
 
             Vector3 moveDirection = new Vector3(horizontalInput, verticalInput, 0f);
             transform.Translate(moveDirection * moveSpeed * Time.deltaTime);
-
+            rb.gravityScale = 0f;
         }
 
     }
 
-    //private void OnTriggerEnter2D(Collider2D other)
-    //{
-    //    if (other.CompareTag("MovingPlatform"))
-    //    {
-    //        // Transform the player's position to the platform's position
-    //        //transform.position = other.transform.position;
 
-    //        // Set the player as a child of the platform
-    //        transform.SetParent(other.transform);
-
-    //        // Optionally, disable player's gravity and apply the platform's movement
-    //        // This assumes the moving platform has a rigidbody
-    //        Rigidbody2D platformRb = other.GetComponent<Rigidbody2D>();
-    //        if (platformRb != null)
-    //        {
-    //            rb.velocity = platformRb.velocity;
-    //            rb.gravityScale = 10f; // You might need to adjust this based on your game's requirements
-    //        }
-    //    }
-    //}
-
-    //private void OnTriggerExit2D(Collider2D other)
-    //{
-    //    if (other.CompareTag("MovingPlatform"))
-    //    {
-    //        // Detach the player from the platform
-    //        transform.SetParent(null);
-
-    //        // Restore player's gravity
-    //        rb.gravityScale = 1; // You might need to adjust this based on your game's requirements
-    //    }
-    //}
-
-    //private IEnumerator Dash()
-    //{
-    //    canDash = false;
-    //    isDashing = true;
-    //    float originalGravity = rb.gravityScale;
-    //    rb.gravityScale = 0.5f;
-    //    rb.velocity = new Vector2(transform.localScale.x * dashingPower, 0f);
-    //    yield return new WaitForSeconds(dashingTime);
-    //    rb.gravityScale = originalGravity;
-    //    isDashing = false;
-    //    yield return new WaitForSeconds(dashingCooldown);
-    //    canDash = true;
-    //}
 }
