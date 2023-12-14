@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,8 +6,6 @@ using UnityEngine;
 public class ChildJumpOnParent : MonoBehaviour
 {
     private Rigidbody2D rb;
-    private bool isGrounded;
-    private bool reachedDestination = true;
     private MotherMovement motherMovement;
     private Follow follow;
     private SpriteRenderer sprite;
@@ -20,6 +19,11 @@ public class ChildJumpOnParent : MonoBehaviour
 
     public float xForce = 0.1f;
     public float yForce = 0.2f;
+    
+
+    Vector2 topCenter;
+    private bool hasTestBeenCalled = false;
+    private float distance;
 
     void Start()
     {
@@ -31,14 +35,21 @@ public class ChildJumpOnParent : MonoBehaviour
 
     void Update()
     {
-        isGrounded = follow.isGrounded;
 
         RayCast();
 
 
-        if (motherMovement.wallCheck == true && motherMovement.IsGrounded() && transform.position.y < follow.target.position.y && reachedDestination)
+        if (motherMovement.wallCheck && motherMovement.IsGrounded() && !hasTestBeenCalled)
         {
-            JumpOnParent();
+            if (distance < wallApproachThreshold) 
+            {
+                follow.canJump = false;
+            }
+            if (distance < jumpDistanceThreshold && follow.isGrounded)
+            {
+                Test();
+                hasTestBeenCalled = true;
+            }
         }
 
         else
@@ -51,24 +62,12 @@ public class ChildJumpOnParent : MonoBehaviour
     private void RayCast()
     {
         hitInfo = Physics2D.Raycast(transform.position, new Vector2((sprite.flipX ? -1f : 1f), 0), maxRaycastDistance, parentLayer);
-    }
-
-    private void JumpOnParent()
-    {
-        follow.canJump = false;
-
-        float distance = Mathf.Abs(hitInfo.point.x - transform.position.x);
-
-        if (distance < wallApproachThreshold)
+        var parentCollider = hitInfo.collider;
+        distance = Mathf.Abs(hitInfo.point.x - transform.position.x);
+        if (parentCollider != null)
         {
-            follow.maxSpeed = distance;
-
-            if (distance < jumpDistanceThreshold && follow.isGrounded)
-            {
-                follow.maxSpeed = 0.5f;
-                float jumpForceX = sprite.flipX ? -xForce : xForce;
-                rb.AddForce(new Vector2(jumpForceX, yForce), ForceMode2D.Impulse);
-            }
+            topCenter = new Vector2(parentCollider.bounds.center.x, parentCollider.bounds.max.y);
+            Debug.Log(topCenter);
         }
     }
 
@@ -76,19 +75,30 @@ public class ChildJumpOnParent : MonoBehaviour
     {
         if (collision.gameObject.layer == 11 && transform.position.y > follow.target.position.y && motherMovement.wallCheck)
         {
-            StartCoroutine(JumpFromParent());
+            Kill();
+            float jumpForceX = sprite.flipX ? -0.5f : 0.5f;
+
+            rb.AddForce(new Vector2(jumpForceX, 3f), ForceMode2D.Impulse);
+            hasTestBeenCalled = false;
         }
     }
 
-    private IEnumerator JumpFromParent()
+    private void Test()
     {
-        float jumpForceX = sprite.flipX ? -0.7f : 0.7f;
+        rb.velocity = Vector2.zero;
+        transform.DOJump(topCenter, 0.3f, 1, 1).OnComplete(Kill);
 
-        rb.AddForce(new Vector2(jumpForceX, 2f), ForceMode2D.Impulse);
-
-        reachedDestination = false;
-        yield return new WaitForSeconds(1);
-        reachedDestination = true;
     }
 
+    private void OnDisable()
+    {
+        Kill();
+    }
+
+    private void Kill()
+    {
+        transform.DOKill();
+    }
 }
+
+
