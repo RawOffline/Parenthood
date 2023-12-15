@@ -9,6 +9,9 @@ public class SceneHandler : MonoBehaviour
     private MotherMovement motherMovement;
     private bool isGodMode = false;
     CheckpointManager checkpoint;
+
+    [SerializeField] Animator transitionAnim;
+
     void Start()
     {
         // Initial checkpoint
@@ -68,12 +71,22 @@ public class SceneHandler : MonoBehaviour
 
     public void NextScene()
     {
+        StartCoroutine(LoadLevel());
+    }
+
+    IEnumerator LoadLevel()
+    {
+        transitionAnim.SetTrigger("End");
+        yield return new WaitForSeconds(1);
+
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
 
         // If the current scene is the last one, it wraps around to the first scene.
         int nextSceneIndex = (currentSceneIndex + 1) % SceneManager.sceneCountInBuildSettings;
 
         SceneManager.LoadScene(nextSceneIndex);
+
+        transitionAnim.SetTrigger("Start");
     }
 
     public void PreviousScene()
