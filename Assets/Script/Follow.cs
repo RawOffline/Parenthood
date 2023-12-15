@@ -178,7 +178,7 @@ public class Follow : MonoBehaviour
             }
             isFollowing = false;
 
-            if (Mathf.Abs(transform.position.x - target.position.x) > 3)
+            if (Mathf.Abs(transform.position.x - target.position.x) > 2.5f)
             {
                 rb.velocity = Vector2.Lerp(rb.velocity, Vector2.zero, 1f * Time.deltaTime);
             }
@@ -204,7 +204,7 @@ public class Follow : MonoBehaviour
             }
             isFollowing = false;
 
-            if (Mathf.Abs(transform.position.x - target.position.x) > 3)
+            if (Mathf.Abs(transform.position.x - target.position.x) > 2.5f)
             {
                 rb.velocity = Vector2.Lerp(rb.velocity, Vector2.zero, 1f * Time.deltaTime);
             }
