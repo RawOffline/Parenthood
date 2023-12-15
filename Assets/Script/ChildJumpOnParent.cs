@@ -39,7 +39,7 @@ public class ChildJumpOnParent : MonoBehaviour
 
         if (motherMovement.wallCheck && motherMovement.IsGrounded() && !hasTestBeenCalled)
         {
-            if (follow.movingLeft == true)
+            if (follow.movingLeft == true && !motherMovement.wallCheck)
             {
                 follow.movingLeft = false;
             }
