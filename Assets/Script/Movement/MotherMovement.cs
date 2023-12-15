@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MotherMovement : MonoBehaviour
@@ -28,6 +29,7 @@ public class MotherMovement : MonoBehaviour
     [SerializeField] float maxMoveSpeed = 7;
     [SerializeField] float movementDeaccleration = 3;
     [SerializeField] private Rigidbody2D rb;
+    [HideInInspector] public GameObject platform;
     private float horizontalInput;
     private bool isFacingRight = true;
     public bool isGodMode = false;
@@ -36,10 +38,24 @@ public class MotherMovement : MonoBehaviour
     public Directions directions;
     public float lockedDirection;
     Animator motherAnimation;
+    //public bool onPlatfrom = false;
+
+    // TEST CODE
+    float velocityX;
 
     private void Start()
     {
         motherAnimation = GetComponentInChildren<Animator>();
+        rb = GetComponent<Rigidbody2D>();
+    }
+
+    private void FixedUpdate()
+    {
+        if (platform != null && platform.transform.parent != null)
+        {
+            rb.velocity += platform.GetComponent<Rigidbody2D>().velocity;
+        }
+        Movement();
     }
 
     private void Update()
@@ -137,35 +153,53 @@ public class MotherMovement : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
-    {
-        Movement();
-    }
 
     private void Movement()
     {
-        if(lockedDirection != 0)
+        if (lockedDirection != 0)
         {
             horizontalInput = lockedDirection;
         }
+
         rb.velocity = new Vector2(horizontalInput * maxMoveSpeed, rb.velocity.y);
         rb.velocity = new Vector2(Mathf.MoveTowards(rb.velocity.x, horizontalInput, movementAcceleration * Time.fixedDeltaTime), rb.velocity.y);
-       
-        if (Mathf.Abs(horizontalInput) > 0.1f)
-        {
-            motherAnimation.SetBool("isWalking", true);
-        }
 
-        if (Mathf.Abs(horizontalInput) < 0.1f)
-        {
-            motherAnimation.SetBool("isWalking", false);
-        }
+
+        ////print("horizontalInput: " + horizontalInput);
+
+        //velocityX += horizontalInput * movementAcceleration * Time.deltaTime;
+        ////print("velocityX: " + velocityX);
+
+        //velocityX = Mathf.Clamp(velocityX, -maxMoveSpeed, maxMoveSpeed);
+        ////print("velocityX after clamp: " + velocityX);
+
+        //rb.velocity = new Vector2 (velocityX, rb.velocity.y);
+        ////print("rb.velocity: " + rb.velocity);
+
+
+
+        //if (Mathf.Abs(horizontalInput) > 0.1f)
+        //{
+        //    motherAnimation.SetBool("isWalking", true);
+        //}
+
+        //if (Mathf.Abs(horizontalInput) < 0.1f)
+        //{
+        //    motherAnimation.SetBool("isWalking", false);
+        //}
 
     }
 
 
     private void Jump()
     {
+        //if (onPlatfrom)
+        //{
+        //    ParentHandler.Instance.RemoveParent();
+        //}
+
+
+
         rb.gravityScale = 1;
         rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
         jumpBufferCounter = 0f;
@@ -245,8 +279,5 @@ public class MotherMovement : MonoBehaviour
             transform.Translate(moveDirection * moveSpeed * Time.deltaTime);
             rb.gravityScale = 0f;
         }
-
     }
-
-
 }
