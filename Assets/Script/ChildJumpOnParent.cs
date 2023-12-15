@@ -22,6 +22,7 @@ public class ChildJumpOnParent : MonoBehaviour
     private bool hasTestBeenCalled = false;
     private float distance;
 
+
     void Start()
     {
         follow = GetComponent<Follow>();
@@ -38,9 +39,11 @@ public class ChildJumpOnParent : MonoBehaviour
 
         if (motherMovement.wallCheck && motherMovement.IsGrounded() && !hasTestBeenCalled)
         {
-            follow.movingRight = false;
-            follow.movingLeft = false;
-            follow.isFollowing = true;
+            if (follow.movingLeft == true)
+            {
+                follow.movingLeft = false;
+            }
+            follow.movingRight = true;
             if (distance < wallApproachThreshold) 
             {
                 follow.canJump = false;
@@ -78,14 +81,13 @@ public class ChildJumpOnParent : MonoBehaviour
             float jumpForceX = sprite.flipX ? -0.5f : 0.5f;
 
             rb.AddForce(new Vector2(jumpForceX * 5, 4f), ForceMode2D.Impulse);
-            hasTestBeenCalled = false;
+            follow.isFollowing = false;
         }
     }
 
     private void JumpOnParent()
     {
         rb.velocity = Vector2.zero;
-        follow.isFollowing = false;
         transform.DOJump(topCenter, 0.5f, 1, 1).OnComplete(Kill);
 
     }

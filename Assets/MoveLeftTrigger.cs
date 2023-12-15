@@ -17,7 +17,6 @@ public class MoveLeftTrigger : MonoBehaviour
         {
             follow.movingRight = false;
             follow.movingLeft = true;
-            Destroy(gameObject);
         }
     }
 }
