@@ -11,7 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LevelOne.unity
     guid: f8468599f6db0fe45ab5a28c9397301d
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Rawand.unity
     guid: a587dd81c55e11f4587db2f29d5a8f34
   - enabled: 0
