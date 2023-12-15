@@ -28,6 +28,8 @@ public class Follow : MonoBehaviour
     private float jumpForce;
     public bool canJump;
     public bool isGrounded;
+    public bool movingRight;
+    public bool movingLeft;
 
     private void Start()
     {
@@ -35,12 +37,22 @@ public class Follow : MonoBehaviour
         sprite = GetComponentInChildren<SpriteRenderer>();
         SetRandomJumpInterval();
         SetRandomJumpForce();
+        movingRight = false;
+        movingLeft = false;
     }
 
     void Update()
     {
+
+        if (movingRight)
+        { ScriptedMoveRight(); }
+        if (movingLeft)
+        { ScriptedMoveLeft(); }
+
+
+
         if (Input.GetKeyDown(KeyCode.E) && !isFollowing)
-            isFollowing = true;
+        isFollowing = true;
 
         if (isFollowing)
             FollowParent();
@@ -150,5 +162,57 @@ public class Follow : MonoBehaviour
 
         //else if (isGrounded)
         //    rb.gravityScale = 1;
+    }
+
+    private void ScriptedMoveRight()
+    {
+        sprite.flipX = false;
+        if (!isFollowing)
+        {
+            if (timeSinceLastJump >= jumpInterval)
+            {
+                Jump();
+
+                SetRandomJumpInterval();
+                SetRandomJumpForce();
+            }
+            isFollowing = false;
+
+            if (Mathf.Abs(transform.position.x - target.position.x) > 4)
+            {
+                rb.velocity = Vector2.Lerp(rb.velocity, Vector2.zero, 1f * Time.deltaTime);
+            }
+            else
+            {
+                rb.velocity = Vector2.Lerp(rb.velocity, new Vector2(maxSpeed, rb.velocity.y), 1f * Time.deltaTime);
+            }
+        }
+
+        
+    }
+    private void ScriptedMoveLeft()
+    {
+        sprite.flipX = true;
+        if (!isFollowing)
+        {
+            if (timeSinceLastJump >= jumpInterval)
+            {
+                Jump();
+
+                SetRandomJumpInterval();
+                SetRandomJumpForce();
+            }
+            isFollowing = false;
+
+            if (Mathf.Abs(transform.position.x - target.position.x) > 4)
+            {
+                rb.velocity = Vector2.Lerp(rb.velocity, Vector2.zero, 1f * Time.deltaTime);
+            }
+            else
+            {
+                rb.velocity = Vector2.Lerp(rb.velocity, new Vector2(-maxSpeed, rb.velocity.y), 1f * Time.deltaTime);
+            }
+        }
+
     }
 }

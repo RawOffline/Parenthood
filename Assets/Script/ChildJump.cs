@@ -13,16 +13,17 @@ public class ChildJumpOverSmall : MonoBehaviour
     private List<Vector3> childrenPositions = new List<Vector3>();
 
     [SerializeField] private LayerMask childJumpStepLayer;
-    [SerializeField] private LayerMask parentLayer;
 
     private float maxRaycastDistance = 2f;
     private float jumpDistanceThreshold = 0.3f;
 
     float stepDistance;
     private bool isJumpInProgress = false;
+    Rigidbody2D rb;
 
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
         follow = GetComponent<Follow>();
         sprite = GetComponentInChildren<SpriteRenderer>();
     }
@@ -61,6 +62,9 @@ public class ChildJumpOverSmall : MonoBehaviour
         {
             Transform parentTransform = stepRay.collider.transform;
 
+            // Clear the list before adding new positions
+            childrenPositions.Clear();
+
             foreach (Transform childTransform in parentTransform)
             {
                 Vector3 childPosition = childTransform.position;
@@ -69,37 +73,37 @@ public class ChildJumpOverSmall : MonoBehaviour
         }
     }
 
+
     private void InitiateJump()
     {
         if (jumpIndex < childrenPositions.Count)
         {
             if (stepDistance < jumpDistanceThreshold && follow.isGrounded)
             {
-                
+                Sequence sequence = DOTween.Sequence();
                 isJumpInProgress = true; 
-                transform.DOJump(childrenPositions[jumpIndex], 0.15f, 1, 0.5f).OnComplete(AddJumpCount);
+                for (int i = 0; i <= childrenPositions.Count; i++)
+                {
+                    sequence.Append(transform.DOJump(childrenPositions[i], 0.15f, 1, 0.5f));
+                    jumpIndex++;
+                    if (jumpIndex >= 4)
+                    {
+                        
+                        Kill();
+                        childrenPositions.Clear();
+                        isJumpInProgress = false;
+                        jumpIndex = 0;
+                    }
+                }
             }
 
         }
         else
         {
             isJumpInProgress = false;
-            follow.isFollowing = true;
         }
     }
 
-    private void AddJumpCount()
-    {
-        isJumpInProgress = false;
-        jumpIndex++;
-
-        if (jumpIndex >= 4)
-        {
-            Kill();
-            childrenPositions.Clear();
-            jumpIndex = 0;
-        }
-    }
 
     private void OnDisable()
     {
