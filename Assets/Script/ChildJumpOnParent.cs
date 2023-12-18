@@ -80,7 +80,7 @@ public class ChildJumpOnParent : MonoBehaviour
             Kill();
             float jumpForceX = sprite.flipX ? -0.5f : 0.5f;
 
-            rb.AddForce(new Vector2(jumpForceX * 5, 4f), ForceMode2D.Impulse);
+            rb.AddForce(new Vector2(jumpForceX, 2f), ForceMode2D.Impulse);
             follow.isFollowing = false;
         }
     }
@@ -88,7 +88,7 @@ public class ChildJumpOnParent : MonoBehaviour
     private void JumpOnParent()
     {
         rb.velocity = Vector2.zero;
-        transform.DOJump(topCenter, 0.5f, 1, 1).OnComplete(Kill);
+        transform.DOJump(topCenter, 0.3f, 1, 1).OnComplete(Kill);
 
     }
 

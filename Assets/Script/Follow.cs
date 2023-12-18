@@ -178,18 +178,11 @@ public class Follow : MonoBehaviour
             }
             isFollowing = false;
 
-            if (Mathf.Abs(transform.position.x - target.position.x) > 2.5f)
-            {
-                rb.velocity = Vector2.Lerp(rb.velocity, Vector2.zero, 1f * Time.deltaTime);
-            }
-            else
-            {
-                rb.velocity = Vector2.Lerp(rb.velocity, new Vector2(maxSpeed, rb.velocity.y), 1f * Time.deltaTime);
-            }
+            float targetSpeed = Mathf.Abs(transform.position.x - target.position.x) > 2.5f ? 0.2f : maxSpeed;
+            rb.velocity = new Vector2(Mathf.Lerp(rb.velocity.x, targetSpeed, 1f * Time.deltaTime), rb.velocity.y);
         }
-
-        
     }
+
     private void ScriptedMoveLeft()
     {
         sprite.flipX = true;
@@ -204,15 +197,10 @@ public class Follow : MonoBehaviour
             }
             isFollowing = false;
 
-            if (Mathf.Abs(transform.position.x - target.position.x) > 2.5f)
-            {
-                rb.velocity = Vector2.Lerp(rb.velocity, Vector2.zero, 1f * Time.deltaTime);
-            }
-            else
-            {
-                rb.velocity = Vector2.Lerp(rb.velocity, new Vector2(-maxSpeed, rb.velocity.y), 1f * Time.deltaTime);
-            }
+            float targetSpeed = Mathf.Abs(transform.position.x - target.position.x) > 2.5f ? -0.2f : -maxSpeed;
+            rb.velocity = new Vector2(Mathf.Lerp(rb.velocity.x, targetSpeed, 1f * Time.deltaTime), rb.velocity.y);
         }
-
     }
+
+
 }
