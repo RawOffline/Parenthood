@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.SceneManagement;
 using UnityEngine.U2D;
 
 public class Follow : MonoBehaviour
@@ -52,7 +53,12 @@ public class Follow : MonoBehaviour
 
 
         if (Input.GetKeyDown(KeyCode.E) && !isFollowing)
-        isFollowing = true;
+        {
+            if (SceneManager.GetActiveScene().name != "LevelOne")
+            {
+                isFollowing = true;
+            }
+        }
 
         if (isFollowing)
             FollowParent();
