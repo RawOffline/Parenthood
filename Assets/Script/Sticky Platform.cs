@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StickyPlatform : MonoBehaviour
+public class MovingStickyPlatform : MonoBehaviour
 {
     // When gameobject collides with another gameobject that has a trigger
     private void OnTriggerEnter2D(Collider2D collision)

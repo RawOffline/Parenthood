@@ -8,11 +8,13 @@ public class BetterJump : MonoBehaviour
     [SerializeField] float lowJumpFallMultiplier = 2f;
     Rigidbody2D rb;
     MotherMovement motherMovement;
+   
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         motherMovement = GetComponent<MotherMovement>();
+       
     }
 
     // Update is called once per frame
@@ -27,7 +29,7 @@ public class BetterJump : MonoBehaviour
         {
             rb.gravityScale = lowJumpFallMultiplier;
         }
-
+        
 
         if (motherMovement.IsGrounded())
         {
