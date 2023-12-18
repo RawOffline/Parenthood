@@ -5,7 +5,7 @@ public class LonelyScript : MonoBehaviour
     private Renderer lonelyRenderer;
     private Material uniqueMaterial;
     public Transform child;
-    private float currentAlpha = 1.5f;
+    private float currentAlpha = 1f;
 
     private float maxDistance = 3f;
     private float speed = 3f;
