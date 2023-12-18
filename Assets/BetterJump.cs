@@ -21,7 +21,7 @@ public class BetterJump : MonoBehaviour
     private void FixedUpdate()
     {
 
-        if (rb.velocity.y < 2.5f)
+        if (rb.velocity.y < 2f)
         {
             rb.gravityScale = fallMultiplier;
         }
