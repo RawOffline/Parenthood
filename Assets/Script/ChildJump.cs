@@ -6,6 +6,7 @@ using UnityEngine;
 public class ChildJumpOverSmall : MonoBehaviour
 {
     private Follow follow;
+    private SquishAndStretch squishAndStretch;
     private SpriteRenderer sprite;
     private RaycastHit2D stepRay;
 
@@ -19,11 +20,11 @@ public class ChildJumpOverSmall : MonoBehaviour
 
     float stepDistance;
     private bool isJumpInProgress = false;
-    Rigidbody2D rb;
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+
+        squishAndStretch = GetComponent<SquishAndStretch>();
         follow = GetComponent<Follow>();
         sprite = GetComponentInChildren<SpriteRenderer>();
     }
@@ -84,11 +85,12 @@ public class ChildJumpOverSmall : MonoBehaviour
                 isJumpInProgress = true; 
                 for (int i = 0; i <= childrenPositions.Count; i++)
                 {
+                    squishAndStretch.enabled = false;
                     sequence.Append(transform.DOJump(childrenPositions[i], 0.15f, 1, 0.5f));
                     jumpIndex++;
                     if (jumpIndex >= 4)
                     {
-                        
+                        squishAndStretch.enabled = true;
                         Kill();
                         childrenPositions.Clear();
                         isJumpInProgress = false;
@@ -112,6 +114,7 @@ public class ChildJumpOverSmall : MonoBehaviour
 
     private void Kill()
     {
+        squishAndStretch.enabled = true;
         transform.DOKill();
     }
 
