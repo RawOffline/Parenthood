@@ -27,7 +27,7 @@ public class MotherMovement : MonoBehaviour
     [Header("Movement")]
     [SerializeField] float movementAcceleration = 20;
     [SerializeField] float maxMoveSpeed = 7;
-    [SerializeField] float movementDeaccleration = 3;
+    //[SerializeField] float movementDeaccleration = 3;
     [SerializeField] private Rigidbody2D rb;
     [HideInInspector] public GameObject platform;
     private float horizontalInput;
@@ -178,15 +178,15 @@ public class MotherMovement : MonoBehaviour
 
 
 
-        //if (Mathf.Abs(horizontalInput) > 0.1f)
-        //{
-        //    motherAnimation.SetBool("isWalking", true);
-        //}
+        if (Mathf.Abs(horizontalInput) > 0.1f)
+        {
+            motherAnimation.SetBool("isWalking", true);
+        }
 
-        //if (Mathf.Abs(horizontalInput) < 0.1f)
-        //{
-        //    motherAnimation.SetBool("isWalking", false);
-        //}
+        if (Mathf.Abs(horizontalInput) < 0.1f)
+        {
+            motherAnimation.SetBool("isWalking", false);
+        }
 
     }
 

@@ -9,6 +9,7 @@ public class SceneHandler : MonoBehaviour
     private MotherMovement motherMovement;
     private bool isGodMode = false;
     CheckpointManager checkpoint;
+    public int constantFrame;
 
     [SerializeField] Animator transitionAnim;
 
@@ -18,7 +19,8 @@ public class SceneHandler : MonoBehaviour
         //checkpointPosition = transform.position;
         checkpoint = GetComponent<CheckpointManager>();
         mother = GameObject.FindWithTag("Player");
-        motherMovement = mother.GetComponent<MotherMovement>(); 
+        motherMovement = mother.GetComponent<MotherMovement>();
+        Application.targetFrameRate = constantFrame;
     }
 
     void Update()
@@ -58,6 +60,14 @@ public class SceneHandler : MonoBehaviour
         if (isGodMode)
         {
             motherMovement.HandleGodModeMovement();
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            
         }
     }
 

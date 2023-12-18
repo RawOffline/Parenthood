@@ -6827,7 +6827,7 @@ SpriteRenderer:
   m_SortingLayer: 10
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: ab7ba9266049d1e4f8091eeb49241188, type: 3}
-  m_Color: {r: 0.8867924, g: 0.5155516, b: 0, a: 1}
+  m_Color: {r: 0.09411766, g: 0.47058824, b: 0.5568628, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -8286,6 +8286,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mother: {fileID: 848189630}
+  constantFrame: 0
   transitionAnim: {fileID: 700160313}
 --- !u!1 &434810340
 GameObject:
@@ -24522,7 +24523,7 @@ Transform:
   m_GameObject: {fileID: 572788826}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -64.76921, y: -1.6707001, z: -7.9891376}
+  m_LocalPosition: {x: -64.76569, y: -1.6706901, z: -7.9891376}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -24733,6 +24734,18 @@ PrefabInstance:
     - target: {fileID: 6504405541776903237, guid: 0c502310e82f19249ba0136108539a7b, type: 3}
       propertyPath: parentJumpStepLayer.m_Bits
       value: 8192
+      objectReference: {fileID: 0}
+    - target: {fileID: 7179960593018120038, guid: 0c502310e82f19249ba0136108539a7b, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7234245145223030428, guid: 0c502310e82f19249ba0136108539a7b, type: 3}
+      propertyPath: m_SortingLayer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7234245145223030428, guid: 0c502310e82f19249ba0136108539a7b, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1381511953
       objectReference: {fileID: 0}
     - target: {fileID: 8515676762046557490, guid: 0c502310e82f19249ba0136108539a7b, type: 3}
       propertyPath: m_Name
@@ -27171,7 +27184,7 @@ Transform:
   m_GameObject: {fileID: 841398327}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.740389, y: 0, z: 0}
+  m_LocalPosition: {x: 0.74056476, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -28374,7 +28387,7 @@ Transform:
   m_GameObject: {fileID: 994675623}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.7016582, y: 0, z: 0}
+  m_LocalPosition: {x: 3.7025375, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -29816,7 +29829,7 @@ Transform:
   m_GameObject: {fileID: 1222075354}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.2210698, y: 0, z: 0}
+  m_LocalPosition: {x: 2.2215974, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -31412,7 +31425,7 @@ Transform:
   m_GameObject: {fileID: 1329040887}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.961556, y: 0, z: 0}
+  m_LocalPosition: {x: 2.962259, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -39308,7 +39321,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 3.09, y: 0.65}
+  m_Offset: {x: 5.82, y: 0.65}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -40537,7 +40550,7 @@ Transform:
   m_GameObject: {fileID: 1818434867}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.480778, y: 0, z: 0}
+  m_LocalPosition: {x: 1.4811295, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
