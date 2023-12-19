@@ -5,10 +5,11 @@ public class LonelyScript : MonoBehaviour
     private Renderer lonelyRenderer;
     private Material uniqueMaterial;
     public Transform child;
-    private float currentAlpha = 1f;
+    public Transform parent;
+    private float currentSize = 0f;
 
     private float maxDistance = 3f;
-    private float speed = 3f;
+    private float speed = 0.5f;
 
     private void Start()
     {
@@ -18,19 +19,20 @@ public class LonelyScript : MonoBehaviour
 
     void Update()
     {
-        float distance = Mathf.Abs(child.position.x - transform.position.x);
+        transform.position = Vector3.Lerp(transform.position, parent.position, 1 * Time.deltaTime);
+        float distance = Mathf.Abs(child.position.x - parent.position.x);
 
         if (distance > maxDistance)
         {
-            currentAlpha += speed * Time.deltaTime;
+            currentSize += speed * Time.deltaTime;
         } 
         else
         {
-            currentAlpha -= (speed * 5) * Time.deltaTime;
+            currentSize -= (speed * 5) * Time.deltaTime;
         }
 
 
-        uniqueMaterial.SetFloat("_CircleSize", currentAlpha);
+        uniqueMaterial.SetFloat("_CircleSize", currentSize);
     }
 }
 
