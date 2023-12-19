@@ -93,7 +93,7 @@ public class MovingPlatform : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player") && other.gameObject.CompareTag("child"))
+        if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("child"))
         {
             var parentHandler = other.transform.parent.GetComponent<ParentHandler>();
             if (parentHandler != null)
@@ -105,7 +105,7 @@ public class MovingPlatform : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player") && other.gameObject.CompareTag("child"))
+        if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("child"))
         {
             var playerHandler = other.transform.parent.GetComponent<ParentHandler>();
             if (playerHandler != null)
