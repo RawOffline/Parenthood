@@ -7,11 +7,11 @@ public class MovingPlatform : MonoBehaviour
 {
     public List<Transform> coordinates;
     int currentIndex;
-    
+
     public float waitDuration;
     public float speed = 1f;
     public float percentageDistance;
-    [Range(0,1)] public float startPercentageDistance;
+    [Range(0, 1)] public float startPercentageDistance;
 
     Transform start;
     Transform end;
@@ -22,7 +22,19 @@ public class MovingPlatform : MonoBehaviour
 
     void Start()
     {
-        InitialValues();
+        loopForwards = true;
+
+        start = coordinates[0];
+        end = coordinates[1];
+        currentIndex = 1;
+        percentageDistance = startPercentageDistance;
+        move = true;
+
+
+        if (waitCoroutine != null)
+        {
+            StopCoroutine(waitCoroutine);
+        }
     }
 
     void FixedUpdate()
@@ -56,7 +68,7 @@ public class MovingPlatform : MonoBehaviour
 
         if (currentIndex >= coordinates.Count || currentIndex < 0)
         {
-            if(loopForwards)
+            if (loopForwards)
             {
                 currentIndex--;
                 loopForwards = false;
@@ -100,20 +112,6 @@ public class MovingPlatform : MonoBehaviour
             {
                 playerHandler.SetParent(null);
             }
-        }
-    }
-
-    private void InitialValues()
-    {
-        start = coordinates[0];
-        end = coordinates[1];
-        currentIndex = 1;
-        percentageDistance = startPercentageDistance;
-        move = true;
-
-        if (waitCoroutine != null)
-        {
-            StopCoroutine(waitCoroutine);
         }
     }
 }
