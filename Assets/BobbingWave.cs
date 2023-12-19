@@ -8,7 +8,7 @@ public class BobbingWave : MonoBehaviour
     }
     private void IsBobbingSmall()
     {
-        float oscillationY = transform.position.y + Mathf.Sin(Time.time + 10f) * 0.0005f;
+        float oscillationY = transform.position.y + Mathf.Sin(Time.time + 10f) * 0.00015f;
         transform.position = new Vector3(transform.position.x, oscillationY, transform.position.z);
     }
 }
