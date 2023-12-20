@@ -14,7 +14,7 @@ public class ChildJumpOnParent : MonoBehaviour
     [SerializeField] private LayerMask parentLayer;
 
     private float maxRaycastDistance = 9f;
-    private float wallApproachThreshold = 4f;
+    private float wallApproachThreshold = 9f;
     private float jumpDistanceThreshold = 0.3f;
     
 
@@ -36,30 +36,35 @@ public class ChildJumpOnParent : MonoBehaviour
 
         RayCast();
 
-
-        if (motherMovement.wallCheck && motherMovement.IsGrounded() && !hasTestBeenCalled)
+        if (motherMovement.wallCheck)
         {
-            if (follow.movingLeft == true  && motherMovement.IsGrounded())
+            follow.movingLeft = false;
+            follow.movingRight = false;
+
+            if (motherMovement.IsGrounded() && !hasTestBeenCalled)
             {
-                follow.movingLeft = false;
+
+                follow.isFollowing = true;
+                if (distance < wallApproachThreshold)
+                {
+                    follow.canJump = false;
+                }
+                if (distance < jumpDistanceThreshold && follow.isGrounded)
+                {
+                    
+                    JumpOnParent();
+                    follow.isFollowing = false;
+                    hasTestBeenCalled = true;
+                }
             }
-            follow.movingRight = true;
-            if (distance < wallApproachThreshold) 
+
+            else
             {
-                follow.canJump = false;
-            }
-            if (distance < jumpDistanceThreshold && follow.isGrounded)
-            {
-                JumpOnParent();
-                hasTestBeenCalled = true;
+                follow.canJump = true;
+                follow.maxSpeed = 2.5f;
             }
         }
 
-        else
-        {
-            follow.canJump = true;
-            follow.maxSpeed = 2.5f;
-        }
     }
 
     private void RayCast()
@@ -75,12 +80,13 @@ public class ChildJumpOnParent : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.layer == 11 && transform.position.y > follow.target.position.y && motherMovement.wallCheck)
+        if (collision.gameObject.layer == 11 && transform.position.y > follow.target.position.y && motherMovement.wallCheck && motherMovement.IsGrounded())
         {
             Kill();
+            rb.velocity = Vector2.zero;
             float jumpForceX = sprite.flipX ? -0.5f : 0.5f;
 
-            rb.AddForce(new Vector2(jumpForceX, 2f), ForceMode2D.Impulse);
+            rb.AddForce(new Vector2(jumpForceX, 4f), ForceMode2D.Impulse);
             follow.isFollowing = false;
         }
     }
