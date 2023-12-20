@@ -44,7 +44,7 @@ public class Follow : MonoBehaviour
 
     void Update()
     {
-
+        Debug.Log(movingLeft + ", " + movingRight);
         if (movingRight)
         { ScriptedMoveRight(); }
         if (movingLeft)
