@@ -60,7 +60,6 @@ public class MotherMovement : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(wallCheck);
         WallCheck();
         horizontalInput = 0;
         CheckInputs();
