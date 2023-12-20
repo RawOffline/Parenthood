@@ -29,8 +29,8 @@ public class Follow : MonoBehaviour
     private float jumpForce;
     public bool canJump;
     public bool isGrounded;
-    public bool movingRight;
-    public bool movingLeft;
+    public bool movingRight = false;
+    public bool movingLeft = false;
 
     private void Start()
     {

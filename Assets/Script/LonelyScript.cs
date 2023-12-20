@@ -19,7 +19,7 @@ public class LonelyScript : MonoBehaviour
 
     void Update()
     {
-        transform.position = Vector3.Lerp(transform.position, parent.position, 1 * Time.deltaTime);
+        transform.position = Vector3.Lerp(transform.position, parent.position, 3 * Time.deltaTime);
         float distance = Mathf.Abs(child.position.x - parent.position.x);
 
         if (distance > maxDistance)

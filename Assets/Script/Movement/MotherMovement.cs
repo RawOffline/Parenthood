@@ -60,6 +60,7 @@ public class MotherMovement : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log(wallCheck);
         WallCheck();
         horizontalInput = 0;
         CheckInputs();
@@ -235,8 +236,8 @@ public class MotherMovement : MonoBehaviour
     }
     private void WallCheck()
     {
-        if (Physics2D.BoxCast(transform.position, new Vector2(0.11f, 0.15f), 0, transform.right, 0.5f, parentJumpStepLayer) ||
-            Physics2D.BoxCast(transform.position, new Vector2(0.11f, 0.15f), 0, -transform.right, 0.5f, parentJumpStepLayer))
+        if (Physics2D.BoxCast(transform.position, new Vector2(0.11f, 0.15f), 0, transform.right, 0.2f, parentJumpStepLayer) ||
+            Physics2D.BoxCast(transform.position, new Vector2(0.11f, 0.15f), 0, -transform.right, 0.2f, parentJumpStepLayer))
         {
             wallCheckTimer += Time.deltaTime;
 
