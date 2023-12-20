@@ -8443,6 +8443,10 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 345828220}
+    - target: {fileID: 7191187891878294480, guid: c054f93219c81b14ca2a8a5f04a4890b, type: 3}
+      propertyPath: maxSpeed
+      value: 2.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7304243637002127815, guid: c054f93219c81b14ca2a8a5f04a4890b, type: 3}
       propertyPath: m_Name
       value: Child

@@ -88,7 +88,7 @@ public class ChildJumpOverSmall : MonoBehaviour
                     squishAndStretch.enabled = false;
                     sequence.Append(transform.DOJump(childrenPositions[i], 0.15f, 1, 0.5f));
                     jumpIndex++;
-                    if (jumpIndex >= 4)
+                    if (jumpIndex >= childrenPositions.Count)
                     {
                         squishAndStretch.enabled = true;
                         Kill();

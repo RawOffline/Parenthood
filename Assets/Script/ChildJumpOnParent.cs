@@ -15,7 +15,7 @@ public class ChildJumpOnParent : MonoBehaviour
 
     private float maxRaycastDistance = 9f;
     private float wallApproachThreshold = 9f;
-    private float jumpDistanceThreshold = 0.3f;
+    private float jumpDistanceThreshold = 0.5f;
     
 
     Vector2 topCenter;
@@ -43,15 +43,14 @@ public class ChildJumpOnParent : MonoBehaviour
 
             if (motherMovement.IsGrounded() && !hasTestBeenCalled)
             {
-
+                follow.canJump = false;
                 follow.isFollowing = true;
                 if (distance < wallApproachThreshold)
                 {
-                    follow.canJump = false;
+                    follow.maxSpeed = 1;
                 }
                 if (distance < jumpDistanceThreshold && follow.isGrounded)
                 {
-                    
                     JumpOnParent();
                     follow.isFollowing = false;
                     hasTestBeenCalled = true;
@@ -88,6 +87,7 @@ public class ChildJumpOnParent : MonoBehaviour
 
             rb.AddForce(new Vector2(jumpForceX, 4f), ForceMode2D.Impulse);
             follow.isFollowing = false;
+            Invoke("Timer", 5);
         }
     }
 
@@ -98,6 +98,10 @@ public class ChildJumpOnParent : MonoBehaviour
 
     }
 
+    private void Timer()
+    {
+        hasTestBeenCalled = false;
+    }
     private void OnDisable()
     {
         Kill();
