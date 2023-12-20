@@ -44,7 +44,6 @@ public class Follow : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(isGrounded);
         if (movingRight)
         { ScriptedMoveRight(); }
         if (movingLeft)

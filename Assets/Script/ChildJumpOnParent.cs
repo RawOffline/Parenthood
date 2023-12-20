@@ -14,8 +14,7 @@ public class ChildJumpOnParent : MonoBehaviour
     [SerializeField] private LayerMask parentLayer;
 
     private float maxRaycastDistance = 9f;
-    private float wallApproachThreshold = 9f;
-    private float jumpDistanceThreshold = 0.5f;
+    private float jumpDistanceThreshold = 0.2f;
     
 
     Vector2 topCenter;
@@ -38,17 +37,14 @@ public class ChildJumpOnParent : MonoBehaviour
 
         if (motherMovement.wallCheck)
         {
+            follow.canJump = false;
             follow.movingLeft = false;
             follow.movingRight = false;
 
             if (motherMovement.IsGrounded() && !hasTestBeenCalled)
             {
-                follow.canJump = false;
                 follow.isFollowing = true;
-                if (distance < wallApproachThreshold)
-                {
-                    follow.maxSpeed = 1;
-                }
+
                 if (distance < jumpDistanceThreshold && follow.isGrounded)
                 {
                     JumpOnParent();
@@ -56,12 +52,10 @@ public class ChildJumpOnParent : MonoBehaviour
                     hasTestBeenCalled = true;
                 }
             }
-
-            else
-            {
-                follow.canJump = true;
-                follow.maxSpeed = 2.5f;
-            }
+        }
+        else
+        {
+            follow.canJump = true;
         }
 
     }
@@ -87,7 +81,7 @@ public class ChildJumpOnParent : MonoBehaviour
 
             rb.AddForce(new Vector2(jumpForceX, 4f), ForceMode2D.Impulse);
             follow.isFollowing = false;
-            Invoke("Timer", 5);
+            Invoke("Timer", 3);
         }
     }
 
