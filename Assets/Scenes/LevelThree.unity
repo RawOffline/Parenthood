@@ -15541,6 +15541,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   child: {fileID: 964990705}
+  parent: {fileID: 0}
 --- !u!212 &1282531482
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -11,10 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LevelOne.unity
     guid: f8468599f6db0fe45ab5a28c9397301d
-  - enabled: 0
-    path: Assets/Scenes/Rawand.unity
-    guid: a587dd81c55e11f4587db2f29d5a8f34
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/LevelTwo.unity
     guid: 47e01d561e834f945aeb25fa3475148a
+  - enabled: 1
+    path: Assets/Scenes/LevelThree.unity
+    guid: 868ccfcd5deacac488878aa0c7ed1498
   m_configObjects: {}
