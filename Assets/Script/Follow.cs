@@ -44,7 +44,6 @@ public class Follow : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(movingLeft + ", " + movingRight);
         if (movingRight)
         { ScriptedMoveRight(); }
         if (movingLeft)
@@ -115,7 +114,7 @@ public class Follow : MonoBehaviour
             {
                 // Accelerate up to the maximum speed
                 float speedToApply = Mathf.Min(maxSpeed, rb.velocity.magnitude + acceleration * Time.deltaTime);
-                var velocity = new Vector2(direction.normalized.x * speedToApply, rb.velocity.y); 
+                var velocity = new Vector2(direction.normalized.x * speedToApply, rb.velocity.y);
                 rb.velocity = velocity;
 
                 // Flip the character sprite based on movement direction

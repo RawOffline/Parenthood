@@ -37,11 +37,6 @@ public class ChildJumpOverSmall : MonoBehaviour
         {
             StartCoroutine(StartProcessCoroutine());
         }
-        else
-        {
-            follow.canJump = true;
-            follow.maxSpeed = 2.5f;
-        }
     }
 
     private IEnumerator StartProcessCoroutine()
@@ -62,8 +57,6 @@ public class ChildJumpOverSmall : MonoBehaviour
         if (stepRay.collider != null)
         {
             Transform parentTransform = stepRay.collider.transform;
-
-            // Clear the list before adding new positions
             childrenPositions.Clear();
 
             foreach (Transform childTransform in parentTransform)
@@ -86,9 +79,9 @@ public class ChildJumpOverSmall : MonoBehaviour
                 for (int i = 0; i <= childrenPositions.Count; i++)
                 {
                     squishAndStretch.enabled = false;
-                    sequence.Append(transform.DOJump(childrenPositions[i], 0.15f, 1, 0.5f));
+                    sequence.Append(transform.DOJump(childrenPositions[i], 0.15f, 1, 0.4f));
                     jumpIndex++;
-                    if (jumpIndex >= 4)
+                    if (jumpIndex >= childrenPositions.Count)
                     {
                         squishAndStretch.enabled = true;
                         Kill();

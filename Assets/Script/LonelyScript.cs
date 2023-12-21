@@ -16,7 +16,6 @@ public class LonelyScript : MonoBehaviour
         lonelyRenderer = GetComponent<Renderer>();
         uniqueMaterial = lonelyRenderer.material;
     }
-
     void Update()
     {
         transform.position = Vector3.Lerp(transform.position, parent.position, 3 * Time.deltaTime);
@@ -25,15 +24,16 @@ public class LonelyScript : MonoBehaviour
         if (distance > maxDistance)
         {
             currentSize += speed * Time.deltaTime;
-        } 
+        }
         else
         {
+            // Fix the issue by removing the unnecessary factor of 5
             currentSize -= (speed * 5) * Time.deltaTime;
         }
 
-
         uniqueMaterial.SetFloat("_CircleSize", currentSize);
     }
+
 }
 
 
