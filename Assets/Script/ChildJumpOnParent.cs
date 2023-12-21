@@ -7,6 +7,7 @@ public class ChildJumpOnParent : MonoBehaviour
 {
     private Rigidbody2D rb;
     private MotherMovement motherMovement;
+    private ChildJumpOverSmall childJumpOverSmall;
     private Follow follow;
     private SpriteRenderer sprite;
     RaycastHit2D hitInfo;
@@ -28,6 +29,7 @@ public class ChildJumpOnParent : MonoBehaviour
         motherMovement = FindAnyObjectByType<MotherMovement>();
         rb = GetComponent<Rigidbody2D>();
         sprite = GetComponentInChildren<SpriteRenderer>();
+        childJumpOverSmall = GetComponent<ChildJumpOverSmall>();
     }
 
     void Update()
@@ -53,7 +55,7 @@ public class ChildJumpOnParent : MonoBehaviour
                 }
             }
         }
-        else
+        else if (childJumpOverSmall.smallStepRay == false)
         {
             follow.canJump = true;
         }
