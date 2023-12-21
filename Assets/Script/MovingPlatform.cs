@@ -95,6 +95,7 @@ public class MovingPlatform : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("child"))
         {
+
             var parentHandler = other.transform.parent.GetComponent<ParentHandler>();
             if (parentHandler != null)
             {

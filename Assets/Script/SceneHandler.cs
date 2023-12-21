@@ -114,6 +114,8 @@ public class SceneHandler : MonoBehaviour
     {
         isGodMode = !isGodMode;
 
+        if(motherMovement != null)
+        {
         if (isGodMode)
         {
             motherMovement.EnableGodMode();
@@ -122,6 +124,8 @@ public class SceneHandler : MonoBehaviour
         {
             motherMovement.DisableGodMode();
         }
+        }
+
     }
 
 
