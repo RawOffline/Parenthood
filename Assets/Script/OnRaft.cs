@@ -6,9 +6,13 @@ public class OnRaft : MonoBehaviour
 {
     public MovingPlatform mp;
 
+    private void Start()
+    {
+        mp = GetComponent<MovingPlatform>();
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("child"))
+        if(collision.gameObject.CompareTag("child"))
         {
             mp.enabled = true;
         }

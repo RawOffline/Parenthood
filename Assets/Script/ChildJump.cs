@@ -15,11 +15,12 @@ public class ChildJumpOverSmall : MonoBehaviour
 
     [SerializeField] private LayerMask childJumpStepLayer;
 
-    private float maxRaycastDistance = 2f;
+    private float maxRaycastDistance = 4f;
     private float jumpDistanceThreshold = 0.3f;
 
     float stepDistance;
     private bool isJumpInProgress = false;
+    public bool smallStepRay = false;
 
     void Start()
     {
@@ -35,7 +36,13 @@ public class ChildJumpOverSmall : MonoBehaviour
 
         if (stepRay.collider != null)
         {
+            smallStepRay = true;
+            follow.canJump = false;
             StartCoroutine(StartProcessCoroutine());
+        }
+        else
+        {
+            smallStepRay = false;
         }
     }
 
