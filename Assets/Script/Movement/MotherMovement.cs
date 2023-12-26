@@ -42,6 +42,7 @@ public class MotherMovement : MonoBehaviour
 
     // TEST CODE
     float velocityX;
+    public bool onConveyer;
 
     private void Start()
     {
@@ -55,7 +56,15 @@ public class MotherMovement : MonoBehaviour
         {
             rb.velocity += platform.GetComponent<Rigidbody2D>().velocity;
         }
-        Movement();
+        if (!onConveyer)
+        {
+            Movement();
+        }
+        else
+        {
+            Vector2 movement = new Vector2(horizontalInput, 0f);
+            transform.Translate(movement * maxMoveSpeed * Time.deltaTime);
+        }
     }
 
     private void Update()
@@ -162,7 +171,8 @@ public class MotherMovement : MonoBehaviour
         }
 
         rb.velocity = new Vector2(horizontalInput * maxMoveSpeed, rb.velocity.y);
-        rb.velocity = new Vector2(Mathf.MoveTowards(rb.velocity.x, horizontalInput, movementAcceleration * Time.fixedDeltaTime), rb.velocity.y);
+        rb.velocity = new Vector2(Mathf.MoveTowards(rb.velocity.x, horizontalInput,
+            movementAcceleration * Time.fixedDeltaTime), rb.velocity.y);
 
 
         ////print("horizontalInput: " + horizontalInput);
@@ -193,13 +203,6 @@ public class MotherMovement : MonoBehaviour
 
     private void Jump()
     {
-        //if (onPlatfrom)
-        //{
-        //    ParentHandler.Instance.RemoveParent();
-        //}
-
-
-
         rb.gravityScale = 1;
         rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
         jumpBufferCounter = 0f;
