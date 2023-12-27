@@ -42,11 +42,10 @@ public class ChildJumpOnParent : MonoBehaviour
             follow.canJump = false;
             follow.movingLeft = false;
             follow.movingRight = false;
-
             if (motherMovement.IsGrounded() && !hasTestBeenCalled)
             {
+                follow.stoppingDistance = 0f;
                 follow.isFollowing = true;
-
                 if (distance < jumpDistanceThreshold && follow.isGrounded)
                 {
                     JumpOnParent();
@@ -58,6 +57,11 @@ public class ChildJumpOnParent : MonoBehaviour
         else if (childJumpOverSmall.smallStepRay == false)
         {
             follow.canJump = true;
+        }
+
+        if (!motherMovement.wallCheck)
+        {
+
         }
 
     }
@@ -75,7 +79,7 @@ public class ChildJumpOnParent : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.layer == 11 && transform.position.y > follow.target.position.y && motherMovement.wallCheck && motherMovement.IsGrounded())
+        if (collision.gameObject.layer == 11 && transform.position.y > follow.target.position.y && motherMovement.wallCheck)
         {
             Kill();
             rb.velocity = Vector2.zero;
@@ -83,6 +87,7 @@ public class ChildJumpOnParent : MonoBehaviour
 
             rb.AddForce(new Vector2(jumpForceX, 4f), ForceMode2D.Impulse);
             follow.isFollowing = false;
+            follow.stoppingDistance = 0.5f;
             Invoke("Timer", 3);
         }
     }

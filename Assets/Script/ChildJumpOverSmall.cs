@@ -114,7 +114,10 @@ public class ChildJumpOverSmall : MonoBehaviour
 
     private void Kill()
     {
-        squishAndStretch.enabled = true;
+        if (squishAndStretch != null)
+        {
+            squishAndStretch.enabled = true;
+        }
         transform.DOKill();
     }
 

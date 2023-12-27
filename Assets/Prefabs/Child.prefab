@@ -213,6 +213,7 @@ GameObject:
   - component: {fileID: 669519669100351005}
   - component: {fileID: 8096480873033812781}
   - component: {fileID: 31809898683029754}
+  - component: {fileID: 7174771628549103478}
   m_Layer: 12
   m_Name: Child
   m_TagString: child
@@ -376,6 +377,7 @@ MonoBehaviour:
   childJumpStepLayer:
     serializedVersion: 2
     m_Bits: 16384
+  smallStepRay: 0
 --- !u!114 &31809898683029754
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -391,6 +393,21 @@ MonoBehaviour:
   parentLayer:
     serializedVersion: 2
     m_Bits: 2048
+--- !u!114 &7174771628549103478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7304243637002127815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 836d9b7471b904041982d5a3aa011121, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AllWalls:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &8830321179633966841
 GameObject:
   m_ObjectHideFlags: 0
