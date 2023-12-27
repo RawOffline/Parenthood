@@ -9,7 +9,7 @@ public class LonelyScript : MonoBehaviour
     public Transform parent;
     private float currentSize = 0f;
 
-    private float maxDistance = 8f;
+    private float maxDistance = 5f;
     private float speed = 0.7f;
 
     private void Start()
@@ -21,9 +21,9 @@ public class LonelyScript : MonoBehaviour
     void Update()
     {
         transform.position = Vector3.Lerp(transform.position, parent.position, 3 * Time.deltaTime);
-        float distance = Mathf.Abs(child.position.x - parent.position.x);
+        Vector3 distance = (child.position - parent.position);
 
-        if (distance > maxDistance)
+        if (distance.magnitude > maxDistance)
         {
             currentSize += speed * Time.deltaTime;
             if (currentSize > 10)
