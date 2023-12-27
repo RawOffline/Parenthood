@@ -388,7 +388,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.3
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -420,16 +420,20 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 520
+  parentJumpStepLayer:
+    serializedVersion: 2
+    m_Bits: 0
   groundCheckDistance: 0.18
   groundCheckBoxSize: {x: 0.22, y: 0.19}
   wallCheck: 0
   movementAcceleration: 50
   maxMoveSpeed: 3
-  movementDeaccleration: 6
   rb: {fileID: 1530772858088421754}
+  platform: {fileID: 0}
   isGodMode: 0
   directions: 0
   lockedDirection: 0
+  onConveyer: 0
 --- !u!114 &2004432659819792254
 MonoBehaviour:
   m_ObjectHideFlags: 0

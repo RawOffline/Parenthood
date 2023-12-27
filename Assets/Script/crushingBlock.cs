@@ -12,75 +12,34 @@ public class CrushingBlock : MonoBehaviour
     private bool canHurtChild = false;
     private bool hitPlayer = false;
 
-    private CheckpointManager checkpointManager;    
-    private void Start()
+    public float upspeed;
+    public float downspeed;
+    public Transform up;
+    public Transform down;
+    bool chop;
+    // Start is called before the first frame update
+    void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        checkpointManager = FindObjectOfType<CheckpointManager>();
     }
-
-    private void Update()
+    // Update is called once per frame
+    void Update()
     {
-        if (isGoingUp)
+        if (transform.position.y > up.position.y)
         {
-            canHurtChild = false;
-            MoveUpToPointA();
+            chop = true;
         }
-        else if (!isGoingUp && !hitPlayer)
+        if (transform.position.y <= down.position.y)
         {
-            canHurtChild = true;
-            MoveUpToPointB();
-            
+            chop = false;
         }
-        
-    }
 
-    private void MoveUpToPointA()
-    {
-        Vector2 direction = (pointA.transform.position - transform.position).normalized;
-        rb.velocity = new Vector2(rb.velocity.x, direction.y * 2);
-
-        if (transform.position.y >= pointA.transform.position.y - 0.2f)
+        if (chop)
         {
-            rb.velocity = Vector2.zero;
-            isGoingUp = false;
+            transform.position = Vector2.MoveTowards(transform.position, down.position, downspeed * Time.deltaTime);
         }
-    }
-
-    private void MoveUpToPointB()
-    {
-        
-        Vector2 direction = (pointB.transform.position - transform.position).normalized;
-        rb.velocity = new Vector2(rb.velocity.x, direction.y * 100);
-        
-        if (transform.position.y <= pointB.transform.position.y)
+        else
         {
-
-            StartCoroutine(WaitAndMoveUp());
-        }
-    }
-
-    private IEnumerator WaitAndMoveUp()
-    {
-        canHurtChild = false;
-        rb.velocity = Vector2.zero;
-        yield return new WaitForSeconds(2);
-        hitPlayer = false;
-        isGoingUp = true;
-    }
-
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        
-        if (collision.gameObject.CompareTag("child") && canHurtChild)
-        {
-            checkpointManager.LoadCheckpoint();
-        }
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            hitPlayer = true;
-            StartCoroutine(WaitAndMoveUp());
+            transform.position = Vector2.MoveTowards(transform.position, up.position, upspeed * Time.deltaTime);
         }
     }
 }

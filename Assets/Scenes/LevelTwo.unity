@@ -40272,6 +40272,14 @@ PrefabInstance:
       propertyPath: m_PointLightOuterRadius
       value: 1.5
       objectReference: {fileID: 0}
+    - target: {fileID: 7162592264113036503, guid: 76e40730de1be4d4a864239a4ee53de6, type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7162592264113036503, guid: 76e40730de1be4d4a864239a4ee53de6, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: b187487edd6f3d444bfd7689ca4ee768, type: 2}
     - target: {fileID: 7792199854550282057, guid: 76e40730de1be4d4a864239a4ee53de6, type: 3}
       propertyPath: target
       value: 
