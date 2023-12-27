@@ -32,6 +32,7 @@ public class LonelyScript : MonoBehaviour
             }
             if(currentSize > 25)
             {
+                speed = 0.7f;
                 currentSize = 0;
                 checkpoint.LoadCheckpoint();
             }
