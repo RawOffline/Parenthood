@@ -21,6 +21,7 @@ public class ChildJumpOnParent : MonoBehaviour
     Vector2 topCenter;
     private bool hasTestBeenCalled = false;
     private float distance;
+    private float originalStoppingDistance;
 
 
     void Start()
@@ -30,6 +31,7 @@ public class ChildJumpOnParent : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         sprite = GetComponentInChildren<SpriteRenderer>();
         childJumpOverSmall = GetComponent<ChildJumpOverSmall>();
+        originalStoppingDistance = follow.stoppingDistance;
     }
 
     void Update()
@@ -59,9 +61,10 @@ public class ChildJumpOnParent : MonoBehaviour
             follow.canJump = true;
         }
 
-        if (!motherMovement.wallCheck)
+        if (!motherMovement.wallCheck && hasTestBeenCalled)
         {
-
+            Kill();
+            hasTestBeenCalled = false;
         }
 
     }
@@ -79,16 +82,19 @@ public class ChildJumpOnParent : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.layer == 11 && transform.position.y > follow.target.position.y && motherMovement.wallCheck)
-        {
-            Kill();
-            rb.velocity = Vector2.zero;
-            float jumpForceX = sprite.flipX ? -0.5f : 0.5f;
 
-            rb.AddForce(new Vector2(jumpForceX, 4f), ForceMode2D.Impulse);
+        if (collision.gameObject.layer == 11)
+        {
             follow.isFollowing = false;
-            follow.stoppingDistance = 0.5f;
-            Invoke("Timer", 3);
+            follow.stoppingDistance = originalStoppingDistance;
+            if (transform.position.y > follow.target.position.y && motherMovement.wallCheck)
+            {
+                Invoke("Timer", 2);
+                Kill();
+                rb.velocity = Vector2.zero;
+                float jumpForceX = sprite.flipX ? -0.5f : 0.5f;
+                rb.AddForce(new Vector2(jumpForceX, 4f), ForceMode2D.Impulse);
+            }
         }
     }
 
