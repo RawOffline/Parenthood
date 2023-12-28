@@ -51,7 +51,7 @@ public class CrushingBlock : MonoBehaviour
     {
         
         Vector2 direction = (pointB.transform.position - transform.position).normalized;
-        rb.velocity = new Vector2(rb.velocity.x, direction.y * 100);
+        rb.velocity = new Vector2(rb.velocity.x, direction.y * 50);
         
         if (transform.position.y <= pointB.transform.position.y)
         {
