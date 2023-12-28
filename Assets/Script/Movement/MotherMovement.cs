@@ -1,6 +1,7 @@
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class MotherMovement : MonoBehaviour
 {
@@ -38,6 +39,9 @@ public class MotherMovement : MonoBehaviour
     public Directions directions;
     public float lockedDirection;
     Animator motherAnimation;
+    private bool hasLanded = true;
+    public UnityEvent LandingTrigger;
+    public UnityEvent JumpingTrigger;
     //public bool onPlatfrom = false;
 
     // TEST CODE
@@ -83,6 +87,8 @@ public class MotherMovement : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
             coyoteTimeCounter = 0f;
         }
+
+
         UpdateJumpBuffer();
 
         UpdateCoyoteTime();
@@ -95,6 +101,7 @@ public class MotherMovement : MonoBehaviour
         if (Input.GetButtonDown("Jump"))
         {
             jumpBufferCounter = jumpBufferTime;
+            JumpingTrigger.Invoke();
 
         }
         else
@@ -206,6 +213,7 @@ public class MotherMovement : MonoBehaviour
         rb.gravityScale = 1;
         rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
         jumpBufferCounter = 0f;
+
     }
 
 
@@ -218,11 +226,16 @@ public class MotherMovement : MonoBehaviour
     {
         if (Physics2D.BoxCast(transform.position, groundCheckBoxSize, 0, -transform.up, groundCheckDistance, groundLayer))
         {
-
+            if(hasLanded)
+            {
+                hasLanded = false;
+                LandingTrigger.Invoke();
+            }
             return true;
         }
         else
         {
+            hasLanded = true;
             return false;
         }
     }
