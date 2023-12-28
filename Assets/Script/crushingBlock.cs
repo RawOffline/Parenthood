@@ -76,11 +76,15 @@ public class CrushingBlock : MonoBehaviour
         if (collision.gameObject.CompareTag("child") && canHurtChild)
         {
             checkpointManager.LoadCheckpoint();
+            CinemachineShake.Instance.ShakeCamera(1f, 0.5f);
+      
         }
         if (collision.gameObject.CompareTag("Player"))
         {
             hitPlayer = true;
             StartCoroutine(WaitAndMoveUp());
+            CinemachineShake.Instance.ShakeCamera(1f, 0.5f);
         }
     }
+
 }
