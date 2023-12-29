@@ -221,6 +221,7 @@ public class MotherMovement : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireCube(transform.position - transform.up * groundCheckDistance, groundCheckBoxSize);
+        Gizmos.color = Color.red;
     }
     public bool IsGrounded()
     {
