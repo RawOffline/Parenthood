@@ -7281,7 +7281,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 32.366665
-    functionName: ActivateChildAndParent
+    functionName: DecreaseCameraPriority
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

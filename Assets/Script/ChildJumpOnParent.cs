@@ -36,7 +36,6 @@ public class ChildJumpOnParent : MonoBehaviour
 
     void Update()
     {
-
         RayCast();
 
         if (motherMovement.wallCheck)
@@ -65,6 +64,7 @@ public class ChildJumpOnParent : MonoBehaviour
         {
             Kill();
             hasTestBeenCalled = false;
+            follow.isFollowing = false;
         }
 
     }
@@ -89,6 +89,8 @@ public class ChildJumpOnParent : MonoBehaviour
             follow.stoppingDistance = originalStoppingDistance;
             if (transform.position.y > follow.target.position.y && motherMovement.wallCheck)
             {
+                CancelInvoke("Timer");
+                hasTestBeenCalled = true;
                 Invoke("Timer", 2);
                 Kill();
                 rb.velocity = Vector2.zero;

@@ -10,7 +10,7 @@ public class ZoomOutTrigger : MonoBehaviour
 
         if (other.CompareTag("Player"))
         {
-            virtualCamera.Priority = 1;
+            virtualCamera.Priority = 20;
         }
     }
 
@@ -19,7 +19,7 @@ public class ZoomOutTrigger : MonoBehaviour
 
         if (other.CompareTag("Player"))
         {
-            virtualCamera.Priority = 10;
+            virtualCamera.Priority = 1;
         }
     }
 
