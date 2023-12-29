@@ -2,10 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using DG.Tweening;
+
 
 public class MovingPlatform : MonoBehaviour
 {
-    public List<Transform> coordinates;
+    public Transform[] coordinatesTransform = new Transform[2];
+
+    public PathType pathSystem = PathType.CatmullRom;
+
     int currentIndex;
 
     public float waitDuration;
@@ -22,67 +27,32 @@ public class MovingPlatform : MonoBehaviour
 
     void Start()
     {
-        loopForwards = true;
+        Vector3[] coordinates = new Vector3[coordinatesTransform.Length];
 
-        start = coordinates[0];
-        end = coordinates[1];
-        currentIndex = 1;
-        percentageDistance = startPercentageDistance;
-        move = true;
-
-
-        if (waitCoroutine != null)
+        for (int i = 0; i < coordinatesTransform.Length; i++)
         {
-            StopCoroutine(waitCoroutine);
+            coordinates[i] = coordinatesTransform[i].position;
         }
+        for (int i = 0; i < coordinates.Length; i++)
+        {
+            Debug.Log(coordinates[i]);
+        }
+
+        //transform.DOPath(coordinates,speed,pathSystem);
+
+        // Create the path with DoTween
+        var path = transform.DOPath(coordinates, speed, pathSystem);
+
+        // SetLoops to create a back-and-forth loop
+        path.SetLoops(-1, LoopType.Yoyo);
+
+        // Optional: You can add more settings as needed, such as easing functions
+        path.SetEase(Ease.InOutQuint);
+
+
     }
 
-    void FixedUpdate()
-    {
-        if (move)
-        {
-            percentageDistance += Time.deltaTime * speed;
-            transform.position = Vector3.Lerp(start.position, end.position, percentageDistance);
-        }
 
-        if (percentageDistance >= 1)
-        {
-            waitCoroutine = StartCoroutine(Wait());
-            NextCycle();
-        }
-    }
-
-    void NextCycle()
-    {
-        percentageDistance = 0;
-        start = end;
-
-        if (loopForwards)
-        {
-            currentIndex++;
-        }
-        else
-        {
-            currentIndex--;
-        }
-
-        if (currentIndex >= coordinates.Count || currentIndex < 0)
-        {
-            if (loopForwards)
-            {
-                currentIndex--;
-                loopForwards = false;
-            }
-            else
-            {
-                currentIndex++;
-                loopForwards = true;
-            }
-            //currentIndex = 0;
-        }
-
-        end = coordinates[currentIndex];
-    }
 
     IEnumerator Wait()
     {
