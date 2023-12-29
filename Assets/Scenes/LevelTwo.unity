@@ -25119,7 +25119,7 @@ MonoBehaviour:
   coordinatesTransform:
   - {fileID: 0}
   - {fileID: 0}
-  pathSystem: 0
+  pathSystem: 1
   waitDuration: 0
   speed: 0.03
   percentageDistance: 0
@@ -42483,7 +42483,7 @@ MonoBehaviour:
   coordinatesTransform:
   - {fileID: 1295708468}
   - {fileID: 1176996926}
-  pathSystem: 0
+  pathSystem: 1
   waitDuration: 0
   speed: 15
   percentageDistance: 0
@@ -42574,7 +42574,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1992431566840604229}
   - component: {fileID: 337037336084181557}
-  - component: {fileID: 6277951249506337505}
   - component: {fileID: 6277951249506337507}
   - component: {fileID: 6277951249506337506}
   - component: {fileID: 6277951249506337508}
@@ -42585,48 +42584,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &6277951249506337505
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6277951249506337504}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02fcf0823003b60469f17e24ff2e624f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  coordinatesTransform:
-  - {fileID: 947199224}
-  - {fileID: 1353874276}
-  - {fileID: 854971950}
-  - {fileID: 1254408593}
-  - {fileID: 263953409}
-  - {fileID: 2066303722}
-  - {fileID: 1584711603}
-  - {fileID: 373976578}
-  - {fileID: 165656356}
-  - {fileID: 2093692540}
-  - {fileID: 870278440}
-  - {fileID: 1146409409}
-  - {fileID: 504796644}
-  - {fileID: 198616984}
-  - {fileID: 775180567}
-  - {fileID: 1275875266}
-  - {fileID: 1713336879}
-  - {fileID: 1607993932}
-  - {fileID: 1829023268}
-  - {fileID: 1542561364}
-  - {fileID: 722025649}
-  - {fileID: 1841628826}
-  - {fileID: 268753127}
-  - {fileID: 1126008002}
-  pathSystem: 1
-  waitDuration: 0
-  speed: 30
-  percentageDistance: 0
-  startPercentageDistance: 0
 --- !u!70 &6277951249506337506
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -42669,12 +42626,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6277951249506337504}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1d66c9f2eaef40841af0a6bf16cec25e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mp: {fileID: 6277951249506337505}
+  mp: {fileID: 0}
 --- !u!68 &6277951249506337508
 EdgeCollider2D:
   m_ObjectHideFlags: 0

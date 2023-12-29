@@ -33,11 +33,7 @@ public class MovingPlatform : MonoBehaviour
         {
             coordinates[i] = coordinatesTransform[i].position;
         }
-        for (int i = 0; i < coordinates.Length; i++)
-        {
-            Debug.Log(coordinates[i]);
-        }
-
+       
         //transform.DOPath(coordinates,speed,pathSystem);
 
         // Create the path with DoTween
