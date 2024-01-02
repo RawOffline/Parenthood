@@ -56,7 +56,7 @@ public class Follow : MonoBehaviour
             if (SceneManager.GetActiveScene().name != "LevelOne")
             {
                 isFollowing = true;
-                SoundManager.PlaySound(SoundManager.Sound.Call);
+               // SoundManager.PlaySound(SoundManager.Sound.Call);
             }
         }
 
