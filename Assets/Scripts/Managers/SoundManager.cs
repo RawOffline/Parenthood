@@ -14,6 +14,7 @@ public static class SoundManager
     public enum Sound
     {
        Call,
+
     }
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
