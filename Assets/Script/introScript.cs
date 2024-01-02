@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class introScript : MonoBehaviour
 {
-    [HideInInspector]public GameObject child;
-    [HideInInspector]public GameObject parent;
-    [HideInInspector]public GameObject cutSceneChild;
-    [HideInInspector]public GameObject cutSceneParent;
+    public GameObject child;
+    public GameObject parent;
+    public GameObject cutSceneChild;
+    public GameObject cutSceneParent;
     public CinemachineVirtualCamera introVirtualCamera;
     private Follow follow;
     private MotherMovement motherMovement;
@@ -29,21 +29,37 @@ public class introScript : MonoBehaviour
     public void IncreaseCameraPriority()
     { introVirtualCamera.Priority = 20; }
     public void MoveParent()
-    {parent.transform.position = cutSceneChild.transform.position;}
+    {parent.transform.position = cutSceneParent.transform.position;}
     public void MoveChild()
-    {child.transform.position = cutSceneParent.transform.position;}
+    {child.transform.position = cutSceneChild.transform.position;}
+
+
 
     public void DeactivateChild()
     { child.SetActive(false); }
 
     public void DeactivateParent()
-    { child.SetActive(false); }
+    { parent.SetActive(false); }
 
     public void ActivateChild()
     { child.SetActive(true); }
-
     public void ActivateParent()
-    { child.SetActive(true); }
+    { parent.SetActive(true); }
+
+
+    public void ActivateCutSceneParent()
+    { cutSceneParent.SetActive(true); }
+
+    public void DeactivateCutSceneChild()
+    { cutSceneChild.SetActive(false); }
+
+    public void DeactivateCutSceneParent()
+    { cutSceneParent.SetActive(false); }
+
+    public void ActivateCutSceneChild()
+    { cutSceneChild.SetActive(true); }
+
+
 
     public void ActivateMovement() 
     { motherMovement.enabled = true;}
