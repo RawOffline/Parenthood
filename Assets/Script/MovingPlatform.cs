@@ -11,20 +11,12 @@ public class MovingPlatform : MonoBehaviour
 
     public PathType pathSystem = PathType.CatmullRom;
 
-    int currentIndex;
-
     public float waitDuration;
     public float duration = 1f;
     public float percentageDistance;
     [Range(0, 1)] public float startPercentageDistance;
 
-    Transform start;
-    Transform end;
-
-    bool move = true;
-    Coroutine waitCoroutine;
-    private bool loopForwards;
-    Vector3 lastPlatformPosition;
+  
 
     void Start()
     {
@@ -72,36 +64,4 @@ public class MovingPlatform : MonoBehaviour
     }
 }
 
-
-
-//IEnumerator Wait()
-//{
-//    move = false;
-//    yield return new WaitForSeconds(waitDuration);
-//    move = true;
-//}
-
-//private void OnTriggerEnter2D(Collider2D other)
-//{
-//    if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("child"))
-//    {
-//        var parentHandler = other.transform.parent.GetComponent<ParentHandler>();
-//        if (parentHandler != null)
-//        {
-//            parentHandler.SetParent(transform);
-//        }
-//    }
-//}
-
-//private void OnTriggerExit2D(Collider2D other)
-//{
-//    if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("child"))
-//    {
-//        var playerHandler = other.transform.parent.GetComponent<ParentHandler>();
-//        if (playerHandler != null)
-//        {
-//            playerHandler.SetParent(null);
-//        }
-//    }
-//}
 

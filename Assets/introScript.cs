@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class introScript : MonoBehaviour
 {
-    public GameObject child;
-    public GameObject parent;
-    public GameObject cutSceneChild;
-    public GameObject cutSceneParent;
+    [HideInInspector]public GameObject child;
+    [HideInInspector]public GameObject parent;
+    [HideInInspector]public GameObject cutSceneChild;
+    [HideInInspector]public GameObject cutSceneParent;
     public CinemachineVirtualCamera introVirtualCamera;
     private Follow follow;
     private MotherMovement motherMovement;
