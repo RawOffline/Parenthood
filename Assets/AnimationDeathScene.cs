@@ -18,8 +18,12 @@ public class AnimationDeathScene : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        child.transform.DOMoveX(cutSceneChild.transform.position.x, 3);
-        parent.transform.DOMoveX(cutSceneParent.transform.position.x, 3).OnComplete(PlayAnimation);
+        if (collision.gameObject.layer == 11)
+        {
+            child.transform.DOMoveX(cutSceneChild.transform.position.x, 3);
+            parent.transform.DOMoveX(cutSceneParent.transform.position.x, 3).OnComplete(PlayAnimation);
+        }
+
     }
 
     private void PlayAnimation()
