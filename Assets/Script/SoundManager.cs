@@ -14,6 +14,9 @@ public static class SoundManager
     public enum Sound
     {
        Call,
+       Idle1,
+       Idle2,
+       Idle3,
 
     }
 
@@ -41,6 +44,7 @@ public static class SoundManager
         AudioSource aS = GetAvaliableSource();
         aS.outputAudioMixerGroup = (Resources.Load("AudioMixer") as AudioMixer).FindMatchingGroups("SFX")[0];
         aS.PlayOneShot(GetAudioClip(sound));
+
     }
 
     private static AudioSource GetAvaliableSource()
