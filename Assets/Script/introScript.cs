@@ -2,6 +2,7 @@ using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class introScript : MonoBehaviour
 {
@@ -65,5 +66,8 @@ public class introScript : MonoBehaviour
     { motherMovement.enabled = true;}
     public void DeactiavteMovement()
     { motherMovement.enabled = false; }
+
+    public void LoadLastScene()
+    { SceneManager.LoadScene("Credits");}
 
 }
