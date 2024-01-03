@@ -29,6 +29,7 @@ public static class SoundManager
         GameObject parentGO = new GameObject("AudioParent");
 
         parent = parentGO.transform;
+        Object.DontDestroyOnLoad(parentGO);
         for (int i = 0; i < 10; i++)
         {
             GameObject newAudioGO = new GameObject("Instatiated Audio Source");
