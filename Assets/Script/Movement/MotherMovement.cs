@@ -101,6 +101,7 @@ public class MotherMovement : MonoBehaviour
         if (Input.GetButtonDown("Jump"))
         {
             jumpBufferCounter = jumpBufferTime;
+            SoundManager.PlaySound(SoundManager.Sound.ParentJump, false, false);
             JumpingTrigger.Invoke();
 
         }
@@ -226,6 +227,7 @@ public class MotherMovement : MonoBehaviour
             if(hasLanded)
             {
                 hasLanded = false;
+                SoundManager.PlaySound(SoundManager.Sound.ParentLadding, false, false);
                 LandingTrigger.Invoke();
             }
             return true;

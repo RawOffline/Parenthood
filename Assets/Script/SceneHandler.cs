@@ -94,6 +94,7 @@ public class SceneHandler : MonoBehaviour
         // If the current scene is the last one, it wraps around to the first scene.
         int nextSceneIndex = (currentSceneIndex + 1) % SceneManager.sceneCountInBuildSettings;
 
+        SoundManager.StopAllSounds();
         SceneManager.LoadScene(nextSceneIndex);
 
         transitionAnim.SetTrigger("Start");

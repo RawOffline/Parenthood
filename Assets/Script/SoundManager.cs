@@ -10,14 +10,23 @@ public static class SoundManager
     private static Transform parent;
     private static bool initialized;
 
-
     public enum Sound
     {
-       Call,
-       Idle1,
-       Idle2,
-       Idle3,
-
+        Call,
+        Idle1,
+        Idle2,
+        Idle3,
+        ParentJump,
+        ParentLadding,
+        Level_1,
+        Level_1_Loop,
+        Level_2,
+        Level_2_Loop,
+        Level_3,
+        Level_3_Loop,
+        Level_credit,
+        Level_credit_Loop,
+        creditSceneWind,
     }
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
@@ -40,11 +49,21 @@ public static class SoundManager
         Object.DontDestroyOnLoad(parent.gameObject);
     }
 
-    public static void PlaySound(Sound sound)
+    public static void PlaySound(Sound sound, bool isMusic, bool loop)
     {
-        AudioSource aS = GetAvaliableSource();
-        aS.outputAudioMixerGroup = (Resources.Load("AudioMixer") as AudioMixer).FindMatchingGroups("SFX")[0];
-        aS.PlayOneShot(GetAudioClip(sound));
+        AudioSource audioSource = GetAvaliableSource();
+        if (isMusic)
+        {
+            audioSource.outputAudioMixerGroup = (Resources.Load("AudioMixer") as AudioMixer).FindMatchingGroups("Music")[0];
+            audioSource.loop = loop;
+            audioSource.clip = GetAudioClip(sound);
+            audioSource.Play();
+        }
+        else
+        {
+            audioSource.outputAudioMixerGroup = (Resources.Load("AudioMixer") as AudioMixer).FindMatchingGroups("SFX")[0];
+            audioSource.PlayOneShot(GetAudioClip(sound));
+        }
 
     }
 
@@ -67,5 +86,15 @@ public static class SoundManager
 
         Debug.LogError("Sound " + sound + " not found!");
         return null;
+    }
+    public static void StopAllSounds()
+    {
+        foreach (var audioSource in sources)
+        {
+            if (audioSource.isPlaying)
+            {
+                audioSource.Stop();
+            }
+        }
     }
 }
