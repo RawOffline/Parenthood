@@ -15,6 +15,7 @@ public class MovingPlatform : MonoBehaviour
     public float duration = 1f;
     public float percentageDistance;
     [Range(0, 1)] public float startPercentageDistance;
+    
 
   
 
@@ -43,6 +44,9 @@ public class MovingPlatform : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("child"))
         {
+            MotherMovement motherMovement = other.gameObject.GetComponent<MotherMovement>();
+
+            motherMovement.onMovingPlatform = true;
             var parentHandler = other.transform.parent.GetComponent<ParentHandler>();
             if (parentHandler != null)
             {
@@ -55,6 +59,9 @@ public class MovingPlatform : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("child"))
         {
+            MotherMovement motherMovement = other.gameObject.GetComponent<MotherMovement>();
+
+            motherMovement.onMovingPlatform = false;
             var playerHandler = other.transform.parent.GetComponent<ParentHandler>();
             if (playerHandler != null)
             {

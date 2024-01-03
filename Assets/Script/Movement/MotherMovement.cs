@@ -45,8 +45,8 @@ public class MotherMovement : MonoBehaviour
     //public bool onPlatfrom = false;
 
     // TEST CODE
-    float velocityX;
     public bool onConveyer;
+    public bool onMovingPlatform;
 
     private void Start()
     {
@@ -177,23 +177,19 @@ public class MotherMovement : MonoBehaviour
             horizontalInput = lockedDirection;
         }
 
+        if(onMovingPlatform == true)
+        {
+            Vector2 movement = new Vector2(horizontalInput, 0f);
+            transform.Translate(movement * maxMoveSpeed * Time.deltaTime);
+        }
+        else 
+        { 
         rb.velocity = new Vector2(horizontalInput * maxMoveSpeed, rb.velocity.y);
         rb.velocity = new Vector2(Mathf.MoveTowards(rb.velocity.x, horizontalInput,
             movementAcceleration * Time.fixedDeltaTime), rb.velocity.y);
-
-
-        ////print("horizontalInput: " + horizontalInput);
-
-        //velocityX += horizontalInput * movementAcceleration * Time.deltaTime;
-        ////print("velocityX: " + velocityX);
-
-        //velocityX = Mathf.Clamp(velocityX, -maxMoveSpeed, maxMoveSpeed);
-        ////print("velocityX after clamp: " + velocityX);
-
-        //rb.velocity = new Vector2 (velocityX, rb.velocity.y);
-        ////print("rb.velocity: " + rb.velocity);
-
-
+        }
+        
+        
 
         if (Mathf.Abs(horizontalInput) > 0.1f)
         {
