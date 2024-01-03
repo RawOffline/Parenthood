@@ -189,18 +189,7 @@ public class MotherMovement : MonoBehaviour
             movementAcceleration * Time.fixedDeltaTime), rb.velocity.y);
         }
         
-        ////print("horizontalInput: " + horizontalInput);
-
-        //velocityX += horizontalInput * movementAcceleration * Time.deltaTime;
-        ////print("velocityX: " + velocityX);
-
-        //velocityX = Mathf.Clamp(velocityX, -maxMoveSpeed, maxMoveSpeed);
-        ////print("velocityX after clamp: " + velocityX);
-
-        //rb.velocity = new Vector2 (velocityX, rb.velocity.y);
-        ////print("rb.velocity: " + rb.velocity);
-
-
+        
 
         if (Mathf.Abs(horizontalInput) > 0.1f)
         {
