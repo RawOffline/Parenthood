@@ -23,8 +23,6 @@ public class MusicController : MonoBehaviour
         // Check if the first music has finished playing
         if (!audioSource.isPlaying)
         {
-            // Play the second music with fade in
-           // StartCoroutine(Fade(true, audioSource, 0f, 1f));
             PlayMusic(music2, true);
         }
     }
