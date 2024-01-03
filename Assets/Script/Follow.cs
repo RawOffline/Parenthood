@@ -53,6 +53,7 @@ public class Follow : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E) && !isFollowing)
         {
+            
             if (SceneManager.GetActiveScene().name != "LevelOne")
             {
                 isFollowing = true;
