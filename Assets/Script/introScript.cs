@@ -60,8 +60,6 @@ public class introScript : MonoBehaviour
     public void ActivateCutSceneChild()
     { cutSceneChild.SetActive(true); }
 
-
-
     public void ActivateMovement() 
     { motherMovement.enabled = true;}
     public void DeactiavteMovement()
@@ -69,16 +67,5 @@ public class introScript : MonoBehaviour
 
     public void LoadLastScene()
     { SceneManager.LoadScene("Credits");}
-
-    //public void ShowBars()
-    //{
-    //    if (CinematicBarsController.Instance != null)
-    //    CinematicBarsController.Instance.ShowBars();
-    //}
-    //public void HideBars()
-    //{
-    //    if (CinematicBarsController.Instance != null)
-    //        CinematicBarsController.Instance.HideBars();
-    //}
 
 }

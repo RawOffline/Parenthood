@@ -249,7 +249,7 @@ SpriteRenderer:
   m_Size: {x: 3.76, y: 3.3}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1286997367069006359
@@ -333,7 +333,7 @@ SpriteRenderer:
   m_Size: {x: 3.76, y: 3.3}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1453313178339040275
@@ -417,7 +417,7 @@ SpriteRenderer:
   m_Size: {x: 3.76, y: 3.3}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1680856625523335724
@@ -501,7 +501,7 @@ SpriteRenderer:
   m_Size: {x: 3.76, y: 3.3}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &2064774782541642826
@@ -1063,7 +1063,7 @@ SpriteRenderer:
   m_Size: {x: 3.76, y: 3.3}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &3230894936447568185
@@ -1147,7 +1147,7 @@ SpriteRenderer:
   m_Size: {x: 3.76, y: 3.3}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &3424772525983456241
@@ -1231,7 +1231,7 @@ SpriteRenderer:
   m_Size: {x: 3.76, y: 3.3}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &3625529710802240371
@@ -1421,7 +1421,7 @@ SpriteRenderer:
   m_Size: {x: 3.76, y: 3.3}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &4030006159910764211
@@ -1589,7 +1589,7 @@ SpriteRenderer:
   m_Size: {x: 3.76, y: 3.3}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &4576699901192343936
@@ -1758,7 +1758,7 @@ SpriteRenderer:
   m_Size: {x: 3.76, y: 3.3}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &5354263817318851709
@@ -1926,7 +1926,7 @@ SpriteRenderer:
   m_Size: {x: 3.76, y: 3.3}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &6262715833727166519
@@ -2202,7 +2202,7 @@ SpriteRenderer:
   m_Size: {x: 3.76, y: 3.3}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &6687134355547826439
@@ -2374,7 +2374,7 @@ SpriteRenderer:
   m_Size: {x: 3.76, y: 3.3}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &7037601894922631744
@@ -2388,10 +2388,7 @@ GameObject:
   - component: {fileID: 8723816133458870674}
   - component: {fileID: 5589473606034118633}
   - component: {fileID: 1274622145065722467}
-  - component: {fileID: 3479624901528076054}
-  - component: {fileID: 7853325622289422285}
   - component: {fileID: 1603602737617989216}
-  - component: {fileID: 1771241487738252511}
   m_Layer: 3
   m_Name: Raft
   m_TagString: Untagged
@@ -2641,39 +2638,6 @@ PolygonCollider2D:
       - {x: 3.095, y: 0.04}
       - {x: 3.075, y: 0.06}
   m_UseDelaunayMesh: 0
---- !u!114 &3479624901528076054
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7037601894922631744}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02fcf0823003b60469f17e24ff2e624f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  coordinatesTransform:
-  - {fileID: 0}
-  - {fileID: 0}
-  pathSystem: 1
-  waitDuration: 0
-  duration: 1
-  percentageDistance: 0
-  startPercentageDistance: 0
---- !u!114 &7853325622289422285
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7037601894922631744}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d66c9f2eaef40841af0a6bf16cec25e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mp: {fileID: 3479624901528076054}
 --- !u!70 &1603602737617989216
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -2709,19 +2673,6 @@ CapsuleCollider2D:
   m_Offset: {x: -0.18, y: -0.27}
   m_Size: {x: 4.82, y: 0.81}
   m_Direction: 1
---- !u!114 &1771241487738252511
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7037601894922631744}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a66a73ad653fc2b47bb352daf03cd209, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  audioSource: {fileID: 0}
 --- !u!1 &7175488525085297880
 GameObject:
   m_ObjectHideFlags: 0
@@ -2803,7 +2754,7 @@ SpriteRenderer:
   m_Size: {x: 3.76, y: 3.3}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &7674752039210882443
@@ -2971,7 +2922,7 @@ SpriteRenderer:
   m_Size: {x: 3.76, y: 3.3}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &8670417512184510080
@@ -3091,10 +3042,7 @@ GameObject:
   - component: {fileID: 4764588768190573961}
   - component: {fileID: 2952802779641740607}
   - component: {fileID: 9201394280611753410}
-  - component: {fileID: 2710693989287259483}
-  - component: {fileID: 3952794744318516292}
   - component: {fileID: 6549673063545178305}
-  - component: {fileID: 8400860877851392095}
   m_Layer: 3
   m_Name: Raft
   m_TagString: Untagged
@@ -3345,39 +3293,6 @@ PolygonCollider2D:
       - {x: 3.095, y: 0.04}
       - {x: 3.075, y: 0.06}
   m_UseDelaunayMesh: 0
---- !u!114 &2710693989287259483
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9200397749443785879}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02fcf0823003b60469f17e24ff2e624f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  coordinatesTransform:
-  - {fileID: 0}
-  - {fileID: 0}
-  pathSystem: 1
-  waitDuration: 0
-  duration: 1
-  percentageDistance: 0
-  startPercentageDistance: 0
---- !u!114 &3952794744318516292
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9200397749443785879}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d66c9f2eaef40841af0a6bf16cec25e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mp: {fileID: 2710693989287259483}
 --- !u!70 &6549673063545178305
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -3413,19 +3328,6 @@ CapsuleCollider2D:
   m_Offset: {x: -0.18, y: -0.27}
   m_Size: {x: 4.82, y: 0.81}
   m_Direction: 1
---- !u!114 &8400860877851392095
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9200397749443785879}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a66a73ad653fc2b47bb352daf03cd209, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  audioSource: {fileID: 0}
 --- !u!1001 &7878296117905705236
 PrefabInstance:
   m_ObjectHideFlags: 0
