@@ -9,24 +9,28 @@ public class AnimationRaftTrigger : MonoBehaviour
     public GameObject cutSceneChild;
     public GameObject cutSceneParent;
     private Animator animator;
+    private bool inBoat = false;
     void Start()
     {
         animator = GetComponent<Animator>();
     }
 
-
-    private void OnTriggerStay2D(Collider2D collision)
+    private void Update()
     {
-        if (Input.GetKey(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) && inBoat)
         {
             child.transform.DOMoveX(cutSceneChild.transform.position.x, 1);
             parent.transform.DOMoveX(cutSceneParent.transform.position.x, 1).OnComplete(PlayAnimation);
         }
-
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        inBoat = true;
     }
 
     private void PlayAnimation()
     {
+        inBoat = false;
         animator.SetTrigger("RaftTrigger");
     }
 }
