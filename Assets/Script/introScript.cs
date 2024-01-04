@@ -70,4 +70,12 @@ public class introScript : MonoBehaviour
     public void LoadLastScene()
     { sceneHandler.NextScene(); }
 
+    public void WindMusic()
+    { SoundManager.PlaySound(SoundManager.Sound.CutsceneWind,false,false); }
+
+    public void cutSceneAudio_Level_1()
+    {
+        SoundManager.PlaySound(SoundManager.Sound.Cutscene_SoundAudio_level_1, false, false);
+    }
+
 }

@@ -27,6 +27,8 @@ public static class SoundManager
         Level_credit,
         Level_credit_Loop,
         creditSceneWind,
+        CutsceneWind,
+        Cutscene_SoundAudio_level_1,
     }
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
