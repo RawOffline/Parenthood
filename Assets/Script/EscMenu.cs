@@ -11,6 +11,7 @@ public class EscMenu : MonoBehaviour
     public GameObject panel;
     private List<GameObject> blackBorders = new List<GameObject>();
 
+
     void Start()
     {
         GameObject[] foundObjects = Resources.FindObjectsOfTypeAll<GameObject>().Where(obj => obj.name == "Top" || obj.name == "Bottom").ToArray();
@@ -55,6 +56,7 @@ public class EscMenu : MonoBehaviour
             obj.SetActive(true);
         }
         Paused = false;
+        SoundManager.ResumeAll();
 
     }
 
@@ -63,6 +65,7 @@ public class EscMenu : MonoBehaviour
         Time.timeScale = 1;
         SceneManager.LoadScene("Menu");
         //Application.Quit();
+       
     }
 
     public void Pause()
@@ -73,6 +76,8 @@ public class EscMenu : MonoBehaviour
         {
             obj.SetActive(false);
         }
+        SoundManager.PauseAll();
         Paused = true;
+     
     }
 }
