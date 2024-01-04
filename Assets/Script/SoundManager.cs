@@ -9,6 +9,7 @@ public static class SoundManager
     private static Queue<AudioSource> sources;
     private static Transform parent;
     private static bool initialized;
+    private static bool isPaused;
 
     public enum Sound
     {
@@ -32,6 +33,7 @@ public static class SoundManager
         Cutscene_SoundAudio_level_3,
         HoverButton,
         Cutscene_SoundAudio_level_2_2,
+        Cutscene_SoundAudio_level_2_1,
     }
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
@@ -63,6 +65,14 @@ public static class SoundManager
             audioSource.loop = loop;
             audioSource.clip = GetAudioClip(sound);
             audioSource.Play();
+            if (isPaused)
+            {
+                audioSource.UnPause();
+            }
+            else
+            {
+                audioSource.Play();
+            }
         }
         else
         {
@@ -102,4 +112,29 @@ public static class SoundManager
             }
         }
     }
+
+    public static void PauseAll()
+    {
+        foreach (var audioSource in sources)
+        {
+            if (audioSource.isPlaying)
+            {
+                audioSource.Pause();
+            }
+        }
+        isPaused = true;
+    }
+
+    public static void ResumeAll()
+    {
+        foreach (var audioSource in sources)
+        {
+            if (!audioSource.isPlaying)
+            {
+                audioSource.UnPause();
+            }
+        }
+        isPaused = false;
+    }
+
 }
