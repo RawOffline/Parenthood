@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,11 +9,20 @@ public class EscMenu : MonoBehaviour
 {
     public static bool Paused = false;
     public GameObject panel;
-    public GameObject TopVin;
-    public GameObject BottomVin;
+    private List<GameObject> blackBorders = new List<GameObject>();
+
+    void Start()
+    {
+        GameObject[] blackBordersArray = Resources.FindObjectsOfTypeAll<GameObject>().Where(obj => obj.CompareTag("BlackBorders")).ToArray();
+        blackBorders.AddRange(blackBordersArray);
+    }
+
     void Update()
     {
-
+        foreach (GameObject blackBorder in blackBorders)
+        {
+            Debug.Log(blackBorder);
+        }
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -38,8 +49,10 @@ public class EscMenu : MonoBehaviour
     {
         Time.timeScale = 1;
         panel.SetActive(false);
-        TopVin.SetActive(true);
-        BottomVin.SetActive(true);
+        foreach (GameObject obj in blackBorders)
+        {
+            obj.SetActive(true);
+        }
         Paused = false;
 
     }
@@ -55,8 +68,10 @@ public class EscMenu : MonoBehaviour
     {
         panel.SetActive(true);
         Time.timeScale = 0;
-        TopVin.SetActive(false);
-        BottomVin.SetActive(false);
+        foreach (GameObject obj in blackBorders)
+        {
+            obj.SetActive(false);
+        }
         Paused = true;
     }
 }
