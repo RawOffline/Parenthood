@@ -4335,7 +4335,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 63.5
+    m_StopTime: 63.483334
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -16329,14 +16329,14 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0
-    functionName: DeactivateChild
+    functionName: DeactivateParent
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
   - time: 0
-    functionName: DeactivateParent
+    functionName: ActivateCutSceneChild
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
@@ -16350,7 +16350,14 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 0
-    functionName: ActivateCutSceneChild
+    functionName: DeactivateChild
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.38333333
+    functionName: ShowBars
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
@@ -16363,22 +16370,29 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 63.383335
-    functionName: MoveChild
+  - time: 19.916666
+    functionName: HideBars
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 63.383335
-    functionName: MoveParent
+  - time: 41.65
+    functionName: ShowBars
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 63.383335
-    functionName: DeactivateCutSceneChild
+  - time: 63.183334
+    functionName: DecreaseCameraPriority
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 63.25
+    functionName: HideBars
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
@@ -16386,6 +16400,13 @@ AnimationClip:
     messageOptions: 0
   - time: 63.383335
     functionName: DeactivateCutSceneParent
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 63.383335
+    functionName: MoveChild
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
@@ -16405,8 +16426,15 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 63.5
-    functionName: DecreaseCameraPriority
+  - time: 63.383335
+    functionName: DeactivateCutSceneChild
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 63.483334
+    functionName: MoveParent
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

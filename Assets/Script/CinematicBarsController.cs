@@ -8,15 +8,6 @@ public class CinematicBarsController : MonoBehaviour
     [SerializeField] private GameObject cinematicBarContainerGO;
     [SerializeField] private Animator animator;
 
-    private void Awake()
-    {
-        // cheeeky singleton
-        if (Instance == null)
-            Instance = this;
-        else if (Instance != this)
-            Destroy(gameObject);
-
-    }
     public void ShowBars()
     {
         cinematicBarContainerGO.SetActive(true);
