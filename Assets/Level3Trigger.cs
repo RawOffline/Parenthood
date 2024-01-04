@@ -5,18 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class Level3Trigger : MonoBehaviour
 {
-    public SceneHandler sceneHandler;
-
-    private void Start()
-    {
-        sceneHandler = FindAnyObjectByType<SceneHandler>();
-    }
-
+  
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("child") || collision.gameObject.CompareTag("Player"))
         {
-            sceneHandler.NextScene();
+            int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+
+            // If the current scene is the last one, it wraps around to the first scene.
+            int nextSceneIndex = (currentSceneIndex + 1) % SceneManager.sceneCountInBuildSettings;
+
+            SoundManager.StopAllSounds();
+            SceneManager.LoadScene(nextSceneIndex);
         }
     }
 }
