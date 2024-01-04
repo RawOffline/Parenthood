@@ -1091,7 +1091,7 @@ GameObject:
   - component: {fileID: 91427786}
   - component: {fileID: 91427788}
   - component: {fileID: 91427787}
-  m_Layer: 13
+  m_Layer: 3
   m_Name: Stair build (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6938,7 +6938,7 @@ GameObject:
   - component: {fileID: 228170351}
   - component: {fileID: 228170353}
   - component: {fileID: 228170352}
-  m_Layer: 13
+  m_Layer: 3
   m_Name: Stair build (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7747,7 +7747,7 @@ GameObject:
   - component: {fileID: 275328754}
   - component: {fileID: 275328756}
   - component: {fileID: 275328755}
-  m_Layer: 13
+  m_Layer: 3
   m_Name: Stair build (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22377,7 +22377,7 @@ GameObject:
   - component: {fileID: 823399762}
   - component: {fileID: 823399764}
   - component: {fileID: 823399763}
-  m_Layer: 13
+  m_Layer: 3
   m_Name: Stair build (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42326,7 +42326,7 @@ GameObject:
   - component: {fileID: 1513109092}
   - component: {fileID: 1513109094}
   - component: {fileID: 1513109093}
-  m_Layer: 13
+  m_Layer: 3
   m_Name: Stair build (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44722,7 +44722,7 @@ GameObject:
   - component: {fileID: 1791802943}
   - component: {fileID: 1791802945}
   - component: {fileID: 1791802944}
-  m_Layer: 13
+  m_Layer: 3
   m_Name: Stair build (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

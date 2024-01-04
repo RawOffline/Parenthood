@@ -14101,6 +14101,13 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 57.4
+    functionName: ActivateChild
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 57.516666
     functionName: DeactivateCutSceneParent
     data: 
@@ -14117,13 +14124,6 @@ AnimationClip:
     messageOptions: 0
   - time: 57.516666
     functionName: ActivateParent
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 57.516666
-    functionName: ActivateChild
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
