@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3268277316609243006
 Transform:
   m_ObjectHideFlags: 0
@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundAudioClipArray:
   - sound: 0
-    audioClip: {fileID: 8300000, guid: aede7bd36e04d1841b91064f2871f6c9, type: 3}
+    audioClip: {fileID: 8300000, guid: e65673684041cce4391b6cc39b934ad6, type: 3}
   - sound: 4
     audioClip: {fileID: 8300000, guid: fdc041287b9e9fc4fa4eec01f5c5e368, type: 3}
   - sound: 5
@@ -71,3 +71,9 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: c058b5f1ae2e3b844b91844e07725dfd, type: 3}
   - sound: 14
     audioClip: {fileID: 8300000, guid: 93abe6609ce13f441af43b2f81a583aa, type: 3}
+  - sound: 1
+    audioClip: {fileID: 8300000, guid: f9b46d2d305f7564cb6da3d99fa88f0a, type: 3}
+  - sound: 15
+    audioClip: {fileID: 8300000, guid: c058b5f1ae2e3b844b91844e07725dfd, type: 3}
+  - sound: 16
+    audioClip: {fileID: 8300000, guid: 601f839a453abd140ba51e675966f83c, type: 3}

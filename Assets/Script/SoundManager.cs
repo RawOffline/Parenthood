@@ -12,7 +12,8 @@ public static class SoundManager
 
     public enum Sound
     {
-        Call,
+        motherCall,
+        childCall,
         Idle1,
         Idle2,
         Idle3,
@@ -27,6 +28,7 @@ public static class SoundManager
         Level_credit,
         Level_credit_Loop,
         creditSceneWind,
+        Cutscene_level_1,
     }
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
