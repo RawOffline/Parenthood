@@ -20,8 +20,8 @@ public class AnimationDeathScene : MonoBehaviour
     {
         if (collision.gameObject.layer == 11)
         {
-            child.transform.DOMoveX(cutSceneChild.transform.position.x, 3);
-            parent.transform.DOMoveX(cutSceneParent.transform.position.x, 3).OnComplete(PlayAnimation);
+            child.transform.DOMoveX(cutSceneChild.transform.position.x, 1);
+            parent.transform.DOMoveX(cutSceneParent.transform.position.x, 1).OnComplete(PlayAnimation);
         }
 
     }
