@@ -29,6 +29,7 @@ public static class SoundManager
         creditSceneWind,
         CutsceneWind,
         Cutscene_SoundAudio_level_1,
+        Cutscene_SoundAudio_level_3,
     }
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
