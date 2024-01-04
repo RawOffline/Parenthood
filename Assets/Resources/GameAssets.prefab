@@ -46,21 +46,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundAudioClipArray:
   - sound: 0
-<<<<<<< Updated upstream
     audioClip: {fileID: 8300000, guid: aede7bd36e04d1841b91064f2871f6c9, type: 3}
   - sound: 4
     audioClip: {fileID: 8300000, guid: fdc041287b9e9fc4fa4eec01f5c5e368, type: 3}
-=======
-    audioClip: {fileID: 8300000, guid: e65673684041cce4391b6cc39b934ad6, type: 3}
->>>>>>> Stashed changes
   - sound: 5
-    audioClip: {fileID: 8300000, guid: fdc041287b9e9fc4fa4eec01f5c5e368, type: 3}
-  - sound: 6
     audioClip: {fileID: 8300000, guid: 22dc68e96a1cf9242a8b9ff02ffde8d5, type: 3}
+  - sound: 6
+    audioClip: {fileID: 8300000, guid: 2f875f46961064646887b18ac3269699, type: 3}
+  - sound: 7
+    audioClip: {fileID: 8300000, guid: dbc9f2a60f4d2604fb130a86488eff8b, type: 3}
   - sound: 7
     audioClip: {fileID: 8300000, guid: dbc9f2a60f4d2604fb130a86488eff8b, type: 3}
   - sound: 8
-    audioClip: {fileID: 8300000, guid: dbc9f2a60f4d2604fb130a86488eff8b, type: 3}
+    audioClip: {fileID: 8300000, guid: 61416dc97e4d469419a9a842f7e91b5a, type: 3}
   - sound: 9
     audioClip: {fileID: 8300000, guid: c4baae0dcdae8c24d9ed1eee3ed84623, type: 3}
   - sound: 10
