@@ -8405,6 +8405,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8199584713055875769, guid: 2044c5ec6202f6a488fb4987703fb811, type: 3}
       insertIndex: -1
       addedObject: {fileID: 432756173}
+    - targetCorrespondingSourceObject: {fileID: 8199584713055875769, guid: 2044c5ec6202f6a488fb4987703fb811, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1964586085}
   m_SourcePrefab: {fileID: 100100000, guid: 2044c5ec6202f6a488fb4987703fb811, type: 3}
 --- !u!1 &432756167 stripped
 GameObject:
@@ -52169,6 +52172,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1964586085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 432756167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48f1617f66daf1945910c1f7cf788bdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1968087437
 GameObject:
   m_ObjectHideFlags: 0
@@ -58285,6 +58300,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1513663202736160154, guid: 07e2b4287f7cccc4ab3affb17a17c153, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2001437583550399921, guid: 07e2b4287f7cccc4ab3affb17a17c153, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -58371,6 +58390,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7364599737281316131, guid: 07e2b4287f7cccc4ab3affb17a17c153, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8013353471763281969, guid: 07e2b4287f7cccc4ab3affb17a17c153, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8578361153575422696, guid: 07e2b4287f7cccc4ab3affb17a17c153, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

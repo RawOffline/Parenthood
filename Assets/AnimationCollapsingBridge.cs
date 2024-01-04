@@ -20,8 +20,8 @@ public class AnimationCollapsingBridge : MonoBehaviour
     {
         if (collision.gameObject.layer == 11)
         {
-            child.transform.DOMoveX(cutSceneChild.transform.position.x, 3);
-            parent.transform.DOMoveX(cutSceneParent.transform.position.x, 3).OnComplete(PlayAnimation);
+            child.transform.DOMove(cutSceneChild.transform.position, 3);
+            parent.transform.DOMove(cutSceneParent.transform.position, 3).OnComplete(PlayAnimation);
         }
 
     }
