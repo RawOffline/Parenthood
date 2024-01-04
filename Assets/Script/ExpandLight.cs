@@ -10,24 +10,17 @@ public class ExpandLight : MonoBehaviour
     public float maxIntensity = 1f;
 
     private bool isExpanding = false;
-    public bool isMother;
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E) && !isExpanding)
-            StartCoroutine(BurstLight());
+        StartCoroutine(BurstLight());
     }
 
     IEnumerator BurstLight()
     {
         isExpanding = true;
-        if (isMother)
-        {
-            SoundManager.PlaySound(SoundManager.Sound.motherCall, false, false);
-        }
-        else
-        {
-            SoundManager.PlaySound(SoundManager.Sound.childCall, false, false);
-        }
+
         // Initial intensity is 0
         light2D.intensity = 0f;
 
