@@ -7,6 +7,8 @@ public class EscMenu : MonoBehaviour
 {
     public static bool Paused = false;
     public GameObject panel;
+    public GameObject TopVin;
+    public GameObject BottomVin;
     void Update()
     {
 
@@ -36,6 +38,8 @@ public class EscMenu : MonoBehaviour
     {
         Time.timeScale = 1;
         panel.SetActive(false);
+        TopVin.SetActive(true);
+        BottomVin.SetActive(true);
         Paused = false;
 
     }
@@ -51,6 +55,8 @@ public class EscMenu : MonoBehaviour
     {
         panel.SetActive(true);
         Time.timeScale = 0;
+        TopVin.SetActive(false);
+        BottomVin.SetActive(false);
         Paused = true;
     }
 }

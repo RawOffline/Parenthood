@@ -8375,6 +8375,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panel: {fileID: 214365323}
+  TopVin: {fileID: 39605587}
+  BottomVin: {fileID: 2052730405}
 --- !u!114 &348656840
 MonoBehaviour:
   m_ObjectHideFlags: 0
