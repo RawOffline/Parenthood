@@ -11832,11 +11832,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4236605910722403921, guid: 1d4c1b9d574d2d7478ad68fd26437fa7, type: 3}
       propertyPath: firstSong
-      value: 8
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4236605910722403921, guid: 1d4c1b9d574d2d7478ad68fd26437fa7, type: 3}
       propertyPath: secondSong
-      value: 9
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7185400423702173191, guid: 1d4c1b9d574d2d7478ad68fd26437fa7, type: 3}
       propertyPath: m_Name
