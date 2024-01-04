@@ -70,7 +70,7 @@ public class CrushingBlock : MonoBehaviour
     }
 
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {
         
         if (collision.gameObject.CompareTag("child") && canHurtChild)
@@ -79,7 +79,7 @@ public class CrushingBlock : MonoBehaviour
             CinemachineShake.Instance.ShakeCamera(1f, 0.5f);
       
         }
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player") && canHurtChild)
         {
             hitPlayer = true;
             StartCoroutine(WaitAndMoveUp());
