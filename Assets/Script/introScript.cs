@@ -30,7 +30,7 @@ public class introScript : MonoBehaviour
     public void DecreaseCameraPriority()
     { introVirtualCamera.Priority = 0; }
     public void IncreaseCameraPriority()
-    { introVirtualCamera.Priority = 20; }
+    { introVirtualCamera.Priority = 21; }
     public void MoveParent()
     { parent.transform.position = cutSceneParent.transform.position; }
     public void MoveChild()
