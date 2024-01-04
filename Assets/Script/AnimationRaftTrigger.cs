@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+
 public class AnimationRaftTrigger : MonoBehaviour
 {
     public GameObject child;
@@ -10,6 +11,7 @@ public class AnimationRaftTrigger : MonoBehaviour
     public GameObject cutSceneParent;
     private Animator animator;
     private bool inBoat = false;
+
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -21,8 +23,18 @@ public class AnimationRaftTrigger : MonoBehaviour
         {
             child.transform.DOMoveX(cutSceneChild.transform.position.x, 1);
             parent.transform.DOMoveX(cutSceneParent.transform.position.x, 1).OnComplete(PlayAnimation);
+
+            ExpandLight expandLightChild = child.GetComponent<ExpandLight>();
+            ExpandLight expandLightParent = parent.GetComponent<ExpandLight>();
+
+            if (expandLightChild != null)
+                expandLightChild.enabled = true;
+
+            if (expandLightParent != null)
+                expandLightParent.enabled = true;
         }
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         inBoat = true;
