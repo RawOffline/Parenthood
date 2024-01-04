@@ -16384,56 +16384,56 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 62.216667
+  - time: 62.583332
     functionName: MoveParent
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 62.466667
+  - time: 62.833332
     functionName: DecreaseCameraPriority
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 62.533333
+  - time: 62.9
     functionName: HideBars
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 62.666668
+  - time: 63.033333
     functionName: DeactivateCutSceneParent
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 62.666668
+  - time: 63.033333
     functionName: MoveChild
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 62.666668
+  - time: 63.033333
     functionName: ActivateParent
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 62.666668
+  - time: 63.033333
     functionName: ActivateChild
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 62.666668
+  - time: 63.033333
     functionName: DeactivateCutSceneChild
     data: 
     objectReferenceParameter: {fileID: 0}
