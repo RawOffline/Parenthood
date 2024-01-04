@@ -6,8 +6,8 @@ using UnityEngine;
 public class CinematicBarsController : MonoBehaviour
 {
     public static CinematicBarsController Instance { get; private set; }
-    [SerializeField] private GameObject cinematicBarContainerGO;
-    [SerializeField] private Animator animator;
+    private GameObject cinematicBarContainerGO;
+    private Animator animator;
 
     public void Start()
     {
@@ -17,6 +17,9 @@ public class CinematicBarsController : MonoBehaviour
         {
             cinematicBarContainerGO = foundObjects[0];
         }
+        animator = cinematicBarContainerGO.GetComponent<Animator>();
+
+
     }
     public void ShowBars()
     {
