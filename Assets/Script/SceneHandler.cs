@@ -1,3 +1,4 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,7 +12,8 @@ public class SceneHandler : MonoBehaviour
     CheckpointManager checkpoint;
     public int constantFrame;
 
-    [SerializeField] Animator transitionAnim;
+    //[SerializeField] Animator transitionAnim;
+    public SceneTransition sceneTransition;
 
     void Start()
     {
@@ -21,6 +23,11 @@ public class SceneHandler : MonoBehaviour
         mother = GameObject.FindWithTag("Player");
         motherMovement = mother.GetComponent<MotherMovement>();
         Application.targetFrameRate = constantFrame;
+
+        if (sceneTransition != null)
+        {
+            print("scenehandler is on: " + sceneTransition.name);
+        }
     }
 
     void Update()
@@ -63,11 +70,11 @@ public class SceneHandler : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
-            
+
         }
         if (Input.GetKeyDown(KeyCode.Alpha5))
         {
-            
+
         }
     }
 
@@ -87,6 +94,12 @@ public class SceneHandler : MonoBehaviour
     IEnumerator LoadLevel()
     {
         //transitionAnim.SetTrigger("End");
+
+        if (sceneTransition != null)
+        {
+            sceneTransition.PlayEndTransition();
+            print("end transition played");
+        }
         yield return new WaitForSeconds(1);
 
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
@@ -98,6 +111,11 @@ public class SceneHandler : MonoBehaviour
         SceneManager.LoadScene(nextSceneIndex);
 
         //transitionAnim.SetTrigger("Start");
+        if (sceneTransition != null)
+        {
+            sceneTransition.PlayStartTransition();
+            print("start transition played");
+        }
     }
 
     public void PreviousScene()
@@ -115,16 +133,16 @@ public class SceneHandler : MonoBehaviour
     {
         isGodMode = !isGodMode;
 
-        if(motherMovement != null)
+        if (motherMovement != null)
         {
-        if (isGodMode)
-        {
-            motherMovement.EnableGodMode();
-        }
-        else
-        {
-            motherMovement.DisableGodMode();
-        }
+            if (isGodMode)
+            {
+                motherMovement.EnableGodMode();
+            }
+            else
+            {
+                motherMovement.DisableGodMode();
+            }
         }
 
     }
