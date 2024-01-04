@@ -31,6 +31,7 @@ public static class SoundManager
         Cutscene_SoundAudio_level_1,
         Cutscene_SoundAudio_level_3,
         HoverButton,
+        Cutscene_SoundAudio_level_2_2,
     }
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
