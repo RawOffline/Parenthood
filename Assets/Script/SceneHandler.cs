@@ -86,7 +86,7 @@ public class SceneHandler : MonoBehaviour
 
     IEnumerator LoadLevel()
     {
-        transitionAnim.SetTrigger("End");
+        //transitionAnim.SetTrigger("End");
         yield return new WaitForSeconds(1);
 
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
@@ -97,7 +97,7 @@ public class SceneHandler : MonoBehaviour
         SoundManager.StopAllSounds();
         SceneManager.LoadScene(nextSceneIndex);
 
-        transitionAnim.SetTrigger("Start");
+        //transitionAnim.SetTrigger("Start");
     }
 
     public void PreviousScene()
