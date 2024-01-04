@@ -8,16 +8,16 @@ using DG.Tweening;
 public class MovingPlatform : MonoBehaviour
 {
     public Transform[] coordinatesTransform = new Transform[2];
-
+    public MotherMovement motherMovement;
     public PathType pathSystem = PathType.CatmullRom;
 
     public float waitDuration;
     public float duration = 1f;
     public float percentageDistance;
     [Range(0, 1)] public float startPercentageDistance;
-    
 
-  
+
+
 
     void Start()
     {
@@ -44,9 +44,9 @@ public class MovingPlatform : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("child"))
         {
-            MotherMovement motherMovement = other.gameObject.GetComponent<MotherMovement>();
-
+       
             motherMovement.onMovingPlatform = true;
+           
             var parentHandler = other.transform.parent.GetComponent<ParentHandler>();
             if (parentHandler != null)
             {
@@ -59,8 +59,7 @@ public class MovingPlatform : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("child"))
         {
-            MotherMovement motherMovement = other.gameObject.GetComponent<MotherMovement>();
-
+           
             motherMovement.onMovingPlatform = false;
             var playerHandler = other.transform.parent.GetComponent<ParentHandler>();
             if (playerHandler != null)

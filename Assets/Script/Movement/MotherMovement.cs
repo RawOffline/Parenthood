@@ -69,6 +69,7 @@ public class MotherMovement : MonoBehaviour
             Vector2 movement = new Vector2(horizontalInput, 0f);
             transform.Translate(movement * maxMoveSpeed * Time.deltaTime);
         }
+       
     }
 
     private void Update()
@@ -179,8 +180,9 @@ public class MotherMovement : MonoBehaviour
 
         if(onMovingPlatform == true)
         {
-            Vector2 movement = new Vector2(horizontalInput, 0f);
-            transform.Translate(movement * maxMoveSpeed * Time.deltaTime);
+            rb.velocity = new Vector2(horizontalInput * 3, rb.velocity.y);
+            rb.velocity = new Vector2(Mathf.MoveTowards(rb.velocity.x, horizontalInput,
+                movementAcceleration * Time.fixedDeltaTime), rb.velocity.y);
         }
         else 
         { 
