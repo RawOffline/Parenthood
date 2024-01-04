@@ -33613,7 +33613,7 @@ MonoBehaviour:
   cutSceneChild: {fileID: 875438505}
   cutSceneParent: {fileID: 1432988737}
   introVirtualCamera: {fileID: 22616720}
-  sceneHandler: {fileID: 0}
+  sceneHandler: {fileID: 2914683919439923084}
 --- !u!61 &1216150461
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -40841,7 +40841,7 @@ MonoBehaviour:
   cutSceneChild: {fileID: 386021365}
   cutSceneParent: {fileID: 30079808}
   introVirtualCamera: {fileID: 1679567968}
-  sceneHandler: {fileID: 0}
+  sceneHandler: {fileID: 2914683919439923084}
 --- !u!114 &1434373692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49584,6 +49584,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe0cdb7db4aa3d345bc3371c5ceb164b, type: 3}
+--- !u!114 &2914683919439923084 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2065498215243722033, guid: fe0cdb7db4aa3d345bc3371c5ceb164b, type: 3}
+  m_PrefabInstance: {fileID: 2914683919439923083}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 333581bfa8868ec45bdd94173e1c1f98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &3099257607502743277
 SpriteRenderer:
   m_ObjectHideFlags: 0

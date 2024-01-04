@@ -23,11 +23,6 @@ public class SceneHandler : MonoBehaviour
         mother = GameObject.FindWithTag("Player");
         motherMovement = mother.GetComponent<MotherMovement>();
         Application.targetFrameRate = constantFrame;
-
-        if (sceneTransition != null)
-        {
-            print("scenehandler is on: " + sceneTransition.name);
-        }
     }
 
     void Update()
@@ -70,11 +65,11 @@ public class SceneHandler : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
-
+            Time.timeScale -= 0.25f;
         }
         if (Input.GetKeyDown(KeyCode.Alpha5))
         {
-
+            Time.timeScale += 0.25f;
         }
     }
 
@@ -98,7 +93,6 @@ public class SceneHandler : MonoBehaviour
         if (sceneTransition != null)
         {
             sceneTransition.PlayEndTransition();
-            print("end transition played");
         }
         yield return new WaitForSeconds(1);
 
@@ -114,7 +108,6 @@ public class SceneHandler : MonoBehaviour
         if (sceneTransition != null)
         {
             sceneTransition.PlayStartTransition();
-            print("start transition played");
         }
     }
 

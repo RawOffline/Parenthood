@@ -44,7 +44,7 @@ public class MusicController : MonoBehaviour
     IEnumerator PlaySecondSong(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
-        SoundManager.PlaySound(SoundManager.Sound.Level_1_Loop, true, true);
+        SoundManager.PlaySound(secondSong, true, true);
     }
 
     //void Update()
