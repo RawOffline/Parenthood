@@ -5,11 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class Level3Trigger : MonoBehaviour
 {
+    public SceneHandler sh;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("child") || collision.gameObject.CompareTag("Player"))
         {
-            SceneManager.LoadScene("LevelThree");
+            sh.NextScene();
         }
     }
 }
