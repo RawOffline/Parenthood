@@ -87,6 +87,14 @@ public class introScript : MonoBehaviour
     {
         SoundManager.PlaySound(SoundManager.Sound.Cutscene_SoundAudio_level_2_2, false, false);
     }
+    public void cutSceneAudio_Level_2_1()
+    {
+        SoundManager.PlaySound(SoundManager.Sound.Cutscene_SoundAudio_level_2_1, false, false);
+    }
+    public void cutSceneAudio_Level_2_crash()
+    {
+        SoundManager.PlaySound(SoundManager.Sound.Cutscene_SoundAudio_level_2_crash, false, false);
+    }
 
 
 }

@@ -10,11 +10,21 @@ public class ExpandLight : MonoBehaviour
     public float maxIntensity = 1f;
 
     private bool isExpanding = false;
-
+    public bool isMother;
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E) && !isExpanding)
-        StartCoroutine(BurstLight());
+        {
+            StartCoroutine(BurstLight());
+            if (isMother)
+            {
+                SoundManager.PlaySound(SoundManager.Sound.Call, false, false);
+            }
+            else
+            {
+                SoundManager.PlaySound(SoundManager.Sound.Child_Call, false, false);
+            }
+        }
     }
 
     IEnumerator BurstLight()

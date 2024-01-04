@@ -81,3 +81,7 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: 48225a215b277204faa93343cc88f7c3, type: 3}
   - sound: 19
     audioClip: {fileID: 8300000, guid: af878717ad444644eb9669b4a5ae9cd4, type: 3}
+  - sound: 20
+    audioClip: {fileID: 8300000, guid: 43a779e79fe62134cbb2a8372bf1b4b8, type: 3}
+  - sound: 22
+    audioClip: {fileID: 8300000, guid: f9b46d2d305f7564cb6da3d99fa88f0a, type: 3}

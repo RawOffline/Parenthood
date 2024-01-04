@@ -46518,11 +46518,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 712063896839904986, guid: fdd2c6c10e6c3c94793090016b0dda58, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2179781469357011982, guid: fdd2c6c10e6c3c94793090016b0dda58, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2611897202819109289, guid: fdd2c6c10e6c3c94793090016b0dda58, type: 3}
       propertyPath: m_LocalPosition.x
