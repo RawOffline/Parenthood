@@ -21014,7 +21014,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1526167878145857264, guid: 1d4c1b9d574d2d7478ad68fd26437fa7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -61.510536
+      value: -61.51054
       objectReference: {fileID: 0}
     - target: {fileID: 1526167878145857264, guid: 1d4c1b9d574d2d7478ad68fd26437fa7, type: 3}
       propertyPath: m_LocalPosition.y
@@ -21059,6 +21059,10 @@ PrefabInstance:
     - target: {fileID: 4236605910722403921, guid: 1d4c1b9d574d2d7478ad68fd26437fa7, type: 3}
       propertyPath: secondSong
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4236605910722403921, guid: 1d4c1b9d574d2d7478ad68fd26437fa7, type: 3}
+      propertyPath: firstSongDuration
+      value: 131
       objectReference: {fileID: 0}
     - target: {fileID: 7185400423702173191, guid: 1d4c1b9d574d2d7478ad68fd26437fa7, type: 3}
       propertyPath: m_Name
