@@ -13,9 +13,15 @@ public class EscMenu : MonoBehaviour
 
     void Start()
     {
-        GameObject[] blackBordersArray = Resources.FindObjectsOfTypeAll<GameObject>().Where(obj => obj.CompareTag("BlackBorders")).ToArray();
-        blackBorders.AddRange(blackBordersArray);
+        // Replace "TopVin" and "BottomVin" with the actual names of your GameObjects
+        GameObject[] foundObjects = Resources.FindObjectsOfTypeAll<GameObject>().Where(obj => obj.name == "Top" || obj.name == "Bottom").ToArray();
+
+        foreach (GameObject foundObject in foundObjects)
+        {
+            blackBorders.Add(foundObject);
+        }
     }
+
 
     void Update()
     {

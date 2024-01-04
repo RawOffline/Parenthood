@@ -6,7 +6,6 @@ TagManager:
   tags:
   - child
   - shake
-  - BlackBorders
   layers:
   - Default
   - TransparentFX
