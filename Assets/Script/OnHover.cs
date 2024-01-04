@@ -9,6 +9,7 @@ public class OnHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        SoundManager.PlaySound(SoundManager.Sound.HoverButton, false, false);
         particleEffect.Play();
     }
 
