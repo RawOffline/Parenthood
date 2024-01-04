@@ -13,8 +13,10 @@ public class introScript : MonoBehaviour
     public CinemachineVirtualCamera introVirtualCamera;
     private Follow follow;
     private MotherMovement motherMovement;
+    public SceneHandler sceneHandler;
     void Start()
     {
+        sceneHandler = FindAnyObjectByType<SceneHandler>();
         if (follow == null)
             follow = FindObjectOfType<Follow>();
 
@@ -66,6 +68,6 @@ public class introScript : MonoBehaviour
     { motherMovement.enabled = false; }
 
     public void LoadLastScene()
-    { SceneManager.LoadScene("Credits");}
+    { sceneHandler.NextScene(); }
 
 }

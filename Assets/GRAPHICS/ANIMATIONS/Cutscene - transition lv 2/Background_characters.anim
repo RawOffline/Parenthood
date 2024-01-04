@@ -18105,7 +18105,14 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 2.05
+  - time: 0
+    functionName: ShowBars
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 2.0833333
     functionName: DeactivateParent
     data: 
     objectReferenceParameter: {fileID: 0}
@@ -18156,6 +18163,13 @@ AnimationClip:
     messageOptions: 0
   - time: 18.45
     functionName: ActivateParent
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 18.8
+    functionName: HideBars
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
