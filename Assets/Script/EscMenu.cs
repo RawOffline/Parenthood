@@ -24,10 +24,6 @@ public class EscMenu : MonoBehaviour
 
     void Update()
     {
-        foreach (GameObject blackBorder in blackBorders)
-        {
-            Debug.Log(blackBorder);
-        }
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
