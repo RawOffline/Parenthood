@@ -28885,6 +28885,13 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 4.983333
+    functionName: cutSceneAudio_Level_3
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 30.066668
     functionName: HideBars
     data: 

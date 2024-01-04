@@ -26,15 +26,15 @@ public class introScript : MonoBehaviour
 
 
     public void ChildMoveRight()
-    {follow.movingRight = true;}
+    { follow.movingRight = true; }
     public void DecreaseCameraPriority()
-    {introVirtualCamera.Priority = 0;}
+    { introVirtualCamera.Priority = 0; }
     public void IncreaseCameraPriority()
     { introVirtualCamera.Priority = 20; }
     public void MoveParent()
-    {parent.transform.position = cutSceneParent.transform.position;}
+    { parent.transform.position = cutSceneParent.transform.position; }
     public void MoveChild()
-    {child.transform.position = cutSceneChild.transform.position;}
+    { child.transform.position = cutSceneChild.transform.position; }
 
 
 
@@ -62,8 +62,8 @@ public class introScript : MonoBehaviour
     public void ActivateCutSceneChild()
     { cutSceneChild.SetActive(true); }
 
-    public void ActivateMovement() 
-    { motherMovement.enabled = true;}
+    public void ActivateMovement()
+    { motherMovement.enabled = true; }
     public void DeactiavteMovement()
     { motherMovement.enabled = false; }
 
@@ -71,11 +71,16 @@ public class introScript : MonoBehaviour
     { sceneHandler.NextScene(); }
 
     public void WindMusic()
-    { SoundManager.PlaySound(SoundManager.Sound.CutsceneWind,false,false); }
+    { SoundManager.PlaySound(SoundManager.Sound.CutsceneWind, false, false); }
 
     public void cutSceneAudio_Level_1()
     {
         SoundManager.PlaySound(SoundManager.Sound.Cutscene_SoundAudio_level_1, false, false);
+    }
+
+    public void cutSceneAudio_Level_3()
+    {
+        SoundManager.PlaySound(SoundManager.Sound.Cutscene_SoundAudio_level_3, false, false);
     }
 
 }
